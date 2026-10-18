@@ -2,6 +2,7 @@ import { env } from 'cloudflare:workers';
 import { requireAdmin, respond, json, db, bodyJson } from '@/lib/server';
 import { getProducts } from '@/lib/catalogue-server';
 import { parseProduct, ShopError } from '@/lib/commerce.mjs';
+import { ownerTestCheckout } from '@/lib/test-payments';
 import { paymentStatus, saveMerchant, configureWebhook, setPaymentOptions, checkoutOrigin, getOrder, reconcileOrder, orderDocument, merchant, stripeClient, type OrderRow } from '@/lib/payments';
 export const dynamic='force-dynamic';
 type Ctx={params:Promise<{action:string}>};
@@ -13,6 +14,7 @@ export async function GET(request:Request,ctx:Ctx){return respond(async()=>{awai
   throw new ShopError('Page not found.',404);
 });}
 export async function POST(request:Request,ctx:Ctx){return respond(async()=>{await requireAdmin(request);const {action}=await ctx.params,input=await bodyJson(request,100000);
+  if(action==='test-checkout')return json(await ownerTestCheckout(request,input));
   if(action==='product'){
     const p=parseProduct(input),id=typeof input.id==='string'?input.id:crypto.randomUUID();if(!/^[a-f0-9-]{36}$/.test(id))throw new ShopError('Invalid item reference.');
     if(p.active){for(const image of p.images){if(!env.BUCKET||!await env.BUCKET.head(image.replace('/api/media/','')))throw new ShopError('An item photo is missing. Please upload it again.');}}

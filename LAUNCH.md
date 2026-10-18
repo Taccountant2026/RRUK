@@ -15,7 +15,7 @@
 ## Verification
 
 - TypeScript check passed.
-- Eight automated tests passed, including actual migrated SQLite concurrency and rollback tests and Stripe SDK signature verification.
+- Ten automated tests passed, including actual migrated SQLite concurrency and rollback tests and Stripe SDK signature verification.
 - Production Worker/client build passed. The native Sites saved version/deployment records verify the published source and URL.
 - Browser QA is unavailable in this managed session; responsive layout and keyboard/screen-reader behaviour have not been browser-verified.
 - No real merchant key was supplied to this runtime, no hosted Stripe payment was completed, and no live customer charge was made. A connected Stripe MCP account is not the storefront's server key.
@@ -43,3 +43,9 @@ Research genuine available stock, realistic prices, delivery service/cost and pr
 ## Daily order operation
 
 Check orders and reconcile open checkouts. Pack only verified paid **live** orders. Download and include the saved order/terms copy, use tracked delivery, record tracking and send the customer an update through the business email. Check support and returns. Review data-retention cleanup and preserve accounting records. Process refunds in the correct Stripe account and verify them here; restock only after inspecting the return.
+
+## Owner test checkout added
+
+The private Payments screen has a Run £1 test payment action. Its server route requires the authenticated owner, same-origin POST, an enabled test connection and a test-prefixed key. It stores a clearly labelled test order without adding a catalogue item or touching physical stock. The signed-in owner’s return page reconciles the session directly with Stripe; this verifies payment independently of the redirect while external webhook delivery remains unverified until public access. Real keys/live mode are rejected by the test action.
+
+On 18 October the owner saved the Bytova parent account test key, created the test webhook and enabled test checkout. Read-only checks confirmed payment-mode=test, payments-enabled=1, live-branding-confirmed=0 and fulfilment-confirmed=0. No real payment was authorised. Provider/browser test completion is still pending the owner’s test purchase.

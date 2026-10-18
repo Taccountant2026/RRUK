@@ -22,3 +22,8 @@ test('actual schema and reservation SQL survive concurrent last-unit sales, roll
  const result=spawnSync('python',['tests/inventory_scenarios.py'],{cwd:new URL('..',import.meta.url),input:JSON.stringify(input),encoding:'utf8'});
  assert.equal(result.status,0,result.stderr||result.stdout);assert.match(result.stdout,/all inventory scenarios passed/);
 });
+
+// The owner-only test endpoint must never be able to use a live key or publish stock.
+import { assertOwnerTestMode, testCheckoutPlan } from '../lib/test-checkout.mjs';
+test('owner test checkout rejects live keys, live mode, paused mode and missing webhook configuration',()=>{const valid={mode:'test',enabled:true,merchantMode:'test',key:'sk_test_fixture',signingSecret:'whsec_fixture'};assert.doesNotThrow(()=>assertOwnerTestMode(valid));for(const change of [{mode:'live'},{merchantMode:'live'},{key:'sk_live_fixture'},{key:'pk_test_fixture'},{enabled:false},{signingSecret:undefined}])assert.throws(()=>assertOwnerTestMode({...valid,...change}));});
+test('internal test purchase is fixed at GBP1 with no sale item or stock reservation',()=>{const {product,params}=testCheckoutPlan({origin:'https://shop.example',id:'order-test',token:'test-token',expiresAt:2000000000000,policyVersion:'2026-10-18'});assert.equal(product.active,false);assert.equal(product.stock,0);assert.equal(product.category,'test');assert.equal(params.line_items[0].price_data.unit_amount,100);assert.equal(params.line_items[0].price_data.currency,'gbp');assert.equal(params.metadata.rruk_test,'true');assert.equal(params.shipping_options[0].shipping_rate_data.fixed_amount.amount,0);assert.equal(params.success_url,'https://shop.example/order/order-test?token=test-token');assert.equal('payment_method_types' in params,false);});
