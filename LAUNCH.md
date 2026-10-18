@@ -15,16 +15,24 @@
 ## Verification
 
 - TypeScript check passed.
-- Ten automated tests passed, including actual migrated SQLite concurrency and rollback tests and Stripe SDK signature verification.
+- Thirteen automated tests passed, including actual migrated SQLite concurrency and rollback tests, Stripe SDK signature verification, connection-bound webhook evidence and verified refund states.
 - Production Worker/client build passed. The native Sites saved version/deployment records verify the published source and URL.
 - Browser QA is unavailable in this managed session; responsive layout and keyboard/screen-reader behaviour have not been browser-verified.
-- No real merchant key was supplied to this runtime, no hosted Stripe payment was completed, and no live customer charge was made. A connected Stripe MCP account is not the storefront's server key.
+- The owner completed the private £1 hosted test checkout. The saved RRUK order was verified as paid in test mode, and Stripe independently returned a completed, paid GBP100p session.
+- The same simulated payment was fully refunded through the connected Stripe test account. Stripe returned a succeeded GBP100p refund. The application's strengthened refund verifier accepted the provider's actual session, payment and refund objects. The deployed RRUK order still needs owner reconciliation to record that refund in its database.
+- No live customer charge was made. No live merchant key is saved in this runtime. A connected Stripe MCP account is not the storefront's server key.
 
 ## Remaining secure merchant setup
 
-Enter the intended test key in the private `/admin` Payments form and verify the account/mode. The user's new test context currently displays the parent name Bytova. Test records must remain RRUK-labelled and separate from live Bytova changes.
+The owner has saved the test key in the private `/admin` Payments form, configured the test webhook and enabled owner-only test checkout. The test merchant is `acct_1UPePCDMYd1hK6hb`, displayed as Bytova. Test records remain RRUK-labelled and separate from live Bytova changes.
 
-Complete provider tests: successful payment, declined payment, cancellation, duplicate delivery, delayed success/failure, expiry, amount mismatch and refund verification. Local fixtures prove the application's checks; they do not replace actual provider/browser verification. Confirm the live merchant's legal/customer-facing details, receipts and statement descriptor before live activation. Keep checkout paused until complete.
+Successful hosted test purchase and provider test refund are verified. Remaining provider/browser workflows: declined payment, cancellation, duplicate external delivery, delayed success/failure, expiry and owner recording of the refund. Local fixtures cover payment mismatches, duplicate/out-of-order states, stock release and refund safety; they do not replace actual provider/browser verification.
+
+The live account was inspected read-only on 18 October: charges and payouts are enabled with no currently due requirements, but its business profile, website and statement descriptor still identify Bytova. Do not rename that working account as part of RRUK setup. Save an intended RRUK live restricted key through the owner form, after confirming the RRUK merchant, customer-facing legal/support details, receipts and bank statement wording. No live key is currently saved and real checkout remains disabled.
+
+The site is still owner-private. Its configured test webhook exists and is enabled in Stripe, but Stripe cannot cross the platform sign-in wall. Public access requires the owner's explicit audience instruction. After public access/domain setup, verify actual signed delivery to the current endpoint. Webhook evidence is now bound to account, test/live mode, endpoint URL and signing-secret fingerprint; an old timestamp or a previous connection cannot unlock live checkout. Merchant charges-enabled status is checked directly with Stripe when enabling live mode.
+
+Payment reconciliation now checks provider refund objects and distinguishes succeeded full refunds from pending/partial refunds. Dispatch performs a fresh payment/refund check before marking an order sent. Test orders no longer count as ready to pack. A refund does not automatically return stock to sale.
 
 ## Domain connection (later, without transferring registrar unnecessarily)
 
@@ -48,4 +56,4 @@ Check orders and reconcile open checkouts. Pack only verified paid **live** orde
 
 The private Payments screen has a Run £1 test payment action. Its server route requires the authenticated owner, same-origin POST, an enabled test connection and a test-prefixed key. It stores a clearly labelled test order without adding a catalogue item or touching physical stock. The signed-in owner’s return page reconciles the session directly with Stripe; this verifies payment independently of the redirect while external webhook delivery remains unverified until public access. Real keys/live mode are rejected by the test action.
 
-On 18 October the owner saved the Bytova parent account test key, created the test webhook and enabled test checkout. Read-only checks confirmed payment-mode=test, payments-enabled=1, live-branding-confirmed=0 and fulfilment-confirmed=0. No real payment was authorised. Provider/browser test completion is still pending the owner’s test purchase.
+On 18 October the owner saved the Bytova parent account test key, created the test webhook and enabled test checkout. Read-only checks confirmed payment-mode=test, payments-enabled=1, live-branding-confirmed=0 and fulfilment-confirmed=0. The hosted purchase and provider refund have now succeeded; no real payment was authorised. Test order: `434c26d4-b457-4823-be35-f0edb0e991fd`. Succeeded simulated refund: `re_3URxFIDMYd1hK6hb1oYLqB4u`. Refresh Orders and use Verify payment to record the refund through the protected owner route.
