@@ -1,15 +1,15 @@
 # RRUK launch status
 
-18 October 2026, after the owner's 23:25 BST confirmation. RRUK is separate from Bytova; retain Bytova's domain/HTTPS checkpoint and working merchant settings.
+19 October 2026, after final-domain activation shortly after midnight BST. RRUK is separate from Bytova; retain Bytova's domain/HTTPS checkpoint and working merchant settings.
 
 ## Current state
 
-- Public storefront: https://rruk.taccountant.chatgpt.site
-- Protected owner area: https://rruk.taccountant.chatgpt.site/admin
+- Public storefront: https://retroreplay.uk (www also serves the store with the root canonical).
+- Protected owner area: https://retroreplay.uk/admin (native owner access is also retained).
 - Payment mode: live. Checkout: paused. Both branding and fulfilment confirmations were saved by the owner and independently read back.
 - The separate RetroReplay UK Stripe account has charges and payouts enabled. Customer-facing name and statement descriptor identify RRUK; support email and the working support-page URL are saved.
 - Restricted live credentials and signing secrets are encrypted on the server. Signed test and live deliveries have been verified at the native HTTPS origin.
-- The catalogue is empty, search indexing is disabled and the final domain is not connected. No real customer charge has been made.
+- Both final-domain hostnames and HTTPS certificates are active. PUBLIC_ORIGIN=https://retroreplay.uk is applied in runtime environment revision2. The catalogue is empty and search indexing stays disabled. No real customer charge has been made.
 
 ## Implemented
 
@@ -28,25 +28,25 @@ Delivery, returns, cancellation form, six-month console/handheld warranty, terms
 - A genuine live account.updated event reached the public endpoint and passed signature verification. Its receipt matches the current RRUK merchant, live mode, endpoint and signing-secret fingerprint. The temporary account.updated subscription was removed afterward. This proves live transport, rather than a completed live purchase.
 - Anonymous checks verified public storefront/catalogue access, paused customer checkout, unsigned-webhook rejection and protected owner routes. Browser rendering and keyboard/screen-reader QA remain unavailable in this managed session.
 
-Current processing baseline: refunded test order 434c26d4-b457-4823-be35-f0edb0e991fd; single completed-event record evt_1URxFJDMYd1hK6hbsB7NApl2. The abandoned test order 4dae40eb-8146-4857-abc6-aed31f6f61fd is due to expire at 23:37:14 BST. Verify the actual expiry event and saved state after that time. It did not reserve physical stock.
+Current processing baseline: refunded test order 434c26d4-b457-4823-be35-f0edb0e991fd; single completed-event record evt_1URxFJDMYd1hK6hbsB7NApl2. The abandoned test order 4dae40eb-8146-4857-abc6-aed31f6f61fd automatically expired. Genuine checkout.session.expired event evt_1US2hbDMYd1hK6hbg9Z0yfoR was processed at 1792363036877, and the saved order is expired/unpaid with restocked=1. It did not reserve physical stock; this verifies provider expiry handling, while actual-item release is covered by the SQLite tests.
 
 ## Remaining checkout checks
 
-1. Verify the abandoned provider session expires and the handler records its state correctly. Local SQLite tests cover stock release; this stock-free internal checkout does not prove actual-item inventory restoration.
+1. Provider expiry and saved order transition are verified. Local SQLite tests cover actual reservation release; the stock-free internal provider checkout does not prove real-item inventory restoration.
 2. Test delayed success/failure for any payment methods intended for sale. Fixture coverage is not external provider coverage. RRUK's default live configuration includes methods beyond cards; eligibility depends on customer, currency and basket.
-3. Repeat signed delivery verification after moving each configured endpoint to the final HTTPS domain.
+3. Use the owner's secure Payments buttons to update test and live endpoints to https://retroreplay.uk/api/stripe/webhook, then verify signed delivery for both. Earlier native-origin proof is insufficient; the handler now records the actual incoming request origin rather than the configured public origin.
 4. Complete relevant product/payment-method checks before opening real sales. Keep checkout paused until ready.
 
 The live key, endpoint, first signed delivery, owner declarations, first successful test payment and full simulated refund are already complete. Do not ask the owner to create keys or repeat those first checks.
 
 ## Domain connection
 
-Root and www are already attached to this same Site in pending state. DOMAIN_CONNECTION.md contains the returned records and rollback procedure.
+Root and www are active with active HTTPS certificates. The owner saved the website/verification records in Squarespace. Public DNS matched all seven records and preserved Zoho mail and unrelated verification. Final-origin deployment succeeded. DOMAIN_CONNECTION.md records the exact mappings, observed routing and rollback.
 
-1. Preserve existing email MX/TXT/DKIM and other working records; retain the current website records for rollback. Use this Site's A/CNAME/TXT values, rather than Bytova's GitHub Pages addresses.
-2. Verify ownership, DNS, TLS and the root/www routing. Registrar transfer is unnecessary for a hosting change.
-3. Set runtime PUBLIC_ORIGIN to the selected final HTTPS origin and redeploy. Update the test and live webhook addresses through the owner form. Check success/cancel redirects and private order links.
-4. Preserve public customer access and server-side owner protection. Verify genuine signed delivery for both configured modes at the final address.
+1. The website DNS cutover is complete. Preserve all email/preset/verification records and the saved old website mappings for rollback.
+2. Ownership, DNS, valid TLS and serving the RRUK site on both hostnames are verified. Root canonical metadata is correct; www serves 200 rather than redirecting to root.
+3. PUBLIC_ORIGIN is applied as https://retroreplay.uk. Update the test/live webhook addresses through the owner form, verify final-domain signed delivery and check a new test session's success/cancel/order URLs.
+4. Public customer access and owner protection are verified at the final origin. Update Stripe's public support website to https://retroreplay.uk/contact and verify both final-domain callbacks.
 5. Set SITE_INDEXABLE=true only when the final domain and real catalogue are ready, then check canonical/OG URLs, robots, sitemap and missing-page behaviour.
 
 ## Catalogue and daily operation

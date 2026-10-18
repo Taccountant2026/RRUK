@@ -1,8 +1,12 @@
 # RetroReplay UK domain connection
 
-Prepared 18 October 2026 for the existing RRUK project. Both hostnames have been added to Sites and are pending DNS verification. No registrar records have been changed. The storefront remains owner-private and live payments remain off.
+Verified 19 October 2026, shortly after midnight BST. Both retroreplay.uk and www.retroreplay.uk are active in Sites with active HTTPS certificates. The public storefront is served by the independent RRUK Worker app.
 
-The intended primary origin is `https://retroreplay.uk`. Do not change `PUBLIC_ORIGIN` until that domain's HTTPS route is active. Preserve email MX, SPF, DKIM, DMARC and unrelated DNS records. Save the old website records before replacing them. These records are specific to RRUK Sites hosting; they are not Bytova's GitHub Pages records.
+Primary origin: https://retroreplay.uk. PUBLIC_ORIGIN is applied in runtime environment revision2. Existing owner access, encrypted payment settings, D1/R2 data and the native preview address are preserved. Checkout remains paused in live mode; indexing stays off until actual products and sale readiness are complete.
+
+## Current DNS
+
+The owner saved these records through Squarespace. Public DNS verification matched all seven records; existing Zoho MX, SPF, DKIM, DMARC and unrelated verification records were preserved.
 
 | DNS type | Full name | Value |
 | --- | --- | --- |
@@ -14,15 +18,22 @@ The intended primary origin is `https://retroreplay.uk`. Do not change `PUBLIC_O
 | TXT | _openai-site-verification.www.retroreplay.uk | openai-site-verification=ABUX-Buf-epdHs-kHrC67CG7kIzXKnWFt7mpncw69fE |
 | TXT | _cf-custom-hostname.www.retroreplay.uk | 198c21cd-0268-4f6a-a96e-4616a87ecccc |
 
-Some registrar forms append `.retroreplay.uk` automatically: use `@`/blank for the root, `www`, `_openai-site-verification`, `_cf-custom-hostname`, `_openai-site-verification.www` and `_cf-custom-hostname.www` respectively. Enter a full name only when the form expects it. Remove conflicting old website A/AAAA/root-CNAME records only when making the planned cutover. Do not remove mail records.
+Keep the verification records. A registrar transfer and nameserver change were not needed. Root and www both serve the site with canonical URLs pointing to the primary root origin; www is not claimed to redirect to root.
 
-After saving DNS:
+## Verified delivery
 
-1. Refresh both native custom-domain statuses until ownership and SSL are active. Confirm valid HTTPS without bypassing certificate checks.
-2. Set `PUBLIC_ORIGIN=https://retroreplay.uk`, then redeploy the current saved source. Verify root/www and old native URL handling, canonical URLs and success/cancel/order links.
-3. Make the storefront public only after the owner's explicit instruction. Its server owner allowlist continues to protect administration.
-4. Update the test webhook through the owner Payments form to `https://retroreplay.uk/api/stripe/webhook`. Confirm actual signed provider delivery and duplicate delivery handling. Changing endpoint or signing secret invalidates previous verification evidence.
-5. Save the intended RRUK live restricted key privately. Check legal merchant/support details, receipts and statement wording. Configure and verify the live webhook before enabling real checkout.
-6. Complete the remaining provider/browser scenarios in LAUNCH.md and publish only researched, checked, photographed physical stock. Enable indexing when the domain and real catalogue are ready.
+Both HTTPS homepages return 200 with the RRUK title, root canonical and final-domain Open Graph image. HTTP root upgrades to HTTPS. Shop, contact, terms, returns, logo, empty catalogue, robots and sitemap respond correctly. Anonymous owner access returns the application's 403, and an unsigned webhook reaches the final route and returns the expected 400.
 
-Rollback: restore the saved old website DNS values and keep checkout off while diagnosing the cutover. Do not modify email records or Bytova.
+The first native refreshes showed pending validation, followed by active certificates with active_redeploying. Republishing the saved source with the final origin applied environment revision2 and finished routing activation. Both native domain statuses are now active with no error. No certificate check was bypassed.
+
+## Finish payment callback cutover
+
+1. In the owner Payments page at https://retroreplay.uk/admin, select Test and use Create or update test webhook. Then select Live and use Create or update live webhook. These secure owner actions update each existing endpoint and its encrypted stored URL without exposing or replacing its signing secret.
+2. Keep checkout paused. Each endpoint must now target https://retroreplay.uk/api/stripe/webhook.
+3. Verify genuine signed external delivery in both configured modes at that final address. Earlier native-origin receipts do not verify the new address. Receipts record the actual request origin, so a callback to the preview address cannot be counted as final-domain delivery.
+4. Update Stripe's public support website from the native support URL to https://retroreplay.uk/contact. The separate RRUK merchant and statement descriptor are already verified.
+5. Finish applicable payment-method tests, add genuine checked/photographed stock and enable real sales only when ready. Enable indexing after the final domain and catalogue are ready.
+
+## Rollback
+
+Old root website record: A 23.227.38.65. Old www CNAME: shops.myshopify.com. To roll back hosting, restore those two website mappings and remove only the two new hosting A targets. Preserve every unrelated mail, verification and preset record. If changing the application origin back, redeploy that environment and restore/verify matching webhook URLs before enabling checkout. Keep checkout off during diagnosis; do not change Bytova.
