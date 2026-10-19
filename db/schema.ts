@@ -38,3 +38,10 @@ export const communitySubmissions = sqliteTable('community_submissions', {
   check('community_status_valid',sql.raw("status IN ('new','published','closed')")),
   check('community_publish_consent',sql.raw("status != 'published' OR (kind = 'story' AND consent = 1)")),
 ]);
+
+export const emailOutbox = sqliteTable('email_outbox', {
+  id:text('id').primaryKey(),dedupeKey:text('dedupe_key').notNull().unique(),kind:text('kind').notNull(),referenceId:text('reference_id').notNull(),
+  recipient:text('recipient').notNull(),payloadJson:text('payload_json').notNull(),status:text('status').notNull().default('pending'),attempts:integer('attempts').notNull().default(0),
+  createdAt:integer('created_at').notNull(),updatedAt:integer('updated_at').notNull(),nextAttemptAt:integer('next_attempt_at').notNull(),
+  firstAttemptAt:integer('first_attempt_at'),providerId:text('provider_id'),lastError:text('last_error'),leaseToken:text('lease_token'),leaseExpiresAt:integer('lease_expires_at'),
+},t=>[index('email_outbox_due_idx').on(t.status,t.nextAttemptAt),check('email_outbox_status_valid',sql.raw("status IN ('pending','sending','accepted','review')")),check('email_outbox_attempts_valid',sql.raw('attempts >= 0'))]);

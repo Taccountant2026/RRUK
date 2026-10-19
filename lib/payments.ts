@@ -2,6 +2,7 @@ import Stripe from 'stripe';
 import { env } from 'cloudflare:workers';
 import { db, setting, setSetting, encrypt, decrypt, viewToken, hash } from './server';
 import { nextPaymentState, releaseSql, paidUpdateSql, stockManagedLines, ShopError } from './commerce.mjs';
+import { orderEmailStatements } from './notification-server';
 import { verifiedWebhookTime, verifiedRefundState } from './payment-verification.mjs';
 export type Mode='test'|'live';
 export type Merchant={ key:string; accountId:string; accountName:string; mode:Mode; chargesEnabled:boolean; webhookSecret?:string; endpointId?:string; endpointUrl?:string };
@@ -40,7 +41,9 @@ export async function syncSession(order:OrderRow,session:Stripe.Checkout.Session
   const customer=session.customer_details, shipping=session.collected_information?.shipping_details;
   if(next==='paid'||next==='review') { if(!shipping?.address||shipping.address.country!=='GB') { await db().prepare("UPDATE orders SET status='review' WHERE id=? AND status!='dispatched'").bind(order.id).run(); return 'review'; }
     const data={name:shipping.name,email:customer?.email||null,phone:customer?.phone||null,address:shipping.address};
-    await db().prepare(paidUpdateSql()).bind(next,Date.now(),JSON.stringify(data),order.id).run();
+    const at=Date.now(),snapshot={...order,status:next,paid_at:order.paid_at||at,customer_json:JSON.stringify(data)};
+    const messages=await orderEmailStatements(snapshot,await orderDocument(snapshot));
+    await db().batch([db().prepare(paidUpdateSql()).bind(next,at,JSON.stringify(data),order.id),...messages]);
   } else if(next==='processing') await db().prepare("UPDATE orders SET status='processing' WHERE id=? AND status IN ('open','creating')").bind(order.id).run();
   return (await getOrder(order.id))?.status || next;
 }
@@ -54,7 +57,7 @@ export async function reconcileOrder(order:OrderRow) { const m=await merchant(or
   if(['paid','dispatched','refund_review'].includes(status)){const result=await verifyRefund(order,session);if(result.status)return result.status;}
   return status;
 }
-export async function verifyRefund(order:OrderRow,providedSession?:Stripe.Checkout.Session) { const m=await merchant(order.mode);if(!m||m.accountId!==order.account_id||!order.session_id)throw new ShopError('Reconnect the order’s merchant account.');const stripe=stripeClient(m.key),session=providedSession||await stripe.checkout.sessions.retrieve(order.session_id);nextPaymentState(order,session,'reconcile');const id=typeof session.payment_intent==='string'?session.payment_intent:session.payment_intent?.id;if(!id)throw new ShopError('Payment details are not available.');const intent=await stripe.paymentIntents.retrieve(id,{expand:['latest_charge.refunds']}),status=verifiedRefundState(order,session,intent),charge=intent.latest_charge;if(status)await db().prepare("UPDATE orders SET status=CASE WHEN status='refunded' THEN status ELSE ? END WHERE id=?").bind(status,order.id).run();return {status:status?(await getOrder(order.id))?.status||status:null,refundedPence:charge&&typeof charge!=='string'?charge.amount_refunded:0}; }
+export async function verifyRefund(order:OrderRow,providedSession?:Stripe.Checkout.Session) { const m=await merchant(order.mode);if(!m||m.accountId!==order.account_id||!order.session_id)throw new ShopError('Reconnect the order’s merchant account.');const stripe=stripeClient(m.key),session=providedSession||await stripe.checkout.sessions.retrieve(order.session_id);nextPaymentState(order,session,'reconcile');const id=typeof session.payment_intent==='string'?session.payment_intent:session.payment_intent?.id;if(!id)throw new ShopError('Payment details are not available.');const intent=await stripe.paymentIntents.retrieve(id,{expand:['latest_charge.refunds']}),status=verifiedRefundState(order,session,intent),charge=intent.latest_charge;if(status){const snapshot={...order,status},messages=await orderEmailStatements(snapshot,'',status);await db().batch([db().prepare("UPDATE orders SET status=CASE WHEN status='refunded' THEN status ELSE ? END WHERE id=?").bind(status,order.id),...messages]);}return {status:status?(await getOrder(order.id))?.status||status:null,refundedPence:charge&&typeof charge!=='string'?charge.amount_refunded:0}; }
 export async function ensureCheckout(order:OrderRow,m:Merchant) { if(order.account_id!==m.accountId||order.mode!==m.mode)throw new ShopError('This checkout belongs to a different payment mode. Please start again.',409);
   if(['failed','expired','review'].includes(order.status))throw new ShopError('This checkout has closed. Change your basket quantity to start a new checkout, or contact us.',409);
   if(order.checkout_url)return order.checkout_url;

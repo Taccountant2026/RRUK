@@ -1,3 +1,4 @@
+import { requestAlertStatements } from '@/lib/notification-server';
 import { bodyJson, db, hash, json, rateLimit, respond, sameOrigin } from '@/lib/server';
 import { ShopError } from '@/lib/commerce.mjs';
 import { parseEnquiry, enquiryPayload, assertMatchingEnquiry, insertEnquirySql } from '@/lib/enquiry.mjs';
@@ -14,7 +15,8 @@ export async function POST(request:Request) { return respond(async()=>{
   const product=(await getProducts()).find(p=>p.id===input.productId&&p.catalogueOnly&&p.active);
   if(!product) throw new ShopError('Please open the current item page before requesting availability.',409);
   const id=crypto.randomUUID(),now=Date.now();
-  await db().prepare(insertEnquirySql()).bind(id,requestHash,payloadHash,product.id,product.slug,product.title,input.name,input.email,input.quantity,input.notes,now,now).run();
+  const messages=await requestAlertStatements('enquiry',id,product.title);
+  await db().batch([db().prepare(insertEnquirySql()).bind(id,requestHash,payloadHash,product.id,product.slug,product.title,input.name,input.email,input.quantity,input.notes,now,now),...messages]);
   // A concurrent retry returns the first reference and never inserts a second request.
   const saved=await db().prepare('SELECT id,payload_hash FROM enquiries WHERE request_hash=?').bind(requestHash).first<Existing>();
   if(!saved) throw new ShopError('Your request could not be saved. Please try again.',503);

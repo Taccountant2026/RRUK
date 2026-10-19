@@ -35,7 +35,7 @@ def internal(href,current='/'):
 report={'origin':ORIGIN,'pages':[],'failures':[]}
 _,status,_,raw,_=get('/api/catalogue');assert status==200
 products=json.loads(raw)['products'];assert len(products)==65 and sum(not p.get('catalogueOnly') for p in products)==59
-pending={'/','/shop','/shop?page=2','/shop?page=3','/blog','/community','/contact','/console-hunt','/console-checker','/how-it-works','/order-help'}
+pending={'/','/start','/shop','/shop?page=2','/shop?page=3','/blog','/community','/contact','/console-hunt','/console-checker','/how-it-works','/order-help'}
 seen=set();discovered=set();assets=set();doms={}
 with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
     while pending:

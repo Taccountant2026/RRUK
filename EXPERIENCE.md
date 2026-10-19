@@ -23,7 +23,7 @@ Order Help explains private confirmation links, payment verification, recorded t
 ## Owner moderation
 Open /admin#community. Check each story for private details, permissions and the guidelines before approving. Only stories with explicit publication permission can pass the SQL constraint. Public queries select only ID, display name, title, text and creation date. Email and request metadata stay private.
 
-Approve publishes. Close unpublishes a story or closes a private request. Reopen returns it privately to the queue. Revision checks prevent lost updates. Email buttons open drafts; they do not send. Check this queue and Orders regularly; automatic email alerts are not configured.
+Approve publishes. Close unpublishes a story or closes a private request. Reopen returns it privately to the queue. Revision checks prevent lost updates. Email reply buttons open drafts; they do not send. The Emails tab separately controls transactional messages and owner alerts after a verified sender is connected and tested. Keep this queue and Orders under review.
 
 A schema-only migration adds community_submissions. No posts, people, reviews, orders or stock are seeded. Owner maintenance removes closed submissions after twelve months.
 
@@ -37,3 +37,10 @@ Run npm test for payment/inventory checks plus collection coverage, search, boun
 Run python3 scripts/audit-store.py https://retroreplay.uk for bounded read-only HTTP DOM checks, all 65 product paths, assets, search, cookie basket persistence, old links, RSS and sitemap. This never creates a Checkout Session.
 
 Managed browser rendering, hydration, viewport, keyboard and screen-reader interaction QA is unavailable in this session. HTTP checks do not replace it.
+
+## Final launch revamp
+The Start Here route gives returning players, gift shoppers, setup builders and community visitors clear next steps. Product cards support direct Add to basket, with server prices and availability still authoritative. Basket item details expose written contents, condition and compatibility before payment. Shop shortcuts lead to defined offers and real budget filters. Community conversation starters and share controls use real public URLs; no engagement or people are invented. The owner chose to keep the six undefined bundles/packs enquiry-only.
+
+The notification outbox is implemented with immutable payloads, unique event keys, conditional transaction inserts, leases, bounded retries and visible review failures. Customer order messages require verified live payment after activation and include the full saved order/terms. Dispatch and full-refund messages follow recorded states. Owner alerts cover paid orders, private requests and moderation. Requests do not send messages to an unverified visitor-supplied address. Personal replies remain manual.
+
+Resend connection is not activated by this release: an owner sending account, verified domain and sending-only key are required. Configure them only in the protected Emails tab, receive its test and enable. No prior customer is automatically contacted and no real message/payment test was sent during this code change. Retries run after business-event requests and on subsequent store traffic; Process due messages is available to the owner. This is not a scheduled unattended retry service during a period with no traffic. Accepted means provider acceptance, not inbox delivery.

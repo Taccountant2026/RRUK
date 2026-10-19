@@ -59,3 +59,8 @@ The admin reconciliation action checks open/processing/creating orders, restores
 The business details and six-month console warranty reflect owner-supplied RRUK information. Policy text is versioned and saved with each checkout. Customers can download the saved order and terms; the owner includes that durable copy with the parcel. Shipping tracking is recorded and shared through normal support email. Automated customer email sending is not configured or claimed.
 
 See `LAUNCH.md` for outstanding connection/testing work and `POLICY_SOURCES.md` for the official guidance consulted. Policies support the business; fulfilment practices, safe genuine stock and legal obligations still matter.
+
+## Final store and community revamp — 19 October 2026
+Start Here, quick Add to basket, complete basket item details, budget/ready-to-order shortcuts, community prompts and public share controls are included. Keep the approved imagery, live merchant and source-order model. The six unclear entries remain free enquiries by the owner's choice.
+
+The protected Emails tab prepares transactional email with Resend, encrypted credentials and a durable D1 outbox. A verified sender, sending-only API key and received test are still needed to enable it. Email remains disabled until that setup; no provider account, billable plan or customer message was created by this release. See EMAILS.md.

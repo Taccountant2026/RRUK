@@ -1,9 +1,11 @@
+import { drainEmailOutbox } from "../lib/notification-server";
 import handler from "vinext/server/fetch-handler";
 import { runWithConnectorBinding } from "../lib/connector-context";
 import type { ConnectorBinding } from "../lib/connector-contract.mjs";
 
+let nextEmailDrain=0;
 export default {
-  fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+  async fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
     let binding = ctx.props?.CONNECTORS;
     // Local preview emulates the same request-scoped capability. This branch and
     // the auxiliary service binding are absent from production builds.
@@ -23,6 +25,11 @@ export default {
         },
       };
     }
-    return runWithConnectorBinding(binding, () => handler.fetch(request, env, ctx));
+    const response = await runWithConnectorBinding(binding, () => handler.fetch(request, env, ctx));
+    if (request.method === 'POST' || Date.now() >= nextEmailDrain) {
+      nextEmailDrain = Date.now() + 5000;
+      ctx.waitUntil(drainEmailOutbox(2).catch(() => { console.warn('RRUK email queue needs owner review.'); }));
+    }
+    return response;
   },
 };
