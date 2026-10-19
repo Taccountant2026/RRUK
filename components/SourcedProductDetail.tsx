@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useState, type FormEvent } from 'react';
-import Link from 'next/link';
+import Link from '@/components/SiteLink';
 import { ArrowRight, Mail, Check, ShieldCheck, Clock3 } from 'lucide-react';
 import { categories, emailLink, money, type Product } from '@/lib/shop';
 export function guidePrice(p:Product) { return p.priceOnRequest?'Price on request':p.guidePriceMaxPence&&p.guidePriceMaxPence!==p.pricePence?`Guide ${money(p.pricePence)}–${money(p.guidePriceMaxPence)}`:`Guide ${money(p.pricePence)}`; }

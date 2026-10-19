@@ -4,11 +4,13 @@ import { getProducts, getSourceProducts, sourceOptions } from '@/lib/catalogue-s
 import sourceBase from '@/lib/sourcing-catalogue.json';
 import { parseSourceOptions } from '@/lib/source-orders.mjs';
 import { parseProduct, ShopError } from '@/lib/commerce.mjs';
+import { canPublish } from '@/lib/community.mjs';
 import { ownerTestCheckout } from '@/lib/test-payments';
 import { paymentStatus, saveMerchant, configureWebhook, setPaymentOptions, checkoutOrigin, getOrder, reconcileOrder, orderDocument, verifyRefund, type OrderRow } from '@/lib/payments';
 export const dynamic='force-dynamic';
 type Ctx={params:Promise<{action:string}>};
 export async function GET(request:Request,ctx:Ctx){return respond(async()=>{await requireAdmin();const {action}=await ctx.params;
+  if(action==='community'){const rows=await db().prepare("SELECT id,kind,name,email,title,body,consent,status,revision,created_at FROM community_submissions ORDER BY CASE status WHEN 'new' THEN 0 ELSE 1 END,created_at DESC LIMIT 200").all();return json({submissions:rows.results});}
   if(action==='status')return json({payments:await paymentStatus(checkoutOrigin(request)),origin:checkoutOrigin(request)});
   if(action==='products')return json({products:await getProducts(true)});
   if(action==='source-catalogue'){const row=await db().prepare('SELECT updated_at FROM settings WHERE key=?').bind('source-order-options').first<{updated_at:number}>();return json({...await sourceOptions(),products:await getSourceProducts(),revision:row?.updated_at||0});}
@@ -18,6 +20,15 @@ export async function GET(request:Request,ctx:Ctx){return respond(async()=>{awai
   throw new ShopError('Page not found.',404);
 });}
 export async function POST(request:Request,ctx:Ctx){return respond(async()=>{await requireAdmin(request);const {action}=await ctx.params,input=await bodyJson(request,100000);
+  if(action==='community'){
+    if(typeof input.id!=='string'||!/^[a-f0-9-]{36}$/.test(input.id)||!Number.isInteger(input.revision)||!['new','published','closed'].includes(input.status))throw new ShopError('Refresh and check the submission.',409);
+    const row=await db().prepare('SELECT kind,consent FROM community_submissions WHERE id=?').bind(input.id).first();
+    if(!row)throw new ShopError('Submission not found.',404);
+    if(input.status==='published'&&!canPublish(row))throw new ShopError('Only a story with publication permission can be published.');
+    const result=await db().prepare('UPDATE community_submissions SET status=?,updated_at=?,revision=revision+1 WHERE id=? AND revision=?').bind(input.status,Date.now(),input.id,input.revision).run();
+    if(!result.meta.changes)throw new ShopError('This submission changed. Refresh before reviewing it again.',409);
+    return json({saved:true});
+  }
   if(action==='test-checkout')return json(await ownerTestCheckout(request,input));
   if(action==='source-catalogue'){
     if(!Number.isSafeInteger(input.revision)||input.revision<0)throw new ShopError('Refresh the catalogue before saving.',409);
@@ -49,6 +60,6 @@ export async function POST(request:Request,ctx:Ctx){return respond(async()=>{awa
   if(action==='reconcile'){const order=await getOrder(String(input.id||''));if(!order)throw new ShopError('Order not found.',404);return json({status:await reconcileOrder(order)});}
   if(action==='dispatch'){let order=await getOrder(String(input.id||''));if(order?.status==='paid'&&order.mode==='live'){await reconcileOrder(order);order=await getOrder(order.id);}if(!order||order.status!=='paid'||order.mode!=='live')throw new ShopError('Only a verified paid live order can be dispatched. Reconcile its payment first.',409);const tracking=String(input.tracking||'').trim(),carrier=String(input.carrier||'').trim();if(!tracking||tracking.length>180||!carrier||carrier.length>80||input.contractIncluded!==true)throw new ShopError('Add the carrier and tracking reference, and confirm the order terms are included with the parcel.');const result=await db().prepare("UPDATE orders SET status='dispatched',tracking=?,carrier=?,dispatched_at=? WHERE id=? AND status='paid' AND restocked=0").bind(tracking,carrier,Date.now(),order.id).run();if(!result.meta.changes)throw new ShopError('The order status changed. Refresh it before dispatching.',409);return json({saved:true});}
   if(action==='record-refund'){const order=await getOrder(String(input.id||''));if(!order?.session_id)throw new ShopError('A verified Checkout Session is required.');const result=await verifyRefund(order);if(!result.status)throw new ShopError('Stripe has not confirmed a refund. Process the refund in the correct Stripe account first.');return json({saved:true,...result});}
-  if(action==='maintenance'){const result=await db().prepare("SELECT * FROM orders WHERE status IN ('open','creating','processing') ORDER BY created_at ASC LIMIT 20").all<OrderRow>();const outcomes=[];for(const o of result.results)outcomes.push({id:o.id,status:await reconcileOrder(o)});await db().prepare('DELETE FROM rate_limits WHERE expires_at<?').bind(Date.now()).run();await db().prepare("DELETE FROM orders WHERE created_at<? AND status IN ('expired','failed') AND restocked=1").bind(Date.now()-90*86400000).run();await db().prepare('DELETE FROM webhook_events WHERE received_at<?').bind(Date.now()-90*86400000).run();const cutoff=new Date();cutoff.setUTCFullYear(cutoff.getUTCFullYear()-1);await db().prepare("DELETE FROM enquiries WHERE status='closed' AND closed_at<?").bind(cutoff.getTime()).run();return json({checked:outcomes.length,outcomes});}
+  if(action==='maintenance'){const result=await db().prepare("SELECT * FROM orders WHERE status IN ('open','creating','processing') ORDER BY created_at ASC LIMIT 20").all<OrderRow>();const outcomes=[];for(const o of result.results)outcomes.push({id:o.id,status:await reconcileOrder(o)});await db().prepare('DELETE FROM rate_limits WHERE expires_at<?').bind(Date.now()).run();await db().prepare("DELETE FROM orders WHERE created_at<? AND status IN ('expired','failed') AND restocked=1").bind(Date.now()-90*86400000).run();await db().prepare('DELETE FROM webhook_events WHERE received_at<?').bind(Date.now()-90*86400000).run();await db().prepare("DELETE FROM community_submissions WHERE status='closed' AND updated_at<?").bind(Date.now()-365*86400000).run();const cutoff=new Date();cutoff.setUTCFullYear(cutoff.getUTCFullYear()-1);await db().prepare("DELETE FROM enquiries WHERE status='closed' AND closed_at<?").bind(cutoff.getTime()).run();return json({checked:outcomes.length,outcomes});}
   throw new ShopError('Action not found.',404);
 });}

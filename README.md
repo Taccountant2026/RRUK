@@ -1,5 +1,7 @@
 # RRUK — RetroReplay UK
 
+The complete shopping and Replay Room release adds nine collections, server-rendered search, a persistent basket, saved items, eight journal articles, RSS, Console Hunt/Checker and reviewed community stories. See EXPERIENCE.md for routes and owner workflow. The owner enabled live checkout on 19 October 2026; preserve the saved payment settings.
+
 A separate RetroReplay UK store built around the owner's pixel CRT branding. The source, product database, image storage, runtime configuration and checkout are independent of Shopify and the Bytova site.
 
 The owner requested a sourced-to-order sales model using the supplied Shopify/eBay range, approved generated illustrations and Active switches without public stock amounts. The 65 choices contain 59 fixed-price orderable offers and six details requests for unresolved pack/game/model contents. The model does not treat eBay quantities as held stock. See `CATALOGUE.md` for the full mapping and operating model.

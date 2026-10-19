@@ -7,7 +7,7 @@ The separate live merchant, domain, signed live delivery and owner declarations 
 
 1. Open https://retroreplay.uk/admin#catalogue. Review the 59 fixed-price sourced offers and six details-request choices. Availability uses Active switches, with no public stock counts. The approved generated illustrations are already included.
 2. Check selling prices, the delivery charge and complete sourcing/delivery period. Defaults are the supplied eBay prices, tracked UK delivery included and delivery within30 calendar days unless another period is agreed before ordering. The delivery-included choice is a stated implementation assumption, editable here.
-3. Open https://retroreplay.uk/admin#payments. Retain the saved Live connection and declarations, review any remaining payment-method checks, then click Enable live checkout. No actual item photo/held quantity is required for the sourced offers. This owner action controls whether customers can pay; publishing code alone does not change it.
+3. Live checkout is already enabled by the owner and verified. Preserve the saved Live connection and declarations. Do not repeat activation or the completed final-domain simulated card test. No actual-unit photo or held quantity is required for the authorised source offers.
 4. Check Orders regularly. Fulfil only verified paid LIVE orders. Source and check the written model/contents, download and include the saved order/terms, pack securely, record tracked delivery and email the customer. No automatic order alert or customer email is configured.
 5. Keep Active switches accurate. If sourcing fails or material details differ, contact the customer promptly, obtain agreement or refund. Ordinary sourced goods retain cancellation and faulty-goods rights.
 

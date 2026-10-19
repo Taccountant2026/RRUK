@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/SiteLink';
 import { Check, Clock3, Package, Download, Printer } from 'lucide-react';
 import { money, emailLink, type Product } from '@/lib/shop';
 import { useShop } from './Storefront';

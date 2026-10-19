@@ -1,7 +1,7 @@
 'use client';
 import { useState, type FormEvent } from 'react';
 import { Check, ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
+import Link from '@/components/SiteLink';
 import type { Product } from '@/lib/shop';
 export type SourceSettings={products:Product[];shippingPence:number;deliveryEstimate:string;revision:number};
 export function SourceCataloguePanel({data,busy,onSave}:{data:SourceSettings;busy:boolean;onSave:(body:unknown)=>Promise<void>}) {

@@ -1,0 +1,3 @@
+import { ConsoleChecker } from '@/components/ConsoleChecker';
+export const metadata={title:'Console Checker — prepare your retro gaming setup',description:'Gather your console model, TV input and compatibility question with the RetroReplay UK setup checklist.',alternates:{canonical:'/console-checker'}};
+export default function Page(){return <><div className="page-heading"><div className="container"><div className="eyebrow">THE RETROREPLAY UK CONSOLE CHECKER</div><h1>Get your setup<br/>ready for play.</h1><p>A little information now can save a lot of guessing later.</p></div></div><section className="section"><div className="container"><ConsoleChecker/></div></section></>;}

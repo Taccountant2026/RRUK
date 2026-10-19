@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/SiteLink';
 import { emailLink } from '@/lib/shop';
 const faqs = [
   ['How does the sourcing catalogue work?', <>Choose an Active sourced-to-order offer, add it to your basket and order at the displayed price. We source the described item after your order, check it and arrange tracked UK delivery. Active is an ordering status, not a held stock quantity. Some packs and bundles need a free details request first. <Link href="/shop">Explore the collection</Link>.</>],

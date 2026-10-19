@@ -27,3 +27,14 @@ export const enquiries = sqliteTable('enquiries', {
   name: text('name').notNull(), email: text('email').notNull(), quantity: integer('quantity').notNull(), notes: text('notes').notNull(),
   status: text('status').notNull().default('new'), createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(), closedAt: integer('closed_at'),
 }, t=>[index('enquiry_created_idx').on(t.createdAt), check('enquiry_quantity_valid',sql`${t.quantity} BETWEEN 1 AND 10`), check('enquiry_status_valid',sql`${t.status} IN ('new','contacted','closed')`)]);
+
+export const communitySubmissions = sqliteTable('community_submissions', {
+  id:text('id').primaryKey(),requestHash:text('request_hash').notNull().unique(),payloadHash:text('payload_hash').notNull(),
+  kind:text('kind').notNull(),name:text('name').notNull(),email:text('email').notNull(),title:text('title').notNull(),body:text('body').notNull(),
+  consent:integer('consent').notNull().default(0),status:text('status').notNull().default('new'),revision:integer('revision').notNull().default(0),
+  createdAt:integer('created_at').notNull(),updatedAt:integer('updated_at').notNull(),
+},t=>[index('community_status_idx').on(t.status,t.createdAt),
+  check('community_kind_valid',sql.raw("kind IN ('story','hunt','question')")),
+  check('community_status_valid',sql.raw("status IN ('new','published','closed')")),
+  check('community_publish_consent',sql.raw("status != 'published' OR (kind = 'story' AND consent = 1)")),
+]);
