@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { env } from 'cloudflare:workers';
 import { db, setting, setSetting, encrypt, decrypt, viewToken, hash } from './server';
-import { nextPaymentState, releaseSql, paidUpdateSql, ShopError } from './commerce.mjs';
+import { nextPaymentState, releaseSql, paidUpdateSql, stockManagedLines, ShopError } from './commerce.mjs';
 import { verifiedWebhookTime, verifiedRefundState } from './payment-verification.mjs';
 export type Mode='test'|'live';
 export type Merchant={ key:string; accountId:string; accountName:string; mode:Mode; chargesEnabled:boolean; webhookSecret?:string; endpointId?:string; endpointUrl?:string };
@@ -34,7 +34,7 @@ export async function configureWebhook(mode:Mode,origin:string) { const m=await 
 export async function setPaymentOptions(input:{mode?:unknown;enabled?:unknown;brandingConfirmed?:unknown;fulfilmentConfirmed?:unknown},origin:string) { const mode:Mode=input.mode==='live'?'live':'test',m=await merchant(mode);if(!m)throw new ShopError('Connect this payment mode first.');if(input.enabled===true){if(!m.webhookSecret)throw new ShopError('Configure a webhook signing secret first.');if(mode==='live'){const account=await stripeClient(m.key).accounts.retrieveCurrent();if(account.id!==m.accountId||!account.charges_enabled||input.brandingConfirmed!==true||input.fulfilmentConfirmed!==true||!await verifiedWebhookSeen(m,origin))throw new ShopError('Live checkout needs a verified live webhook for this merchant and endpoint, an enabled merchant, confirmed customer-facing branding and the fulfilment checklist.');}}
   await setSetting('payment-mode',mode);await setSetting('payments-enabled',input.enabled===true?'1':'0');await setSetting('live-branding-confirmed',input.brandingConfirmed===true?'1':'0');await setSetting('fulfilment-confirmed',input.fulfilmentConfirmed===true?'1':'0');return {mode,enabled:input.enabled===true}; }
 export async function getOrder(id:string) { return db().prepare('SELECT * FROM orders WHERE id=?').bind(id).first<OrderRow>(); }
-export async function releaseReservation(order:OrderRow,status:'expired'|'failed') { const lines=JSON.parse(order.items_json) as {product:{id:string};quantity:number}[]; await db().batch([...lines.map(l=>db().prepare(releaseSql()).bind(l.quantity,l.product.id,order.id)),db().prepare("UPDATE orders SET status=?,restocked=1 WHERE id=? AND restocked=0 AND status IN ('creating','open','processing')").bind(status,order.id)]); }
+export async function releaseReservation(order:OrderRow,status:'expired'|'failed') { const lines=JSON.parse(order.items_json) as {product:{id:string};quantity:number}[]; await db().batch([...stockManagedLines(lines).map((l:{product:{id:string};quantity:number})=>db().prepare(releaseSql()).bind(l.quantity,l.product.id,order.id)),db().prepare("UPDATE orders SET status=?,restocked=1 WHERE id=? AND restocked=0 AND status IN ('creating','open','processing')").bind(status,order.id)]); }
 export async function syncSession(order:OrderRow,session:Stripe.Checkout.Session,eventType='reconcile') { const next=nextPaymentState(order,session,eventType);
   if(next==='expired'||next==='failed') {await releaseReservation(order,next);return next;}
   const customer=session.customer_details, shipping=session.collected_information?.shipping_details;

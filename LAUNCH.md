@@ -1,62 +1,39 @@
-# RRUK launch status
+# RRUK sales status — 19 October 2026
 
-19 October 2026, sourcing catalogue release after the final-domain live webhook verification. RRUK is separate from Bytova; retain Bytova's domain/HTTPS checkpoint and working merchant settings.
+## Current model
 
-## Current state
+The owner's latest instruction is to use the old Shopify/eBay buy-after-sale model, the approved generated images, and Active availability without public stock amounts. The new source-order release implements65 active choices:59 fixed-price offers and six details requests. It supersedes the earlier all-enquiry-only catalogue. No eBay quantity is treated as held inventory and no physical stock is invented.
 
-- Public storefront: https://retroreplay.uk (www also serves the store with the root canonical).
-- Protected owner area: https://retroreplay.uk/admin (native owner access is also retained).
-- Payment mode: live. Checkout: paused. Both branding and fulfilment confirmations were saved by the owner and independently read back.
-- The separate RetroReplay UK Stripe account has charges and payouts enabled. Customer-facing name and statement descriptor identify RRUK; support email and the working support-page URL are saved.
-- Restricted live credentials and signing secrets are encrypted on the server. Both saved endpoint configurations were updated through the secure owner buttons. Genuine signed live delivery to https://retroreplay.uk/api/stripe/webhook is verified; the test receipt still records the earlier native origin.
-- Both final-domain hostnames and HTTPS certificates are active. PUBLIC_ORIGIN=https://retroreplay.uk is applied in runtime environment revision2. The sourcing catalogue has 65 enquiry-only entries. Search indexing is enabled for the public catalogue at this release; owner, order, API and basket paths remain excluded. No real customer charge has been made.
+Public store: https://retroreplay.uk
+Owner controls: https://retroreplay.uk/admin#catalogue
+Payments: https://retroreplay.uk/admin#payments
 
-## Implemented
+- The domain and valid HTTPS are active on root and www; public audience and indexing are preserved.
+- Live merchant configuration, owner branding/fulfilment declarations and genuine signed live delivery at the final domain are saved. The current runtime is live mode with customer checkout paused. This release does not silently change the owner's pause control.
+- Defined source offers use the supplied eBay prices, including colour Start prices. Generated images are labelled illustrations; the ordered model, condition and written contents define the purchase. The lower-priced purple GameCube lot is the standard offer.
+- Delivery is included by default as a stated implementation assumption; the optional delivery preference received no answer. The complete default sourced delivery period is within30 calendar days of order unless otherwise agreed before ordering. Both fields are editable in Catalogue. Physical stock retains its separate1–3 working day dispatch aim.
+- Master System II game bundle, white GBA game bundle, silver DS model/game bundle and three unclear empty-case packs remain details requests. Their contents must be defined before payment.
+- Source items have an Active switch, not a finite inventory quantity. Basket quantities are customer order quantities, with a ten-per-line order cap. Source lines are skipped by stock decrement/restoration; mixed orders reserve only physical stock.
+- Source-offer prices, availability and delivery use protected version-checked owner settings. Product data, totals and contract terms are derived and saved server-side. Caller stock/prices are ignored.
+- Policies use version2026-10-19-source-orders. Existing orders keep their original snapshots. Cancellation, faulty-goods rights and the six-month console/handheld warranty remain.
+- No real charge, refund, customer message, stock import or business-data schema seed was created during this release. No automatic order alerts or customer email is configured.
 
-The original CRT branding, responsive storefront, catalogue search/filters, product details and basket are built. Four owner-approved pixel illustrations now appear across a 65-entry sourcing catalogue. A bounded public availability form saves requests in D1; the protected owner Requests queue supports personal replies, status tracking and preparing an actual sale draft. A request takes no payment, makes no reservation and creates no purchase obligation. The source guide prices are dated references, not fixed offers. Owner tools manage actual product photos, item checks, condition, compatibility, stock, prices, delivery costs, orders, packing documents, tracking and refund verification.
+## Completed payment evidence
 
-Server-derived Checkout amounts, atomic stock reservations, provider idempotency and guarded stock restoration protect orders. The endpoint listens for checkout.session.completed, checkout.session.async_payment_succeeded, checkout.session.async_payment_failed and checkout.session.expired. Merchant, mode, amount, currency and provider payment status are checked before payment is accepted. A success URL does not mark an order paid.
+The first native-origin GBP1 test order434c26d4-b457-4823-be35-f0edb0e991fd was paid and fully refunded in test mode. Generic decline and cancellation return were observed by the owner. The abandoned order4dae40eb-8146-4857-abc6-aed31f6f61fd automatically expired through real provider delivery. A repeat of the earlier completed event returned200 and left exactly one processed record, preserving the refunded order.
 
-Delivery, returns, cancellation form, six-month console/handheld warranty, terms, privacy/cookies, condition, complaints and accessibility pages are implemented. Sale terms are versioned and saved with orders. Customer updates are sent manually through the business email; automatic transactional email is not configured.
+Live event evt_1USA28D8x9830lXtXzSb6fHc delivered to https://retroreplay.uk/api/stripe/webhook, with saved merchant/mode/endpoint/signing-secret-bound evidence at1792391217284. The temporary account.updated subscription was removed; all four Checkout event types remain on the live endpoint.
 
-## Verification
+At12:42 BST on19 October, the owner completed the NEW final-domain GBP1 test checkout. D1 independently confirms order3a090633-1c82-4975-bef4-5fee083d5264 is paid, test,100pence, paid_at1792410153821. Its saved success/cancel URLs use retroreplay.uk. Genuine signed test receipt at1792410152984 matches the saved test merchant and final endpoint; processed checkout.session.completed event evt_1USExXDMYd1hK6hbwLVWg0dY is saved for this order at1792410154308. This is actual final-domain card transport and paid-state evidence. No real money moved. Do not recreate accounts/keys/endpoints or repeat the first successful card/webhook tests.
 
-- Twenty-one automated tests cover migrated SQLite reservation/concurrency/rollback behaviour, duplicate expiry, delayed and out-of-order payment states, Stripe signatures, connection-bound delivery evidence, isolated owner-test guards, purchase-invitation readiness/totals and refund verification. This release is packaged only after TypeScript, the automated tests and the production build pass.
-- The owner completed the hosted GBP1 test payment. Its provider session was independently verified paid, its simulated full refund succeeded, and the saved order is now refunded.
-- The owner observed the generic-decline card response and confirmed the cancellation return to the owner area. That unpaid test order later expired automatically; returning from Checkout does not itself expire a provider session.
-- A second delivery of the earlier checkout.session.completed event returned 200 OK. Its new signed receipt was saved; there is still one processed-event record and the refunded order stayed unchanged.
-- Genuine live account.updated event evt_1USA28D8x9830lXtXzSb6fHc reached https://retroreplay.uk/api/stripe/webhook after the owner saved the final support website. Its signed receipt at 1792391217284 matches the current RRUK merchant, live mode, actual final-domain endpoint and unchanged signing-secret fingerprint. Stripe reports no pending deliveries for that event. The temporary account.updated subscription was removed afterward, retaining all four checkout event types. This proves live transport; no live purchase was made.
-- Anonymous checks verified public storefront/catalogue access, paused customer checkout, unsigned-webhook rejection and protected owner routes. Browser rendering and keyboard/screen-reader QA remain unavailable in this managed session.
+These provider checks predate the sourced-basket release. They are not a claim that every newly defined offer or payment method has been externally purchased. The current27 automated tests include source/mixed baskets, no fictitious stock reservations, active/price/delivery validation, source purchase invitations and new-policy consent, alongside the existing SQLite concurrency, signature, refund and payment-state checks. TypeScript and the managed production build are required before this release is published. Full browser/keyboard/screen-reader QA is unavailable in this managed session.
 
-Current processing baseline: refunded test order 434c26d4-b457-4823-be35-f0edb0e991fd; single completed-event record evt_1URxFJDMYd1hK6hbsB7NApl2. The abandoned test order 4dae40eb-8146-4857-abc6-aed31f6f61fd automatically expired. Genuine checkout.session.expired event evt_1US2hbDMYd1hK6hbg9Z0yfoR was processed at 1792363036877, and the saved order is expired/unpaid with restocked=1. It did not reserve physical stock; this verifies provider expiry handling, while actual-item release is covered by the SQLite tests.
+## Opening sales and daily operation
 
-## Remaining checkout checks
+1. Review Catalogue Active switches, prices and sourcing/delivery terms. The approved illustration assets are already included; actual unit photos and a physical count are not prerequisites for the source offers.
+2. In Payments, retain the saved Live connection and declarations. Complete applicable external tests for any additional delayed/payment methods intended for sale. Use Enable live checkout when ready. The server rechecks the live merchant and its bound signed delivery before enabling. Publishing source code does not perform this owner action.
+3. Check paid LIVE Orders regularly. Source and check the written model/colour/contents; never dispatch test, pending or review orders. Include the downloaded saved order/terms with the parcel, record tracking and email the customer.
+4. Keep within the displayed complete delivery period. Resolve a sourcing failure or material difference promptly by agreement or refund. Ordinary source-after-order goods are not automatically personalised goods with no cancellation right.
+5. Requests handles unresolved pack/game/model choices and existing enquiries; purchase invitations are drafts opened in the owner's email app. Products optionally manages individual items with actual photos and finite stock. Refunds are processed in the correct Stripe account and verified here; physical returned stock is inspected before relisting.
 
-1. Provider expiry and saved order transition are verified. Local SQLite tests cover actual reservation release; the stock-free internal provider checkout does not prove real-item inventory restoration.
-2. Test delayed success/failure for any payment methods intended for sale. Fixture coverage is not external provider coverage. RRUK's default live configuration includes methods beyond cards; eligibility depends on customer, currency and basket.
-3. Both secure owner webhook setup actions are complete and signed final-domain live delivery is verified. Use Overview or Payments → Run £1 test payment to check a new final-domain test session and its return/order URLs with the already saved test connection. The isolated action leaves live customer checkout settings unchanged. Complete it with Stripe test details and verify the returned order plus the final-domain signed test receipt. Alternatively, resend existing test expiry event evt_1US2hbDMYd1hK6hbg9Z0yfoR in Bytova standard Test mode to refresh transport evidence alone; that account is not exposed in the current connector session. Neither new final-domain provider test nor resend is claimed complete by this release.
-4. Complete relevant product/payment-method checks before opening real sales. Keep checkout paused until ready.
-
-The live key, endpoint, first signed delivery, owner declarations, first successful test payment and full simulated refund are already complete. Do not ask the owner to create keys or repeat those first checks.
-
-## Domain connection
-
-Root and www are active with active HTTPS certificates. The owner saved the website/verification records in Squarespace. Public DNS matched all seven records and preserved Zoho mail and unrelated verification. Final-origin deployment succeeded. DOMAIN_CONNECTION.md records the exact mappings, observed routing and rollback.
-
-1. The website DNS cutover is complete. Preserve all email/preset/verification records and the saved old website mappings for rollback.
-2. Ownership, DNS, valid TLS and serving the RRUK site on both hostnames are verified. Root canonical metadata is correct; www serves 200 rather than redirecting to root.
-3. PUBLIC_ORIGIN is applied as https://retroreplay.uk. Both owner webhook configuration saves are complete; the live provider destination and its genuine signed final-domain callback are independently verified. Source uses this origin for success/cancel/order URLs; a newly created final-domain test session has not yet been externally checked.
-4. Public customer access and owner protection are verified at the final origin. Stripe's public support website is https://retroreplay.uk/contact, confirmed by account read. Only the final-domain test receipt refresh remains from the callback cutover checks.
-5. SITE_INDEXABLE=true is included in this catalogue launch. Verify root-domain canonical/OG URLs, public-only robots/sitemap and missing-page behaviour after deployment.
-
-## Catalogue and daily operation
-
-The owner sources items after interest. The public catalogue therefore uses Available to order, subject to sourcing, with Request availability. It never treats eBay listed quantities as physical website stock. Check /admin → Requests regularly; automatic email alerts are not configured. Confirm a specific item, photos, condition, exact contents, compatibility, total price and delivery plan before inviting payment. Use Prepare sale item to start a draft with the same URL. Add actual item photos and sale details, then publish only confirmed stock you can fulfil. Publishing exposes the sale listing to everyone; it does not privately reserve it for a requester. Do not include ROM libraries or assume old licences/accounts transfer. See CATALOGUE.md for source mapping, case-pack ambiguities and the daily workflow.
-
-Reconcile orders, pack only verified paid live orders and include the downloaded order/terms copy. Use tracked delivery, record tracking and update the customer by email. Handle support and returns. Process refunds in the correct Stripe account, verify them here and inspect returns before manually relisting stock.
-
-The private GBP1 test action uses the authenticated owner and only the saved test merchant/key, regardless of the customer storefront's current mode or enable flag. Its configured test webhook must match the current HTTPS store origin. It creates a labelled internal test order without a catalogue item or physical stock reservation, rejects live merchant credentials, and never changes live checkout settings.
-
-## First-sale owner workflow
-
-Overview now shows live setup/delivery, final-domain test delivery, available published sale stock and customer checkout state. Products offers a sourcing-catalogue picker to prepare the first item immediately. Requests can edit an existing sale item at the same URL; duplicate sale slugs are not created. Once a matching published item has sufficient stock and live checkout is enabled, its email draft includes the actual item/quantity total, one delivery charge and its public purchase link. The draft is manually reviewed and sent by the owner. No customer messages were sent and no sale product, stock, order or payment setting was seeded by this release. `FIRST_SALE.md` gives the concrete remaining owner steps.
+Source/runtime credentials, customer data and the separate Bytova live business remain unchanged. See CATALOGUE.md, FIRST_SALE.md and the durable development checkpoint for mapping and exact deployment evidence.

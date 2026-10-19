@@ -1,6 +1,8 @@
 import { env } from 'cloudflare:workers';
 import { requireAdmin, respond, json, db, bodyJson } from '@/lib/server';
-import { getProducts } from '@/lib/catalogue-server';
+import { getProducts, getSourceProducts, sourceOptions } from '@/lib/catalogue-server';
+import sourceBase from '@/lib/sourcing-catalogue.json';
+import { parseSourceOptions } from '@/lib/source-orders.mjs';
 import { parseProduct, ShopError } from '@/lib/commerce.mjs';
 import { ownerTestCheckout } from '@/lib/test-payments';
 import { paymentStatus, saveMerchant, configureWebhook, setPaymentOptions, checkoutOrigin, getOrder, reconcileOrder, orderDocument, verifyRefund, type OrderRow } from '@/lib/payments';
@@ -9,6 +11,7 @@ type Ctx={params:Promise<{action:string}>};
 export async function GET(request:Request,ctx:Ctx){return respond(async()=>{await requireAdmin();const {action}=await ctx.params;
   if(action==='status')return json({payments:await paymentStatus(checkoutOrigin(request)),origin:checkoutOrigin(request)});
   if(action==='products')return json({products:await getProducts(true)});
+  if(action==='source-catalogue'){const row=await db().prepare('SELECT updated_at FROM settings WHERE key=?').bind('source-order-options').first<{updated_at:number}>();return json({...await sourceOptions(),products:await getSourceProducts(),revision:row?.updated_at||0});}
   if(action==='enquiries'){const rows=await db().prepare("SELECT id,product_id,product_slug,product_title,name,email,quantity,notes,status,created_at,updated_at,closed_at FROM enquiries ORDER BY CASE status WHEN 'new' THEN 0 WHEN 'contacted' THEN 1 ELSE 2 END,created_at DESC LIMIT 200").all();return json({enquiries:rows.results});}
   if(action==='orders'){const rows=await db().prepare("SELECT * FROM orders ORDER BY created_at DESC LIMIT 100").all<OrderRow>();return json({orders:rows.results.map(o=>({id:o.id,status:o.status,mode:o.mode,totalPence:o.total_pence,shippingPence:o.shipping_pence,createdAt:o.created_at,paidAt:o.paid_at,tracking:o.tracking,carrier:o.carrier,items:JSON.parse(o.items_json),customer:o.customer_json?JSON.parse(o.customer_json):null}))});}
   if(action==='document'){const id=new URL(request.url).searchParams.get('id')||'',order=await getOrder(id);if(!order)throw new ShopError('Order not found.',404);return new Response(await orderDocument(order),{headers:{'Content-Type':'text/plain; charset=utf-8','Content-Disposition':`attachment; filename="RRUK-order-${order.id}.txt"`,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});}
@@ -16,6 +19,15 @@ export async function GET(request:Request,ctx:Ctx){return respond(async()=>{awai
 });}
 export async function POST(request:Request,ctx:Ctx){return respond(async()=>{await requireAdmin(request);const {action}=await ctx.params,input=await bodyJson(request,100000);
   if(action==='test-checkout')return json(await ownerTestCheckout(request,input));
+  if(action==='source-catalogue'){
+    if(!Number.isSafeInteger(input.revision)||input.revision<0)throw new ShopError('Refresh the catalogue before saving.',409);
+    const options=parseSourceOptions(input,sourceBase),now=Math.max(Date.now(),input.revision+1);
+    const result=input.revision===0
+      ?await db().prepare('INSERT INTO settings(key,value,updated_at) VALUES(?,?,?) ON CONFLICT(key) DO NOTHING').bind('source-order-options',JSON.stringify(options),now).run()
+      :await db().prepare('UPDATE settings SET value=?,updated_at=? WHERE key=? AND updated_at=?').bind(JSON.stringify(options),now,'source-order-options',input.revision).run();
+    if(!result.meta.changes)throw new ShopError('The catalogue settings changed. Refresh and review the current prices before saving.',409);
+    return json({saved:true});
+  }
   if(action==='enquiry'){
     if(typeof input.id!=='string'||!/^[a-f0-9-]{36}$/.test(input.id)||!['new','contacted','closed'].includes(input.status))throw new ShopError('Please check the request reference and status.');
     const now=Date.now(),result=await db().prepare('UPDATE enquiries SET status=?,updated_at=?,closed_at=? WHERE id=?').bind(input.status,now,input.status==='closed'?now:null,input.id).run();

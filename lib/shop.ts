@@ -2,7 +2,7 @@ export const business = {
   name: 'RetroReplay UK', short: 'RRUK', owner: 'Leighton Hepworth',
   email: 'info@retroreplay.uk',
   address: '65 Coronation Road, Stainforth, Doncaster, South Yorkshire, DN7 5EU, United Kingdom',
-  policyVersion: '2026-10-19',
+  policyVersion: '2026-10-19-source-orders',
 };
 export const categories = [
   { id: 'consoles', name: 'Consoles & handhelds', description: 'The machines that made the memories.', colour: 'blue' },
@@ -16,6 +16,7 @@ export type Product = {
   shippingPence: number; deliveryEstimate: string; warrantyMonths: number;
   catalogueOnly?: boolean; priceOnRequest?: boolean; guidePriceMaxPence?: number;
   artKind?: string; sourceItemIds?: string[];
+  saleMode?: 'source'; imageKind?: 'illustration'; quoteReason?: string;
 };
 export const money = (pence: number) => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(pence / 100);
 export const emailLink = (subject = 'Hello RetroReplay UK', body = '') => `mailto:${business.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
