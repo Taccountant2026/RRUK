@@ -21,7 +21,7 @@ Delivery, returns, cancellation form, six-month console/handheld warranty, terms
 
 ## Verification
 
-- Eighteen automated tests cover migrated SQLite reservation/concurrency/rollback behaviour, duplicate expiry, delayed and out-of-order payment states, Stripe signatures, connection-bound delivery evidence and refund verification. TypeScript and the production build passed.
+- Twenty-one automated tests cover migrated SQLite reservation/concurrency/rollback behaviour, duplicate expiry, delayed and out-of-order payment states, Stripe signatures, connection-bound delivery evidence, isolated owner-test guards, purchase-invitation readiness/totals and refund verification. This release is packaged only after TypeScript, the automated tests and the production build pass.
 - The owner completed the hosted GBP1 test payment. Its provider session was independently verified paid, its simulated full refund succeeded, and the saved order is now refunded.
 - The owner observed the generic-decline card response and confirmed the cancellation return to the owner area. That unpaid test order later expired automatically; returning from Checkout does not itself expire a provider session.
 - A second delivery of the earlier checkout.session.completed event returned 200 OK. Its new signed receipt was saved; there is still one processed-event record and the refunded order stayed unchanged.
@@ -34,7 +34,7 @@ Current processing baseline: refunded test order 434c26d4-b457-4823-be35-f0edb0e
 
 1. Provider expiry and saved order transition are verified. Local SQLite tests cover actual reservation release; the stock-free internal provider checkout does not prove real-item inventory restoration.
 2. Test delayed success/failure for any payment methods intended for sale. Fixture coverage is not external provider coverage. RRUK's default live configuration includes methods beyond cards; eligibility depends on customer, currency and basket.
-3. Both secure owner webhook setup actions are complete and signed final-domain live delivery is verified. To refresh final-domain test transport evidence, resend existing test expiry event evt_1US2hbDMYd1hK6hbg9Z0yfoR to the existing test destination in Bytova standard Test mode. That account is not exposed in the current MCP session, so no test-mode resend is claimed. Verify the final-domain test receipt and unchanged expired order/event count. Check a new test session's final-domain success/cancel/order URLs when running the applicable product/payment tests.
+3. Both secure owner webhook setup actions are complete and signed final-domain live delivery is verified. Use Overview or Payments → Run £1 test payment to check a new final-domain test session and its return/order URLs with the already saved test connection. The isolated action leaves live customer checkout settings unchanged. Complete it with Stripe test details and verify the returned order plus the final-domain signed test receipt. Alternatively, resend existing test expiry event evt_1US2hbDMYd1hK6hbg9Z0yfoR in Bytova standard Test mode to refresh transport evidence alone; that account is not exposed in the current connector session. Neither new final-domain provider test nor resend is claimed complete by this release.
 4. Complete relevant product/payment-method checks before opening real sales. Keep checkout paused until ready.
 
 The live key, endpoint, first signed delivery, owner declarations, first successful test payment and full simulated refund are already complete. Do not ask the owner to create keys or repeat those first checks.
@@ -55,4 +55,8 @@ The owner sources items after interest. The public catalogue therefore uses Avai
 
 Reconcile orders, pack only verified paid live orders and include the downloaded order/terms copy. Use tracked delivery, record tracking and update the customer by email. Handle support and returns. Process refunds in the correct Stripe account, verify them here and inspect returns before manually relisting stock.
 
-The private GBP1 test action uses the authenticated owner, enabled test mode and a test key. It creates a labelled internal order without a catalogue item or physical stock reservation. It rejects live mode and live keys.
+The private GBP1 test action uses the authenticated owner and only the saved test merchant/key, regardless of the customer storefront's current mode or enable flag. Its configured test webhook must match the current HTTPS store origin. It creates a labelled internal test order without a catalogue item or physical stock reservation, rejects live merchant credentials, and never changes live checkout settings.
+
+## First-sale owner workflow
+
+Overview now shows live setup/delivery, final-domain test delivery, available published sale stock and customer checkout state. Products offers a sourcing-catalogue picker to prepare the first item immediately. Requests can edit an existing sale item at the same URL; duplicate sale slugs are not created. Once a matching published item has sufficient stock and live checkout is enabled, its email draft includes the actual item/quantity total, one delivery charge and its public purchase link. The draft is manually reviewed and sent by the owner. No customer messages were sent and no sale product, stock, order or payment setting was seeded by this release. `FIRST_SALE.md` gives the concrete remaining owner steps.
