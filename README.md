@@ -64,3 +64,9 @@ See `LAUNCH.md` for outstanding connection/testing work and `POLICY_SOURCES.md` 
 Start Here, quick Add to basket, complete basket item details, budget/ready-to-order shortcuts, community prompts and public share controls are included. Keep the approved imagery, live merchant and source-order model. The six unclear entries remain free enquiries by the owner's choice.
 
 The protected Emails tab prepares transactional email with Resend, encrypted credentials and a durable D1 outbox. A verified sender, sending-only API key and received test are still needed to enable it. Email remains disabled until that setup; no provider account, billable plan or customer message was created by this release. See EMAILS.md.
+
+## Interactive visitor tools
+
+- `/console-finder` builds a three-question shortlist from the current shop context. It enforces item budgets, excludes enquiry-only/unavailable choices, and shows the cheapest matching variant from up to three different console families. Purchases use the existing product cards and basket.
+- `/community#play` contains a six-pair memory game. A round is page-local, uses accessible native buttons, and has no account, stored score or public leaderboard.
+- The existing Console Checker remains available for gathering model and display details. Finder choices are not a compatibility guarantee.

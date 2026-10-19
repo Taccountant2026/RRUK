@@ -1,0 +1,3 @@
+import { ConsoleFinder } from '@/components/ConsoleFinder';
+export const metadata = { title:'Console Finder — find your next classic', description:'Choose your setup, gaming chapter and item budget for a live shortlist of orderable retro consoles and handhelds from RetroReplay UK.', alternates:{canonical:'/console-finder'} };
+export default function Page() { return <><div className="page-heading"><div className="container"><div className="eyebrow">THREE QUESTIONS. YOUR NEXT CLASSIC.</div><h1>Find your way<br/>back into play.</h1><p>A home console, a handheld, a chapter you remember. Build a shortlist that fits you.</p></div></div><section className="section"><div className="container"><ConsoleFinder/></div></section></>; }
