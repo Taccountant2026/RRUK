@@ -21,3 +21,9 @@ export const orders = sqliteTable('orders', {
 export const settings = sqliteTable('settings', { key: text('key').primaryKey(), value: text('value').notNull(), updatedAt: integer('updated_at').notNull() });
 export const webhookEvents = sqliteTable('webhook_events', { id: text('id').primaryKey(), type: text('type').notNull(), orderId: text('order_id'), mode: text('mode').notNull(), receivedAt: integer('received_at').notNull() });
 export const rateLimits = sqliteTable('rate_limits', { key: text('key').primaryKey(), count: integer('count').notNull(), expiresAt: integer('expires_at').notNull() });
+export const enquiries = sqliteTable('enquiries', {
+  id: text('id').primaryKey(), requestHash: text('request_hash').notNull().unique(), payloadHash: text('payload_hash').notNull(),
+  productId: text('product_id').notNull(), productSlug: text('product_slug').notNull(), productTitle: text('product_title').notNull(),
+  name: text('name').notNull(), email: text('email').notNull(), quantity: integer('quantity').notNull(), notes: text('notes').notNull(),
+  status: text('status').notNull().default('new'), createdAt: integer('created_at').notNull(), updatedAt: integer('updated_at').notNull(), closedAt: integer('closed_at'),
+}, t=>[index('enquiry_created_idx').on(t.createdAt), check('enquiry_quantity_valid',sql`${t.quantity} BETWEEN 1 AND 10`), check('enquiry_status_valid',sql`${t.status} IN ('new','contacted','closed')`)]);

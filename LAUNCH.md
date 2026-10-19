@@ -1,6 +1,6 @@
 # RRUK launch status
 
-19 October 2026, after final-domain live webhook verification at 07:26 BST. RRUK is separate from Bytova; retain Bytova's domain/HTTPS checkpoint and working merchant settings.
+19 October 2026, sourcing catalogue release after the final-domain live webhook verification. RRUK is separate from Bytova; retain Bytova's domain/HTTPS checkpoint and working merchant settings.
 
 ## Current state
 
@@ -9,11 +9,11 @@
 - Payment mode: live. Checkout: paused. Both branding and fulfilment confirmations were saved by the owner and independently read back.
 - The separate RetroReplay UK Stripe account has charges and payouts enabled. Customer-facing name and statement descriptor identify RRUK; support email and the working support-page URL are saved.
 - Restricted live credentials and signing secrets are encrypted on the server. Both saved endpoint configurations were updated through the secure owner buttons. Genuine signed live delivery to https://retroreplay.uk/api/stripe/webhook is verified; the test receipt still records the earlier native origin.
-- Both final-domain hostnames and HTTPS certificates are active. PUBLIC_ORIGIN=https://retroreplay.uk is applied in runtime environment revision2. The catalogue is empty and search indexing stays disabled. No real customer charge has been made.
+- Both final-domain hostnames and HTTPS certificates are active. PUBLIC_ORIGIN=https://retroreplay.uk is applied in runtime environment revision2. The sourcing catalogue has 65 enquiry-only entries. Search indexing is enabled for the public catalogue at this release; owner, order, API and basket paths remain excluded. No real customer charge has been made.
 
 ## Implemented
 
-The original CRT branding, responsive storefront, catalogue search/filters, product details and basket are built. Owner tools manage actual product photos, item checks, condition, compatibility, stock, prices, delivery costs, orders, packing documents, tracking and refund verification.
+The original CRT branding, responsive storefront, catalogue search/filters, product details and basket are built. Four owner-approved pixel illustrations now appear across a 65-entry sourcing catalogue. A bounded public availability form saves requests in D1; the protected owner Requests queue supports personal replies, status tracking and preparing an actual sale draft. A request takes no payment, makes no reservation and creates no purchase obligation. The source guide prices are dated references, not fixed offers. Owner tools manage actual product photos, item checks, condition, compatibility, stock, prices, delivery costs, orders, packing documents, tracking and refund verification.
 
 Server-derived Checkout amounts, atomic stock reservations, provider idempotency and guarded stock restoration protect orders. The endpoint listens for checkout.session.completed, checkout.session.async_payment_succeeded, checkout.session.async_payment_failed and checkout.session.expired. Merchant, mode, amount, currency and provider payment status are checked before payment is accepted. A success URL does not mark an order paid.
 
@@ -21,7 +21,7 @@ Delivery, returns, cancellation form, six-month console/handheld warranty, terms
 
 ## Verification
 
-- Thirteen automated tests cover migrated SQLite reservation/concurrency/rollback behaviour, duplicate expiry, delayed and out-of-order payment states, Stripe signatures, connection-bound delivery evidence and refund verification. TypeScript and the production build passed.
+- Eighteen automated tests cover migrated SQLite reservation/concurrency/rollback behaviour, duplicate expiry, delayed and out-of-order payment states, Stripe signatures, connection-bound delivery evidence and refund verification. TypeScript and the production build passed.
 - The owner completed the hosted GBP1 test payment. Its provider session was independently verified paid, its simulated full refund succeeded, and the saved order is now refunded.
 - The owner observed the generic-decline card response and confirmed the cancellation return to the owner area. That unpaid test order later expired automatically; returning from Checkout does not itself expire a provider session.
 - A second delivery of the earlier checkout.session.completed event returned 200 OK. Its new signed receipt was saved; there is still one processed-event record and the refunded order stayed unchanged.
@@ -47,11 +47,11 @@ Root and www are active with active HTTPS certificates. The owner saved the webs
 2. Ownership, DNS, valid TLS and serving the RRUK site on both hostnames are verified. Root canonical metadata is correct; www serves 200 rather than redirecting to root.
 3. PUBLIC_ORIGIN is applied as https://retroreplay.uk. Both owner webhook configuration saves are complete; the live provider destination and its genuine signed final-domain callback are independently verified. Source uses this origin for success/cancel/order URLs; a newly created final-domain test session has not yet been externally checked.
 4. Public customer access and owner protection are verified at the final origin. Stripe's public support website is https://retroreplay.uk/contact, confirmed by account read. Only the final-domain test receipt refresh remains from the callback cutover checks.
-5. Set SITE_INDEXABLE=true only when the final domain and real catalogue are ready, then check canonical/OG URLs, robots, sitemap and missing-page behaviour.
+5. SITE_INDEXABLE=true is included in this catalogue launch. Verify root-domain canonical/OG URLs, public-only robots/sitemap and missing-page behaviour after deployment.
 
 ## Catalogue and daily operation
 
-Research genuine available stock, prices, delivery service/cost, provenance, compatibility, region, safety and any age restrictions. Add actual photos, condition, included items and limitations. Publish only confirmed physical stock; do not include ROM libraries or assume old licences/accounts transfer.
+The owner sources items after interest. The public catalogue therefore uses Available to order, subject to sourcing, with Request availability. It never treats eBay listed quantities as physical website stock. Check /admin → Requests regularly; automatic email alerts are not configured. Confirm a specific item, photos, condition, exact contents, compatibility, total price and delivery plan before inviting payment. Use Prepare sale item to start a draft with the same URL. Add actual item photos and sale details, then publish only confirmed stock you can fulfil. Publishing exposes the sale listing to everyone; it does not privately reserve it for a requester. Do not include ROM libraries or assume old licences/accounts transfer. See CATALOGUE.md for source mapping, case-pack ambiguities and the daily workflow.
 
 Reconcile orders, pack only verified paid live orders and include the downloaded order/terms copy. Use tracked delivery, record tracking and update the customer by email. Handle support and returns. Process refunds in the correct Stripe account, verify them here and inspect returns before manually relisting stock.
 

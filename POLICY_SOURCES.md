@@ -1,8 +1,10 @@
 # RRUK policy sources and business basis
 
-Reviewed 18 October 2026. Policy version 2026-10-18.
+Reviewed 18–19 October 2026. Current policy version 2026-10-19.
 
 Owner-supplied business details: Leighton Hepworth trading as RetroReplay UK; info@retroreplay.uk; 65 Coronation Road, Stainforth, Doncaster, South Yorkshire, DN7 5EU, United Kingdom. UK tracked delivery, normally 1–3 working days to dispatch in-stock goods, a two-working-day support response aim, and a six-month console/handheld commercial warranty. No VAT-registration claim is made.
+
+The owner confirmed a source-after-interest business model on 19 October. The launch catalogue now invites free availability requests instead of taking payment for unconfirmed stock. Specific item, photos, condition, contents, final price and delivery are confirmed before a later purchase. Guide prices are identified as recent eBay references; colour-specific missing prices and unclear case packs use Price on request. Privacy wording covers the saved enquiry and the twelve-month-after-closure retention schedule.
 
 Primary public guidance consulted:
 

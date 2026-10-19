@@ -2,7 +2,7 @@
 
 A separate RetroReplay UK store built around the owner's pixel CRT branding. The source, product database, image storage, runtime configuration and checkout are independent of Shopify and the Bytova site.
 
-The first catalogue is deliberately empty. No sample products, invented reviews, stock counts or guessed prices are published.
+The public sourcing catalogue has 65 choices from the owner-supplied eBay export (67 source options, with two duplicate lots combined). Entries show approved brand illustrations, indicative guide prices or Price on request, and Available to order subject to sourcing. They collect free availability requests; they do not invent in-stock quantities or accept upfront payment for an unconfirmed unit.
 
 ## Stack and hosting
 
@@ -21,7 +21,7 @@ npm run db:generate
 npm run build
 ```
 
-The tests exercise basket tampering, delivery totals, payment matching, delayed payment transitions, forged webhook signatures, sale readiness and the actual SQLite migrations/reservation SQL under concurrent last-item attempts. Python 3 is used for SQLite concurrency tests.
+The tests also exercise catalogue source counts, unconfirmed-item checkout rejection, bounded enquiry validation, same-payload retries and the migrated enquiry SQL. The tests exercise basket tampering, delivery totals, payment matching, delayed payment transitions, forged webhook signatures, sale readiness and the actual SQLite migrations/reservation SQL under concurrent last-item attempts. Python 3 is used for SQLite concurrency tests.
 
 Do not run `db:generate` unless the schema has changed. Commit generated SQL and metadata; never change an applied migration. Source helpers handle managed build packaging and publication. Production secrets belong in runtime configuration, not source or client bundles.
 
@@ -29,6 +29,7 @@ Do not run `db:generate` unless the schema has changed. Commit generated SQL and
 
 `/admin` requires dispatch-authenticated ChatGPT identity and a server-side `ADMIN_EMAIL` allowlist. Account sign-in alone does not grant administration. Mutations additionally require same-origin requests.
 
+- Check Requests for customer enquiries. Reply personally, mark contacted/closed, and use Prepare sale item to prefill the title, category and URL of a confirmed item. The same published URL replaces the sourcing entry. No automatic email notifications are configured.
 - Add drafts, upload actual item photos, and record condition, included items, compatibility, quantity, GBP price and tracked delivery cost/estimate.
 - Publish only after confirming item checks and sale details. Consoles/handhelds have the established six-month hardware warranty.
 - Product edits use a revision check so checkout reservations cannot be silently overwritten by a stale stock form.
@@ -47,7 +48,7 @@ Do not run `db:generate` unless the schema has changed. Commit generated SQL and
 
 Customer totals and item data come from the server. Stock is reserved in an atomic D1 batch before the provider request. A stable order idempotency key and saved immutable Checkout parameters prevent duplicate sessions on retries. Ambiguous provider failures hold inventory until safely reconciled. Signed webhooks and an owner-initiated API reconciliation verify amount, currency, mode, account and payment status. A success URL does not mark an order paid.
 
-The admin reconciliation action checks open/processing/creating orders, restores expired stock only once, and cleans obsolete rate-limit records and old failed checkout records. Processing delayed payments keep their stock. An unexpected paid event after stock was released goes to manual review.
+The admin reconciliation action checks open/processing/creating orders, restores expired stock only once, and cleans obsolete rate-limit records old failed checkout records, and enquiries closed more than twelve months ago. Processing delayed payments keep their stock. An unexpected paid event after stock was released goes to manual review.
 
 ## Customer policies and operations
 

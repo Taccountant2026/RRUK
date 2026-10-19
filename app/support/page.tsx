@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import { emailLink } from '@/lib/shop';
 const faqs = [
-  ['When will products be available?', <>The first collection is being checked, photographed and priced. Only items with confirmed details will be offered for sale. <Link href="/shop">Explore the collection</Link> or <a href={emailLink('Looking for a retro item')}>tell us what you’re looking for</a>.</>],
+  ['How does the sourcing catalogue work?', <>Browse a model or accessory and use Request availability. We check sourcing, then confirm a specific item with photos, condition, exact contents, final price and tracked UK delivery cost and timing before you choose whether to buy. A request is free, is not a paid order and does not reserve stock. <Link href="/shop">Explore the collection</Link>.</>],
+  ['Are the pictures and guide prices the exact item?', <>Sourcing entries use RetroReplay UK category illustrations, not photos of a current unit. Guide prices are indicative references from our recent eBay listings, checked 19 October 2026. The final quote may differ. Price on request means the exact item, quantity or variant price needs confirming.</>],
+  ['What happens after I send a request?', <>The page shows a saved request reference. We aim to reply personally by email within two working days; an automatic email is not sent. No payment is taken. Save your reference and check your junk folder for our reply.</>],
   ['Are the games genuine physical copies?', <>Yes. Listings identify the platform, region, included packaging and condition. Empty cases and replacement accessories are clearly named. We do not offer preloaded ROM libraries.</>],
   ['What comes with a console?', <>Read the individual included-items list. Power supplies, leads, controllers, storage, games and packaging are included only when stated. The <Link href="/condition-guide">condition guide</Link> explains what to look for.</>],
   ['Will it work with my TV or console?', <>Check the listing’s compatibility and region notes. If you’re unsure, email us your model before ordering. Older equipment may need a particular connection or adapter.</>],
   ['Where do you deliver?', <>We deliver to UK addresses using tracked services. Item pages and your basket show the delivery cost. In-stock orders normally dispatch within 1–3 working days after confirmed payment. <Link href="/delivery">Read delivery information</Link>.</>],
   ['What if I change my mind?', <>For online orders, tell us within 14 days after delivery. You then have 14 days to return the item. Change-of-mind return postage is your responsibility. <Link href="/returns">Read the full returns policy</Link>.</>],
   ['Is there a warranty?', <>Consoles and handhelds include a six-month hardware warranty from delivery. Your statutory rights apply to all goods and are unaffected. <Link href="/warranty">Read the coverage and claim process</Link>.</>],
-  ['How do I pay?', <>Available items can be added to your basket and paid for through Stripe’s secure hosted checkout. A payment still processing is not a confirmed paid order. Never send card details by email.</>],
+  ['How do I pay?', <>Start with a free availability request for sourcing entries. Once we have confirmed an actual item and its terms, we can provide its ready-to-buy listing for payment through Stripe’s secure hosted checkout. A payment still processing is not a confirmed paid order. Never send card details by email.</>],
   ['How can I get an order update?', <>Email <a href={emailLink('Order update')}>info@retroreplay.uk</a> with your order reference. We aim to respond within two working days.</>],
 ];
 export const metadata = { title: 'Support & FAQs', alternates: { canonical: '/support' } };

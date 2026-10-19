@@ -15,6 +15,13 @@
       "when": 1792318706722,
       "tag": "0001_organic_devos",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792402185185,
+      "tag": "0002_mighty_shadow_king",
+      "breakpoints": true
     }
   ]
 }
