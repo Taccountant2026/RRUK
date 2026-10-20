@@ -70,3 +70,9 @@ The protected Emails tab prepares transactional email with Resend, encrypted cre
 - `/console-finder` builds a three-question shortlist from the current shop context. It enforces item budgets, excludes enquiry-only/unavailable choices, and shows the cheapest matching variant from up to three different console families. Purchases use the existing product cards and basket.
 - `/community#play` contains a six-pair memory game. A round is page-local, uses accessible native buttons, and has no account, stored score or public leaderboard.
 - The existing Console Checker remains available for gathering model and display details. Finder choices are not a compatibility guarantee.
+
+## Shopping journeys and private help — 20 October 2026
+
+The homepage routes visitors to ready-to-order products, Console Finder, gifts or optional personal help. `/gifts` filters current orderable items by category and item budget, without relaxing price limits or implying guaranteed compatibility/delivery dates. `/why-rruk` explains the shop's existing ordering and community approach.
+
+`/personal-shopper` uses the existing private question submission flow and owner alert queue. Shopping purpose, budget, setup and the visitor's message are stored only after they submit with the privacy acknowledgement. Optional saved item inclusion is off by default. A product link can supply public product context; unknown IDs are ignored. There is no mailing-list enrolment or automatic customer acknowledgement. Replies remain personal owner work.

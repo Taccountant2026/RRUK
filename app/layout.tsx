@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./experience.css";
 import "./interactive.css";
+import "./shopping.css";
 import { ShopProvider, Header, Footer } from '@/components/Storefront';
 import { env } from 'cloudflare:workers';
 import { getProducts } from '@/lib/catalogue-server';
