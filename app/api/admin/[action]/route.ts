@@ -1,3 +1,4 @@
+import {getStatistics} from '@/lib/measurement-server';
 import {getFunnelLeads,saveFunnelProgress} from '@/lib/funnel-server';
 import { emailStatus, saveEmailConfiguration, testEmailConfiguration, setEmailEnabled, drainEmailOutbox, orderEmailStatements } from '@/lib/notification-server';
 import { env } from 'cloudflare:workers';
@@ -13,6 +14,7 @@ export const dynamic='force-dynamic';
 type Ctx={params:Promise<{action:string}>};
 export async function GET(request:Request,ctx:Ctx){return respond(async()=>{await requireAdmin();const {action}=await ctx.params;
   if(action==='funnels')return json({leads:await getFunnelLeads()});
+  if(action==='statistics'){const u=new URL(request.url);return json(await getStatistics(u.searchParams.get('brand')||'all',Number(u.searchParams.get('days')||28)));}
   if(action==='emails')return json(await emailStatus());
   if(action==='community'){const rows=await db().prepare("SELECT id,kind,name,email,title,body,consent,status,revision,created_at FROM community_submissions WHERE NOT EXISTS(SELECT 1 FROM settings WHERE key='funnel:'||community_submissions.id AND json_extract(value,'$.brand') IN ('bytova','garden')) ORDER BY CASE status WHEN 'new' THEN 0 ELSE 1 END,created_at DESC LIMIT 200").all();return json({submissions:rows.results});}
   if(action==='status')return json({payments:await paymentStatus(checkoutOrigin(request)),origin:checkoutOrigin(request)});

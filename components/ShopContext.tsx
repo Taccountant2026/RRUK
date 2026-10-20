@@ -35,6 +35,7 @@ export function ShopProvider({children,initialProducts=[],initialCart}:{children
     if(quantity>0&&(!product||quantity>orderLimit(product)))return false;
     const next=[...linesRef.current.filter(l=>l.id!==id),...(quantity>0?[{id,quantity}]:[])];
     if(next.length>20)return false;
+    if(quantity>(linesRef.current.find(l=>l.id===id)?.quantity||0))window.dispatchEvent(new CustomEvent('business-metric',{detail:{event:'save_item'}}));
     persist(next);try{sessionStorage.removeItem('rruk-checkout-key');}catch{}return true;
   }
   function toggleSaved(id:string){setSaved(old=>{const next=old.includes(id)?old.filter(x=>x!==id):[...old,id].slice(-100);try{localStorage.setItem('rruk-saved-v1',JSON.stringify(next));}catch{}return next;});}

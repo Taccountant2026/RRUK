@@ -19,7 +19,8 @@ export function ConsoleFinder() {
   useEffect(() => { if (interacted.current) { if (showResults) resultRef.current?.focus(); else questionRef.current?.focus(); } }, [step, showResults]);
   function next(event:FormEvent<HTMLFormElement>) {
     event.preventDefault(); if (!chosen) return; interacted.current = true;
-    if (step < consoleQuestions.length - 1) setStep(step + 1); else setShowResults(true);
+    if(step===0)window.dispatchEvent(new CustomEvent('business-metric',{detail:{event:'start_tool'}}));
+    if (step < consoleQuestions.length - 1) setStep(step + 1); else {setShowResults(true);window.dispatchEvent(new CustomEvent('business-metric',{detail:{event:'complete_tool'}}));}
   }
   function adjust() { interacted.current = true; setShowResults(false); setStep(0); }
   return <div className="console-finder">

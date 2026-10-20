@@ -40,6 +40,6 @@ test('garden requests stay private, keep their brand and prepare the correct Git
  assert.equal(input.consent,0);assert.equal(input.kind,'question');assert.equal(publicStory({...input,status:'published'}),null);
  const record=funnelRecord({...input,id:base.requestKey,source:'submission',status:'new'},{brand:'garden',route:'project'});
  assert.equal(record.brand,'garden');assert.equal(record.routeLabel,'A garden project');
- const draft=followUpDraft(record);assert(draft.subject.includes('The Garden Company'));assert(draft.body.includes('https://taccountant2026.github.io/Turf-Right/garden-projects.html'));
+ const draft=followUpDraft(record);assert(draft.subject.includes('The Outdoor Living Co.'));assert(draft.body.includes('https://taccountant2026.github.io/Turf-Right/garden-projects.html'));
  assert(!draft.body.includes('RetroReplay UK'));assert.throws(()=>parseFunnelLead({...base,brand:'garden',route:'ready-buyer'}));
 });
