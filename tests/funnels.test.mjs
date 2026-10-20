@@ -14,9 +14,9 @@ test('enquiry intake fixes private permission, validates brand and route and bou
  assert.throws(()=>matchingSubmission({id:'private-reference',payload_hash:'old'},'changed'),e=>e.status===409&&!e.message.includes('private-reference'));
  for(const[brand,routes]of Object.entries(funnelRoutes))for(const route of routes)assert(funnelRoute(brand,route.id));
 });
-test('cross-origin intake allows only the actual site origin and the two exact Bytova origins',()=>{
- for(const origin of['https://retroreplay.uk','https://bytova.co.uk','https://www.bytova.co.uk'])assert(leadOrigin(origin,'https://retroreplay.uk'));
- for(const origin of['','null','http://bytova.co.uk','https://bytova.co.uk.evil.invalid','https://evil.invalid','https://retroreplay.uk.evil.invalid'])assert(!leadOrigin(origin,'https://retroreplay.uk'));
+test('cross-origin intake allows only the actual site origin and exact owned storefront origins',()=>{
+ for(const origin of['https://retroreplay.uk','https://bytova.co.uk','https://www.bytova.co.uk','https://taccountant2026.github.io'])assert(leadOrigin(origin,'https://retroreplay.uk'));
+ for(const origin of['','null','http://bytova.co.uk','https://bytova.co.uk.evil.invalid','https://evil.invalid','https://another-user.github.io','https://taccountant2026.github.io.evil.invalid','https://retroreplay.uk.evil.invalid'])assert(!leadOrigin(origin,'https://retroreplay.uk'));
 });
 test('campaign labels travel in ordinary public links without storage, private-order links or external disclosure',()=>{
  assert.equal(campaignHref('/personal-shopper?route=gifts','gift-post'),'/personal-shopper?route=gifts&utm_campaign=gift-post');
@@ -33,4 +33,13 @@ test('pipeline dates, stages and revisions are validated; owner drafts use the c
 test('actual migrated SQL keeps intake and alerts idempotent, prevents story publication and rejects stale pipeline writes',()=>{
  const schema=readdirSync(new URL('../drizzle/',import.meta.url)).filter(f=>f.endsWith('.sql')).sort().map(f=>readFileSync(new URL('../drizzle/'+f,import.meta.url),'utf8')).join('\n');
  const result=spawnSync('python',['tests/funnel_scenarios.py'],{input:JSON.stringify({schema,insert:submissionSql(),meta:funnelMetaSql(),progress:progressSourceSql('submission'),alert:insertEmailSql('submission')}),encoding:'utf8'});assert.equal(result.status,0,result.stderr||result.stdout);assert.match(result.stdout,/passed/);
+});
+
+test('garden requests stay private, keep their brand and prepare the correct GitHub Pages reply link',()=>{
+ const input=parseFunnelLead({...base,brand:'garden',route:'project',publishConsent:true});
+ assert.equal(input.consent,0);assert.equal(input.kind,'question');assert.equal(publicStory({...input,status:'published'}),null);
+ const record=funnelRecord({...input,id:base.requestKey,source:'submission',status:'new'},{brand:'garden',route:'project'});
+ assert.equal(record.brand,'garden');assert.equal(record.routeLabel,'A garden project');
+ const draft=followUpDraft(record);assert(draft.subject.includes('The Garden Company'));assert(draft.body.includes('https://taccountant2026.github.io/Turf-Right/garden-projects.html'));
+ assert(!draft.body.includes('RetroReplay UK'));assert.throws(()=>parseFunnelLead({...base,brand:'garden',route:'ready-buyer'}));
 });

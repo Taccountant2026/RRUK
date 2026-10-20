@@ -57,7 +57,7 @@ export async function orderEmailStatements(order:OrderRow,document:string,status
 }
 export async function requestAlertStatements(kind:string,reference:string,title:string) {
   const c=await configuration();if(!c?.enabled)return [];
-  const funnel=['bytova','shopping'].includes(kind),label=kind==='bytova'?'Bytova enquiry':kind==='story'?'community story':'RRUK customer request';
+  const funnel=['bytova','shopping','garden'].includes(kind),label=kind==='bytova'?'Bytova enquiry':kind==='garden'?'Garden Company enquiry':kind==='story'?'community story':'RRUK customer request';
   return [queued(c,'request-owner',reference,c.owner,'New '+label,`A ${label} has been saved.\nReference: ${reference}\nSubject: ${title}\n\nReview and reply from your protected owner area:\nhttps://retroreplay.uk/admin#${funnel?'funnels':kind==='enquiry'?'requests':'community'}\n\nPrivate requests never become public stories. Review stories and permissions before publication.`,kind==='enquiry'?'enquiry':'submission')];
 }
 export async function drainEmailOutbox(limit=2) {

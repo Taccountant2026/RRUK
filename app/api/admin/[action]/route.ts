@@ -14,7 +14,7 @@ type Ctx={params:Promise<{action:string}>};
 export async function GET(request:Request,ctx:Ctx){return respond(async()=>{await requireAdmin();const {action}=await ctx.params;
   if(action==='funnels')return json({leads:await getFunnelLeads()});
   if(action==='emails')return json(await emailStatus());
-  if(action==='community'){const rows=await db().prepare("SELECT id,kind,name,email,title,body,consent,status,revision,created_at FROM community_submissions WHERE NOT EXISTS(SELECT 1 FROM settings WHERE key='funnel:'||community_submissions.id AND json_extract(value,'$.brand')='bytova') ORDER BY CASE status WHEN 'new' THEN 0 ELSE 1 END,created_at DESC LIMIT 200").all();return json({submissions:rows.results});}
+  if(action==='community'){const rows=await db().prepare("SELECT id,kind,name,email,title,body,consent,status,revision,created_at FROM community_submissions WHERE NOT EXISTS(SELECT 1 FROM settings WHERE key='funnel:'||community_submissions.id AND json_extract(value,'$.brand') IN ('bytova','garden')) ORDER BY CASE status WHEN 'new' THEN 0 ELSE 1 END,created_at DESC LIMIT 200").all();return json({submissions:rows.results});}
   if(action==='status')return json({payments:await paymentStatus(checkoutOrigin(request)),origin:checkoutOrigin(request)});
   if(action==='products')return json({products:await getProducts(true)});
   if(action==='source-catalogue'){const row=await db().prepare('SELECT updated_at FROM settings WHERE key=?').bind('source-order-options').first<{updated_at:number}>();return json({...await sourceOptions(),products:await getSourceProducts(),revision:row?.updated_at||0});}
