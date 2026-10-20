@@ -57,7 +57,8 @@ export async function orderEmailStatements(order:OrderRow,document:string,status
 }
 export async function requestAlertStatements(kind:string,reference:string,title:string) {
   const c=await configuration();if(!c?.enabled)return [];
-  return [queued(c,'request-owner',reference,c.owner,'RRUK: a new '+(kind==='story'?'community story':'customer request'),`A ${kind} has been saved.\nReference: ${reference}\nSubject: ${title}\n\nReview and reply from your protected owner area:\nhttps://retroreplay.uk/admin#${kind==='enquiry'?'requests':'community'}\n\nPrivate requests never become public stories. Review stories and permissions before publication.`,kind==='enquiry'?'enquiry':'submission')];
+  const funnel=['bytova','shopping'].includes(kind),label=kind==='bytova'?'Bytova enquiry':kind==='story'?'community story':'RRUK customer request';
+  return [queued(c,'request-owner',reference,c.owner,'New '+label,`A ${label} has been saved.\nReference: ${reference}\nSubject: ${title}\n\nReview and reply from your protected owner area:\nhttps://retroreplay.uk/admin#${funnel?'funnels':kind==='enquiry'?'requests':'community'}\n\nPrivate requests never become public stories. Review stories and permissions before publication.`,kind==='enquiry'?'enquiry':'submission')];
 }
 export async function drainEmailOutbox(limit=2) {
   const now=Date.now();await db().prepare("UPDATE email_outbox SET payload_json='{}',recipient='' WHERE status='accepted' AND updated_at<? AND payload_json!='{}'").bind(now-30*86400000).run();
