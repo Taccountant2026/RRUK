@@ -42,6 +42,12 @@ export default async function RootLayout({
   const initialCart = cartCookie === undefined ? undefined : readCart(cartCookie);
   return (
     <html lang="en-GB">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{__html:`window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};window.gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});window.gtag('js',new Date());window.gtag('config','G-4YTG0QWMW5',{send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false});`}}
+        />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YTG0QWMW5"></script>
+      </head>
       <body><StatisticsConsent/><StructuredData data={{'@context':'https://schema.org','@type':'WebSite',name:'RetroReplay UK',url:env.PUBLIC_ORIGIN||'https://retroreplay.uk',potentialAction:{'@type':'SearchAction',target:(env.PUBLIC_ORIGIN||'https://retroreplay.uk')+'/shop?q={search_term_string}','query-input':'required name=search_term_string'}}}/><a className="skip-link" href="#main">Skip to content</a><ShopProvider initialProducts={initialProducts} initialCart={initialCart}><Header/><main id="main">{children}</main><Footer/></ShopProvider></body>
     </html>
   );
