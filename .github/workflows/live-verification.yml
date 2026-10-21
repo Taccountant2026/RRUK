@@ -1,0 +1,131 @@
+name: One-off live verification
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'verification/live-check.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for public deployment
+        run: sleep 75
+      - name: Run live checks
+        shell: bash
+        run: |
+          set -u
+          mkdir -p verification
+          tmp=$(mktemp -d)
+          check_get() {
+            name="$1"; url="$2"
+            code=$(curl -L -sS -o "$tmp/$name.body" -w '%{http_code}' --max-time 25 "$url" || true)
+            printf '%s=%s\n' "$name" "$code" >> "$tmp/status"
+          }
+          check_post() {
+            name="$1"; origin="$2"; url="$3"; payload="$4"
+            code=$(curl -sS -o "$tmp/$name.body" -w '%{http_code}' --max-time 25 "$url" -H "Origin: $origin" -H 'Content-Type: application/json' --data-binary "$payload" || true)
+            printf '%s=%s\n' "$name" "$code" >> "$tmp/status"
+          }
+
+          check_get rruk_home https://retroreplay.uk/
+          check_get rruk_robots https://retroreplay.uk/robots.txt
+          check_get rruk_sitemap https://retroreplay.uk/sitemap.xml
+          check_get bytova_home https://bytova.co.uk/
+          check_get bytova_robots https://bytova.co.uk/robots.txt
+          check_get bytova_sitemap https://bytova.co.uk/sitemap.xml
+          check_get garden_home https://taccountant2026.github.io/Turf-Right/
+          check_get garden_robots https://taccountant2026.github.io/Turf-Right/robots.txt
+          check_get garden_sitemap https://taccountant2026.github.io/Turf-Right/sitemap.xml
+
+          by_id=$(python3 - <<'PY'
+import uuid
+print(uuid.uuid4())
+PY
+)
+          ga_id=$(python3 - <<'PY'
+import uuid
+print(uuid.uuid4())
+PY
+)
+          rr_id=$(python3 - <<'PY'
+import uuid
+print(uuid.uuid4())
+PY
+)
+          ck_id=$(python3 - <<'PY'
+import uuid
+print(uuid.uuid4())
+PY
+)
+
+          check_post bytova_lead https://bytova.co.uk https://retroreplay.uk/api/leads "$(python3 - "$by_id" <<'PY'
+import json,sys
+print(json.dumps({"brand":"bytova","route":"general","name":"System Verification","email":"hello@bytova.co.uk","title":"SYSTEM TEST — Bytova enquiry route","body":"Automated live verification. No customer action is required. This test enquiry can be closed after confirming receipt.","privacyAccepted":True,"website":"","campaign":"live-verification-2026-10-21","requestKey":sys.argv[1]}))
+PY
+)"
+          check_post garden_lead https://taccountant2026.github.io https://retroreplay.uk/api/leads "$(python3 - "$ga_id" <<'PY'
+import json,sys
+print(json.dumps({"brand":"garden","route":"general","name":"System Verification","email":"hello@bytova.co.uk","title":"SYSTEM TEST — Outdoor Living enquiry route","body":"Automated live verification. No customer action is required. This test enquiry can be closed after confirming receipt.","privacyAccepted":True,"website":"","campaign":"live-verification-2026-10-21","requestKey":sys.argv[1]}))
+PY
+)"
+          check_post rruk_lead https://retroreplay.uk https://retroreplay.uk/api/leads "$(python3 - "$rr_id" <<'PY'
+import json,sys
+print(json.dumps({"brand":"rruk","route":"general","name":"System Verification","email":"info@retroreplay.uk","title":"SYSTEM TEST — RetroReplay enquiry route","body":"Automated live verification. No customer action is required. This test enquiry can be closed after confirming receipt.","privacyAccepted":True,"website":"","campaign":"live-verification-2026-10-21","requestKey":sys.argv[1]}))
+PY
+)"
+
+          for spec in             'rruk|https://retroreplay.uk|/'             'bytova|https://bytova.co.uk|/'             'garden|https://taccountant2026.github.io|/Turf-Right/'; do
+            IFS='|' read -r brand origin page <<< "$spec"
+            check_post "metric_$brand" "$origin" https://retroreplay.uk/api/metrics "$(python3 - "$brand" "$page" <<'PY'
+import json,sys
+print(json.dumps({"brand":sys.argv[1],"page":sys.argv[2],"event":"page_view","campaign":"live-verification-2026-10-21","consent":True}))
+PY
+)"
+          done
+
+          check_post rruk_checkout https://retroreplay.uk https://retroreplay.uk/api/checkout "$(python3 - "$ck_id" <<'PY'
+import json,sys
+print(json.dumps({"items":[{"id":"source-397830727026","quantity":1}],"requestKey":sys.argv[1],"termsAccepted":True,"policyVersion":"2026-10-19-source-orders"}))
+PY
+)"
+
+          python3 - "$tmp" "$by_id" "$ga_id" "$rr_id" "$ck_id" <<'PY'
+import json, pathlib, sys
+tmp=pathlib.Path(sys.argv[1])
+status={}
+for line in (tmp/'status').read_text().splitlines():
+    k,v=line.split('=',1);status[k]=int(v) if v.isdigit() else v
+def read_json(name):
+    p=tmp/(name+'.body')
+    try:return json.loads(p.read_text())
+    except Exception:return {}
+result={
+  "checked_at":"2026-10-21",
+  "http":status,
+  "responses":{
+    "bytova_lead_reference":read_json("bytova_lead").get("reference"),
+    "garden_lead_reference":read_json("garden_lead").get("reference"),
+    "rruk_lead_reference":read_json("rruk_lead").get("reference"),
+    "metrics_saved":{
+      "rruk":read_json("metric_rruk").get("saved") is True,
+      "bytova":read_json("metric_bytova").get("saved") is True,
+      "garden":read_json("metric_garden").get("saved") is True,
+    },
+    "checkout_url_returned":isinstance(read_json("rruk_checkout").get("url"),str),
+    "checkout_error":read_json("rruk_checkout").get("error"),
+  },
+  "request_keys":{"bytova_lead":sys.argv[2],"garden_lead":sys.argv[3],"rruk_lead":sys.argv[4],"checkout":sys.argv[5]}
+}
+pathlib.Path("verification/live-check.json").write_text(json.dumps(result,indent=2)+"\n")
+PY
+      - name: Save verification result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add verification/live-check.json
+          git commit -m "Record live verification results" || exit 0
+          git push
