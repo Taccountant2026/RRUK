@@ -13,20 +13,24 @@ import {StatisticsConsent} from '@/components/StatisticsConsent';
 import { StructuredData } from '@/components/StructuredData';
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata(): Promise<Metadata> { return {
-  title: { default: 'RetroReplay UK — The classics. Back in play.', template: '%s | RetroReplay UK' },
-  description: 'An independent UK home for pre-owned consoles, genuine physical games and retro gaming accessories. Clear condition details and personal support.',
-  metadataBase: new URL(env.PUBLIC_ORIGIN || 'https://rruk.taccountant.chatgpt.site'),
-  robots: { index: env.SITE_INDEXABLE === 'true', follow: env.SITE_INDEXABLE === 'true' },
-  openGraph: { type: 'website', siteName: 'RetroReplay UK', locale: 'en_GB', title: 'RetroReplay UK — The classics. Back in play.', description: 'An independent UK home for retro gaming.', images: ['/assets/social-cover.png'] },
-  twitter:{card:'summary_large_image',images:['/assets/social-cover.png']},
-  verification:{google:searchConnections.googleVerification||undefined,yandex:searchConnections.yandexVerification||undefined,other:searchConnections.bingVerification?{'msvalidate.01':searchConnections.bingVerification}:{}},
-  referrer: 'no-referrer',
-  icons: {
-    icon: "/assets/rruk-logo.jpg",
-    shortcut: "/assets/rruk-logo.jpg",
-  },
-}; }
+export async function generateMetadata(): Promise<Metadata> {
+  const origin=(env.PUBLIC_ORIGIN||'').replace(/\/$/,'');
+  const indexable=env.SITE_INDEXABLE==='true'||origin==='https://retroreplay.uk';
+  return {
+    title: { default: 'RetroReplay UK — The classics. Back in play.', template: '%s | RetroReplay UK' },
+    description: 'An independent UK home for pre-owned consoles, genuine physical games and retro gaming accessories. Clear condition details and personal support.',
+    metadataBase: new URL(origin || 'https://rruk.taccountant.chatgpt.site'),
+    robots: { index: indexable, follow: indexable },
+    openGraph: { type: 'website', siteName: 'RetroReplay UK', locale: 'en_GB', title: 'RetroReplay UK — The classics. Back in play.', description: 'An independent UK home for retro gaming.', images: ['/assets/social-cover.png'] },
+    twitter:{card:'summary_large_image',images:['/assets/social-cover.png']},
+    verification:{google:searchConnections.googleVerification||undefined,yandex:searchConnections.yandexVerification||undefined,other:searchConnections.bingVerification?{'msvalidate.01':searchConnections.bingVerification}:{}},
+    referrer: 'no-referrer',
+    icons: {
+      icon: "/assets/rruk-logo.jpg",
+      shortcut: "/assets/rruk-logo.jpg",
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
