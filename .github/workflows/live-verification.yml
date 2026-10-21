@@ -1,9 +1,5 @@
 name: One-off live verification
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'verification/live-check.json'
   workflow_dispatch:
 permissions:
   contents: write
