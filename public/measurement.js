@@ -1,6 +1,6 @@
-/* Optional anonymous first-party statistics. No request before visitor opt-in. */
+/* Optional consent-controlled website statistics. No analytics request before visitor opt-in. */
 (()=>{
- const script=document.currentScript,brand=script?.dataset.brand,gaId=String(script?.dataset.gaId||'').trim();
+ const script=document.currentScript,brand=script?.dataset.brand,gaId=String(script?.dataset.gaId||({rruk:'G-4YTG0QWMW5',bytova:'G-HXLHMHPVZM'}[brand]||'')).trim();
  if(!['rruk','bytova','garden'].includes(brand))return;
  const validGaId=/^G-[A-Z0-9]{6,20}$/.test(gaId)?gaId:'';
  const scriptUrl=script.src;
