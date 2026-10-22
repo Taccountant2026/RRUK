@@ -14,7 +14,7 @@ export function useShop(){const value=useContext(Context);if(!value)throw new Er
 export function ShopProvider({children,initialProducts=[],initialCart}:{children:ReactNode;initialProducts?:Product[];initialCart?:Line[]}){
   const [products,setProducts]=useState(initialProducts),[loading,setLoading]=useState(!initialProducts.length),[failed,setFailed]=useState(false);
   const [lines,setLines]=useState<Line[]>(initialCart||[]),[ready,setReady]=useState(false),[saved,setSaved]=useState<string[]>([]);
-  const linesRef=useRef(lines);
+  const linesRef=useRef(lines);const assistantRequests=useRef(new Map<string,boolean>());
   function persist(next:Line[]){
     linesRef.current=next;setLines(next);
     try{localStorage.setItem('rruk-basket-v1',JSON.stringify(next));}catch{}
@@ -38,6 +38,10 @@ export function ShopProvider({children,initialProducts=[],initialCart}:{children
     if(quantity>(linesRef.current.find(l=>l.id===id)?.quantity||0))window.dispatchEvent(new CustomEvent('business-metric',{detail:{event:'save_item'}}));
     persist(next);try{sessionStorage.removeItem('rruk-checkout-key');}catch{}return true;
   }
+  useEffect(()=>{
+    function addFromAssistant(event:Event){const detail=(event as CustomEvent).detail;if(!detail||typeof detail.id!=='string'||!/^[-a-f0-9]{36}$/.test(detail.requestId||''))return;let ok=assistantRequests.current.get(detail.requestId);if(ok===undefined){const product=products.find(p=>p.id===detail.id);const quantity=(linesRef.current.find(l=>l.id===detail.id)?.quantity||0)+1,latestLimit=Number.isSafeInteger(detail.limit)&&detail.limit>=0?detail.limit:product?orderLimit(product):0;ok=Boolean(product&&quantity<=Math.min(orderLimit(product),latestLimit)&&setQuantity(detail.id,quantity));assistantRequests.current.set(detail.requestId,ok);if(assistantRequests.current.size>100)assistantRequests.current.delete(assistantRequests.current.keys().next().value as string);}window.dispatchEvent(new CustomEvent('rruk-assistant-basket-result',{detail:{requestId:detail.requestId,ok}}));}
+    window.addEventListener('rruk-assistant-basket',addFromAssistant);return()=>window.removeEventListener('rruk-assistant-basket',addFromAssistant);
+  },[products,ready]);
   function toggleSaved(id:string){setSaved(old=>{const next=old.includes(id)?old.filter(x=>x!==id):[...old,id].slice(-100);try{localStorage.setItem('rruk-saved-v1',JSON.stringify(next));}catch{}return next;});}
   async function completeOrder(items:{product:Product;quantity:number}[],requestHash:string){
     try{

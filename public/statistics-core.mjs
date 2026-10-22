@@ -5,7 +5,7 @@ export function publicPage(brand,path){
  if(!['rruk','bytova','garden'].includes(brand)||typeof path!=='string'||path.length>180||/[?#%\\\s]/.test(path))return null;
  if(path==='/index.html'&&brand==='bytova')return '/';if(path==='/Turf-Right/index.html'&&brand==='garden')return '/Turf-Right/';
  if(brand==='rruk')return /^\/(?:admin|api|order|chatgpt-auth)(?:\/|$)/.test(path)?null:/^\/[a-z0-9/*-]*$/.test(path)?path:null;
- if(brand==='garden')return path==='/Turf-Right/'||/^\/Turf-Right\/(?:[a-z0-9-]+\/)?[a-z0-9-]+\.html$/.test(path)&&!path.endsWith('/checkout.html')&&!path.endsWith('/404.html')?path:null;
+ if(brand==='garden')return path==='/'||path==='/index.html'||path==='/Turf-Right/'||/^\/(?:Turf-Right\/)?(?:[a-z0-9-]+\/)?[a-z0-9-]+\.html$/.test(path)&&!path.endsWith('/checkout.html')&&!path.endsWith('/404.html')?path:null;
  return path==='/'||/^\/[a-z0-9-]+\.html$/.test(path)&&path!=='/404.html'?path:null;
 }
 export function permittedEvent({choice,brand,path,event,campaign,doNotTrack=false,preview=false},now=Date.now()){

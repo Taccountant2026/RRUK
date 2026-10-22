@@ -18,6 +18,8 @@ test('private pages, order identifiers, queries and arbitrary campaign labels ca
  assert.equal(statisticsPage('rruk','/product/known-public-slug'),'/product/*');assert.equal(statisticsPage('garden','/Turf-Right/checkout.html'),null);
 });
 test('intake ties a brand to its exact owned origin and rejects absent consent before storage',()=>{
+ for(const origin of ['https://stoneandsprig.co.uk','https://www.stoneandsprig.co.uk']){assert(statisticsOrigin(origin,'https://retroreplay.uk'));assert.equal(parseStatistic({...input,page:'/garden-planner.html'},origin,'https://retroreplay.uk').brand,'garden');}
+ assert.equal(core.publicPage('garden','/garden-planner.html'),'/garden-planner.html');assert.equal(core.publicPage('garden','/checkout.html'),null);
  assert.equal(parseStatistic(input,'https://taccountant2026.github.io','https://retroreplay.uk').brand,'garden');
  for(const change of[{consent:false},{brand:'__proto__'},{event:'purchase'},{page:'/Turf-Right/admin.html'}])assert.throws(()=>parseStatistic({...input,...change},'https://taccountant2026.github.io','https://retroreplay.uk'));
  for(const origin of['https://another-user.github.io','https://taccountant2026.github.io.evil.invalid','https://bytova.co.uk'])assert.throws(()=>parseStatistic(input,origin,'https://retroreplay.uk'));
@@ -34,7 +36,7 @@ test('actual SQLite aggregate SQL is atomic under concurrent requests and does n
 });
 test('the actual browser client sends nothing before opt-in or after withdrawal; only bounded events are transmitted',async()=>{
  const calls=[],listeners={},elements=[];class Element{children=[];isConnected=true;dataset={};append(...items){this.children.push(...items);elements.push(...items);}setAttribute(){}remove(){this.isConnected=false;}focus(){}}
- const body=new Element(),head=new Element(),store=new Map();const document={currentScript:{src:'https://retroreplay.uk/measurement.js',dataset:{brand:'rruk'}},body,head,createElement:()=>new Element(),addEventListener:(key,f)=>{listeners['document:'+key]=f;},activeElement:null};
+ const body=new Element(),head=new Element(),store=new Map();const document={currentScript:{src:'https://retroreplay.uk/measurement.js',dataset:{brand:'rruk'}},scripts:[],body,head,createElement:()=>new Element(),addEventListener:(key,f)=>{listeners['document:'+key]=f;},activeElement:null};
  const window={addEventListener:(key,f)=>{listeners[key]=f;}};const sandbox={document,window,URL,URLSearchParams,Date,Promise,navigator:{},location:{hostname:'retroreplay.uk',pathname:'/shop',search:'?utm_campaign=rruk-shop-autumn26&email=private'},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)},fetch:async(url,options)=>{calls.push({url,options});return {};},console,core};
  const source=readFileSync(new URL('../public/measurement.js',import.meta.url),'utf8').replace("import(new URL('statistics-core.mjs',scriptUrl).href)",'Promise.resolve(core)');vm.runInNewContext(source,sandbox);await Promise.resolve();await Promise.resolve();assert.equal(calls.length,0);
  const panel=body.children.find(e=>e.id==='statistics-choice'),actions=panel.children[2];actions.children[0].onclick();assert.equal(calls.length,1);const data=JSON.parse(calls[0].options.body);assert.equal(data.event,'page_view');assert.equal(data.campaign,'rruk-shop-autumn26');assert(!JSON.stringify(data).includes('private'));

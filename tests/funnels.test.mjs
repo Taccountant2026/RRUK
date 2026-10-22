@@ -35,11 +35,11 @@ test('actual migrated SQL keeps intake and alerts idempotent, prevents story pub
  const result=spawnSync('python',['tests/funnel_scenarios.py'],{input:JSON.stringify({schema,insert:submissionSql(),meta:funnelMetaSql(),progress:progressSourceSql('submission'),alert:insertEmailSql('submission')}),encoding:'utf8'});assert.equal(result.status,0,result.stderr||result.stdout);assert.match(result.stdout,/passed/);
 });
 
-test('garden requests stay private, keep their brand and prepare the correct GitHub Pages reply link',()=>{
+test('garden requests stay private, keep their brand and prepare the correct public reply link',()=>{
  const input=parseFunnelLead({...base,brand:'garden',route:'project',publishConsent:true});
  assert.equal(input.consent,0);assert.equal(input.kind,'question');assert.equal(publicStory({...input,status:'published'}),null);
  const record=funnelRecord({...input,id:base.requestKey,source:'submission',status:'new'},{brand:'garden',route:'project'});
  assert.equal(record.brand,'garden');assert.equal(record.routeLabel,'A garden project');
- const draft=followUpDraft(record);assert(draft.subject.includes('The Outdoor Living Co.'));assert(draft.body.includes('https://taccountant2026.github.io/Turf-Right/garden-projects.html'));
+ const draft=followUpDraft(record);assert(draft.subject.includes('Stone & Sprig'));assert(draft.body.includes('https://stoneandsprig.co.uk/garden-projects.html'));
  assert(!draft.body.includes('RetroReplay UK'));assert.throws(()=>parseFunnelLead({...base,brand:'garden',route:'ready-buyer'}));
 });
