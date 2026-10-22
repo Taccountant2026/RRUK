@@ -48,7 +48,7 @@ export default async function RootLayout({
         />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YTG0QWMW5"></script>
       </head>
-      <body><StatisticsConsent/><StructuredData data={{'@context':'https://schema.org','@type':'WebSite',name:'RetroReplay UK',url:env.PUBLIC_ORIGIN||'https://retroreplay.uk',potentialAction:{'@type':'SearchAction',target:(env.PUBLIC_ORIGIN||'https://retroreplay.uk')+'/shop?q={search_term_string}','query-input':'required name=search_term_string'}}}/><a className="skip-link" href="#main">Skip to content</a><ShopProvider initialProducts={initialProducts} initialCart={initialCart}><Header/><main id="main">{children}</main><Footer/></ShopProvider></body>
+      <body><StatisticsConsent/><StructuredData data={{'@context':'https://schema.org','@type':'WebSite',name:'RetroReplay UK',url:env.PUBLIC_ORIGIN||'https://retroreplay.uk',potentialAction:{'@type':'SearchAction',target:(env.PUBLIC_ORIGIN||'https://retroreplay.uk')+'/shop?q={search_term_string}','query-input':'required name=search_term_string'}}}/><a className="skip-link" href="#main">Skip to content</a><ShopProvider initialProducts={initialProducts} initialCart={initialCart}><Header/><main id="main">{children}</main><Footer/></ShopProvider><script src="/assistant.js" defer></script></body>
     </html>
   );
 }

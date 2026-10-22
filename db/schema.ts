@@ -45,3 +45,27 @@ export const emailOutbox = sqliteTable('email_outbox', {
   createdAt:integer('created_at').notNull(),updatedAt:integer('updated_at').notNull(),nextAttemptAt:integer('next_attempt_at').notNull(),
   firstAttemptAt:integer('first_attempt_at'),providerId:text('provider_id'),lastError:text('last_error'),leaseToken:text('lease_token'),leaseExpiresAt:integer('lease_expires_at'),
 },t=>[index('email_outbox_due_idx').on(t.status,t.nextAttemptAt),check('email_outbox_status_valid',sql.raw("status IN ('pending','sending','accepted','review')")),check('email_outbox_attempts_valid',sql.raw('attempts >= 0'))]);
+
+export const opsCustomers=sqliteTable('ops_customers',{
+ userId:text('user_id').primaryKey(),name:text('name').notNull(),email:text('email').notNull(),createdAt:integer('created_at').notNull(),updatedAt:integer('updated_at').notNull(),
+});
+export const opsCases=sqliteTable('ops_cases',{
+ id:text('id').primaryKey(),brand:text('brand').notNull(),kind:text('kind').notNull(),userId:text('user_id'),
+ customerName:text('customer_name').notNull(),customerEmail:text('customer_email').notNull(),title:text('title').notNull(),description:text('description').notNull(),
+ status:text('status').notNull().default('new'),revision:integer('revision').notNull().default(0),requestKey:text('request_key').notNull().unique(),payloadHash:text('payload_hash').notNull(),
+ preferredAt:text('preferred_at').notNull().default(''),scheduledAt:text('scheduled_at').notNull().default(''),serviceId:text('service_id').notNull().default(''),providerRef:text('provider_ref').notNull().default(''),providerUrl:text('provider_url').notNull().default(''),
+ quotePence:integer('quote_pence'),quoteStatus:text('quote_status').notNull().default('none'),quoteTerms:text('quote_terms').notNull().default(''),quoteReplyAt:integer('quote_reply_at'),
+ createdAt:integer('created_at').notNull(),updatedAt:integer('updated_at').notNull(),
+},t=>[index('ops_case_customer_idx').on(t.userId,t.brand,t.updatedAt),index('ops_case_work_idx').on(t.brand,t.kind,t.status),check('ops_case_brand',sql.raw("brand IN ('rruk','bytova','garden')")),check('ops_case_kind',sql.raw("kind IN ('enquiry','booking','job','incident','quote','repair')")),check('ops_case_status',sql.raw("status IN ('new','awaiting_customer','in_progress','scheduled','completed','cancel_requested','cancelled','closed')"))]);
+export const opsMessages=sqliteTable('ops_messages',{
+ id:text('id').primaryKey(),caseId:text('case_id').notNull().references(()=>opsCases.id),senderId:text('sender_id').notNull(),senderRole:text('sender_role').notNull(),visibility:text('visibility').notNull(),body:text('body').notNull(),requestKey:text('request_key').notNull().unique(),payloadHash:text('payload_hash').notNull(),createdAt:integer('created_at').notNull(),
+},t=>[index('ops_message_case_idx').on(t.caseId,t.createdAt),check('ops_message_visibility',sql.raw("visibility IN ('shared','internal')")),check('ops_message_sender',sql.raw("sender_role IN ('customer','owner')")),check('ops_message_internal',sql.raw("visibility != 'internal' OR sender_role = 'owner'"))]);
+export const opsEvents=sqliteTable('ops_events',{
+ id:text('id').primaryKey(),caseId:text('case_id').notNull().references(()=>opsCases.id),actorId:text('actor_id').notNull(),action:text('action').notNull(),detail:text('detail').notNull(),createdAt:integer('created_at').notNull(),
+},t=>[index('ops_event_case_idx').on(t.caseId,t.createdAt)]);
+export const opsOrderLinks=sqliteTable('ops_order_links',{
+ orderId:text('order_id').primaryKey().references(()=>orders.id),userId:text('user_id').notNull(),createdAt:integer('created_at').notNull(),
+},t=>[index('ops_order_customer_idx').on(t.userId)]);
+export const opsAttachments=sqliteTable('ops_attachments',{
+ id:text('id').primaryKey(),caseId:text('case_id').notNull().references(()=>opsCases.id),uploaderId:text('uploader_id').notNull(),objectKey:text('object_key').notNull().unique(),filename:text('filename').notNull(),contentType:text('content_type').notNull(),size:integer('size').notNull(),createdAt:integer('created_at').notNull(),
+},t=>[index('ops_attachment_case_idx').on(t.caseId)]);
