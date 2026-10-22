@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "agent": "Pixel",
+  "business": "RetroReplay UK",
+  "enabled": true,
+  "timezone": "Europe/London",
+  "maxSubstantiveUpdatesPerDay": 1
+}
