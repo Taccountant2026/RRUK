@@ -1,1 +1,19 @@
-{"version":1,"attempts":[]}
+{
+  "version": 1,
+  "attempts": [
+    {
+      "id": "editorial-2026-10-23",
+      "timestamp": "2026-10-23T07:48:19.627Z",
+      "londonDay": "2026-10-23",
+      "status": "publication-attempt",
+      "url": "https://retroreplay.uk/blog/gamecube-first-evening-checklist",
+      "summary": "Buying a GameCube? Plan the whole first evening.",
+      "validation": [
+        "Existing store tests",
+        "Typecheck",
+        "Sites build",
+        "Article route and product fact checks"
+      ]
+    }
+  ]
+}

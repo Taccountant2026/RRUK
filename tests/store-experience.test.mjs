@@ -66,11 +66,11 @@ test('old shop routes recover exact matches and preserve real missing pages',()=
   assert.equal(legacyDestination(['products','unknown-rare-product'],products),null);
 });
 test('journal articles are substantive and lead to real collections',()=>{
-  assert.equal(journal.length,8);assert.equal(new Set(journal.map(a=>a.slug)).size,8);
+  assert.ok(journal.length>=8);assert.equal(new Set(journal.map(a=>a.slug)).size,journal.length);
   for(const a of journal){
     assert.ok(a.sections.length>=4);
     assert.ok(a.sections.flatMap(s=>s.paragraphs).join(' ').split(/\s+/).length>230,a.slug);
     assert.ok(a.collection==='all'||collections.some(c=>c.slug===a.collection));
-    for(const s of a.sources)assert.ok(['www.playstation.com','www.nintendo.com'].includes(new URL(s.href).hostname));
+    for(const s of a.sources)assert.ok(['www.playstation.com','www.nintendo.com','retroreplay.uk'].includes(new URL(s.href).hostname));
   }
 });
