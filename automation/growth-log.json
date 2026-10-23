@@ -14,6 +14,21 @@
         "Sites build",
         "Article route and product fact checks"
       ]
+    },
+    {
+      "id": "editorial-2026-10-24",
+      "timestamp": "2026-10-23T23:08:33Z",
+      "londonDay": "2026-10-24",
+      "status": "publication-attempt",
+      "url": "https://retroreplay.uk/blog/replacement-retro-controller-checklist",
+      "summary": "Controller buying checklist and seven exact equivalent legacy URL redirects; genuine missing pages preserved",
+      "sourceDraftCommit": "ab510ae9f099c2e6684c191daa81db8170d672e0",
+      "validation": [
+        "121 tests passed, one existing skip",
+        "Typecheck and standard Sites build passed",
+        "Current catalogue and legacy equivalents checked",
+        "Node 24.22.1 official SHA256 verified"
+      ]
     }
   ]
 }
