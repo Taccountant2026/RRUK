@@ -29,6 +29,21 @@
         "Current catalogue and legacy equivalents checked",
         "Node 24.22.1 official SHA256 verified"
       ]
+    },
+    {
+      "id": "editorial-2026-10-25-legacy-entrypoints",
+      "timestamp": "2026-10-24T23:10:47.283830Z",
+      "londonDay": "2026-10-25",
+      "status": "publication-attempt",
+      "url": "https://retroreplay.uk/collections/handheld-consoles",
+      "summary": "Correct three exact legacy collection aliases and two old XML sitemap routes at their actual route entrypoints; retain genuine missing pages and current catalogue facts",
+      "sourceDraftCommit": "55d4a0e39ab6b2a611734347351b4326b576c154",
+      "validation": [
+        "129 tests passed; one existing skip, including eight actual route-handler tests",
+        "Typecheck and standard Sites build passed",
+        "65-entry current sourcing catalogue and genuine equivalents checked",
+        "Node 24.22.1; current runtime manifests and locks preserved"
+      ]
     }
   ]
 }
