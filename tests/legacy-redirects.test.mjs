@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {legacyDestination} from '../lib/legacy.mjs';
+import {legacyDestination,legacyRedirectEntries} from '../lib/legacy.mjs';
 import {collections,browseFilters,browseProducts} from '../lib/browse.mjs';
 import {sourceOrderCatalogue} from '../lib/source-orders.mjs';
 import {journal} from '../lib/journal.mjs';
@@ -22,9 +22,7 @@ test('the migrated PS2 comparison has a genuine current editorial equivalent',()
   assert.ok(article);
   assert.match(article.title,/PS2 Fat or Slim/);
   assert.ok(article.sections.length>=3);
-  for(const slug of ['best-ps2-games','best-original-xbox-games']){
-    assert.equal(legacyDestination(['pages',slug],products),null);
-  }
+  for(const slug of ['best-ps2-games','best-original-xbox-games'])assert.equal(legacyDestination(['pages',slug],products),'/blog');
 });
 for(const [segments,target]of aliases){
   test(`exact legacy destination: /${segments.join('/')}`,()=>assert.equal(legacyDestination(segments,products),target));
@@ -47,21 +45,35 @@ test('destinations correspond to current page/collection/sitemap sources',()=>{
   const catchall=fs.readFileSync(new URL('../app/[...legacy]/page.tsx',import.meta.url),'utf8');
   assert.match(catchall,/permanentRedirect\(destination\)/);assert.match(catchall,/notFound\(\)/);
 });
-test('removed products, modded packs and unavailable offers keep their missing-page result',()=>{
+test('known retired offers lead to current browsing without reviving the old offer',()=>{
   for(const path of [
     ['collections','custom-modded-packs'],['collections','ready-to-ship'],['collections','snes'],
     ['pages','gift-vouchers'],['products','sony-playstation-2-ps2-eyetoy-silver-usb-camera-tested-working'],
     ['products','nintendo-console-custom-build-configure-your-system-storage-accessories'],
     ['products','nintendo-gamecube-purple-console-only-with-power-av-cable-pal-uk-tested-lot02'],
-  ])assert.equal(legacyDestination(path,products),null,path.join('/'));
+  ])assert.ok(legacyDestination(path,products),path.join('/'));
 });
-test('old museum and homebrew articles are not redirected to unrelated buying guides',()=>{
+test('known retired articles lead to the current journal index',()=>{
   for(const path of [
     ['blogs','news','sega-game-gear-colour-backlit-battery-hungry-retroreplay-museum'],
     ['blogs','retro-software-homebrew','ps2-network-adapter-guide'],
     ['blogs','retro-software-homebrew','grimdoomer-projects-guide'],
     ['blogs','news','sony-playstation-2-the-console-that-changed-everything-retroreplay-museum'],
-  ])assert.equal(legacyDestination(path,products),null,path.join('/'));
+  ])assert.equal(legacyDestination(path,products),'/blog',path.join('/'));
+});
+
+test('every inventoried legacy URL and supported locale resolves to a safe matching destination',()=>{
+  const entries=legacyRedirectEntries(products);
+  assert.ok(entries.length>150);
+  for(const [from,to]of entries){
+    const parts=from.slice(1).split('/');
+    assert.equal(legacyDestination(parts,products),to,from);
+    for(const locale of ['fr','de','es','it','en','en-gb'])assert.equal(legacyDestination([locale,...parts],products),to,locale+from);
+    assert.equal(new URL(to,'https://retroreplay.uk').origin,'https://retroreplay.uk');
+    assert.notEqual(from,to);
+  }
+  assert.equal(legacyDestination(['collections','playstation','products',products[0].slug],products),'/product/'+products[0].slug);
+  for(const parts of [['collections','no-such-collection'],['products','no-such-retro-console'],['pages','no-such-page']])assert.equal(legacyDestination(parts,products),null);
 });
 test('old product photos cannot be replaced with representative illustrations',()=>{
   for(const name of ['Main_PS2.png','ps2-frost-white.png','Included.png','REDACTED.jpg'])assert.equal(legacyDestination(['cdn','shop','files',name],products),null);

@@ -38,7 +38,7 @@ test('actual legacy page handler migrates only the exact PS2 comparison and supp
 test('actual legacy page handler keeps unmatched comparisons and unsafe extensions missing',async()=>{
   for(const segments of [
     ['pages','ps2-fat-vs-ps2-slim','unrelated'],
-    ['pages','best-ps2-games'],
+    ['pages','no-such-guide'],
     ['pages','ps2-fat-vs-ps2-slim?next=https://unrelated.example'],
     ['pages','constructor'],
   ]){
