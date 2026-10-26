@@ -1,2 +1,2 @@
-import { redirect } from 'next/navigation';
-export default function LegacyRedirect(){ redirect('/privacy'); }
+import { permanentRedirect } from 'next/navigation';
+export default function LegacyRedirect(){ permanentRedirect('/privacy'); }
