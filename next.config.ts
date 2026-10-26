@@ -55,7 +55,6 @@ const legacyRedirects: ReadonlyArray<readonly [string,string]> = [
   ["/collections/accessories-peripherals", "/collections/controllers-cables"],
   ["/collections/cables-adapters", "/collections/controllers-cables"],
   ["/collections/hdmi-upgrades", "/collections/controllers-cables"],
-  ["/collections/ready-to-ship", "/shop"],
   ["/collections/home-page", "/shop"],
   ["/policies/refund-policy", "/returns"],
   ["/policies/shipping-policy", "/delivery"],
