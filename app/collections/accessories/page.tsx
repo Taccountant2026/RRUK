@@ -1,2 +1,2 @@
-import { redirect } from 'next/navigation';
-export default function LegacyRedirect(){ redirect('/collections/controllers-cables'); }
+import { permanentRedirect } from 'next/navigation';
+export default function LegacyRedirect(){ permanentRedirect('/collections/controllers-cables'); }
