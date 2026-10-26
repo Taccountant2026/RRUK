@@ -4,9 +4,11 @@ import fs from 'node:fs';
 import {legacyDestination} from '../lib/legacy.mjs';
 import {collections,browseFilters,browseProducts} from '../lib/browse.mjs';
 import {sourceOrderCatalogue} from '../lib/source-orders.mjs';
+import {journal} from '../lib/journal.mjs';
 
 const products=sourceOrderCatalogue(JSON.parse(fs.readFileSync(new URL('../lib/sourcing-catalogue.json',import.meta.url))));
 const aliases=[
+  [['pages','ps2-fat-vs-ps2-slim'],'/blog/ps2-fat-vs-slim'],
   [['collections','handheld-consoles'],'/collections/handhelds'],
   [['collections','n64'],'/shop?collection=nintendo&q=nintendo+64'],
   [['collections','japanese-imports'],'/shop?q=japanese+import'],
@@ -15,6 +17,15 @@ const aliases=[
   [['sitemap_products_1.xml'],'/sitemap.xml'],
   [['sitemap_collections_1.xml'],'/sitemap.xml'],
 ];
+test('the migrated PS2 comparison has a genuine current editorial equivalent',()=>{
+  const article=journal.find(article=>article.slug==='ps2-fat-vs-slim');
+  assert.ok(article);
+  assert.match(article.title,/PS2 Fat or Slim/);
+  assert.ok(article.sections.length>=3);
+  for(const slug of ['best-ps2-games','best-original-xbox-games']){
+    assert.equal(legacyDestination(['pages',slug],products),null);
+  }
+});
 for(const [segments,target]of aliases){
   test(`exact legacy destination: /${segments.join('/')}`,()=>assert.equal(legacyDestination(segments,products),target));
   test(`same migration from an old French URL: /fr/${segments.join('/')}`,()=>assert.equal(legacyDestination(['fr',...segments],products),target));

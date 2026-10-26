@@ -18,7 +18,7 @@ function loadRoute(path){
     compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX},
   }).outputText;
   const module={exports:{}};
-  const mocks={'next/navigation':navigation,'@/components/Storefront':{Catalogue},'@/lib/browse.mjs':browse,'@/lib/legacy.mjs':legacy};
+  const mocks={'next/navigation':navigation,'@/components/Storefront':{Catalogue},'@/lib/browse.mjs':browse,'@/lib/legacy.mjs':legacy,'@/lib/catalogue-server':{getProducts:async()=>[]}};
   runInNewContext(code,{module,exports:module.exports,Response,require(name){
     if(Object.hasOwn(mocks,name))return mocks[name];
     if(name==='react/jsx-runtime')return require(name);
@@ -28,6 +28,23 @@ function loadRoute(path){
 }
 const collection=loadRoute('app/collections/[slug]/page.tsx').default;
 const request=slug=>({params:Promise.resolve({slug}),searchParams:Promise.resolve({})});
+const legacyPage=loadRoute('app/[...legacy]/page.tsx').default;
+test('actual legacy page handler migrates only the exact PS2 comparison and supported locale forms',async()=>{
+  for(const prefix of [[],['fr'],['de'],['es'],['it'],['en'],['en-gb']]){
+    const params=Promise.resolve({legacy:[...prefix,'pages','ps2-fat-vs-ps2-slim']});
+    await assert.rejects(legacyPage({params}),error=>error.kind==='redirect'&&error.destination==='/blog/ps2-fat-vs-slim');
+  }
+});
+test('actual legacy page handler keeps unmatched comparisons and unsafe extensions missing',async()=>{
+  for(const segments of [
+    ['pages','ps2-fat-vs-ps2-slim','unrelated'],
+    ['pages','best-ps2-games'],
+    ['pages','ps2-fat-vs-ps2-slim?next=https://unrelated.example'],
+    ['pages','constructor'],
+  ]){
+    await assert.rejects(legacyPage({params:Promise.resolve({legacy:segments})}),error=>error.kind==='not-found');
+  }
+});
 for(const [slug,destination] of [
   ['handheld-consoles','/collections/handhelds'],
   ['n64','/shop?collection=nintendo&q=nintendo+64'],

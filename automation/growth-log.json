@@ -44,6 +44,21 @@
         "65-entry current sourcing catalogue and genuine equivalents checked",
         "Node 24.22.1; current runtime manifests and locks preserved"
       ]
+    },
+    {
+      "id": "editorial-2026-10-26-ps2-comparison-alias",
+      "londonDay": "2026-10-26",
+      "status": "publication-attempt",
+      "url": "https://retroreplay.uk/pages/ps2-fat-vs-ps2-slim",
+      "summary": "Recover the exact inherited PS2 Fat versus Slim comparison URL and supported locale forms to its genuine current guide; preserve unrelated missing pages and catalogue facts",
+      "sourceDraftCommit": "9324e703f1ef31a3697dd2ef8685dfe637ce622e",
+      "validation": [
+        "134 tests passed; one existing skip, including actual route-handler migration and missing-page controls",
+        "Typecheck and standard Sites build passed under Node 24.22.1",
+        "Current 65-entry catalogue preserved; existing PS2 guide returned 200; old English and French pages returned 404 before this release",
+        "Current runtime manifests, locks and hosting inputs unchanged"
+      ],
+      "timestamp": "2026-10-26T00:07:03.813791Z"
     }
   ]
 }
