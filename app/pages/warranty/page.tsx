@@ -1,2 +1,2 @@
-import { redirect } from 'next/navigation';
-export default function LegacyRedirect(){ redirect('/warranty'); }
+import { permanentRedirect } from 'next/navigation';
+export default function LegacyRedirect(){ permanentRedirect('/warranty'); }
