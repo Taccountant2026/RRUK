@@ -29,14 +29,22 @@ function loadRoute(path){
 const collection=loadRoute('app/collections/[slug]/page.tsx').default;
 const request=slug=>({params:Promise.resolve({slug}),searchParams:Promise.resolve({})});
 const legacyPage=loadRoute('app/[...legacy]/page.tsx').default;
+test('actual legacy page handler recovers the exact console finder and supported locale forms',async()=>{
+  for(const prefix of [[],['fr'],['de'],['es'],['it'],['en'],['en-gb']]){
+    const params=Promise.resolve({legacy:[...prefix,'pages','find-my-console']});
+    await assert.rejects(legacyPage({params}),error=>error.kind==='redirect'&&error.destination==='/console-finder');
+  }
+});
 test('actual legacy page handler migrates only the exact PS2 comparison and supported locale forms',async()=>{
   for(const prefix of [[],['fr'],['de'],['es'],['it'],['en'],['en-gb']]){
     const params=Promise.resolve({legacy:[...prefix,'pages','ps2-fat-vs-ps2-slim']});
     await assert.rejects(legacyPage({params}),error=>error.kind==='redirect'&&error.destination==='/blog/ps2-fat-vs-slim');
   }
 });
-test('actual legacy page handler keeps unmatched comparisons and unsafe extensions missing',async()=>{
+test('actual legacy page handler keeps unmatched editorial/tool paths and unsafe extensions missing',async()=>{
   for(const segments of [
+    ['pages','find-my-console','unrelated'],
+    ['pages','find-my-console?next=https://unrelated.example'],
     ['pages','ps2-fat-vs-ps2-slim','unrelated'],
     ['pages','best-ps2-games'],
     ['pages','ps2-fat-vs-ps2-slim?next=https://unrelated.example'],

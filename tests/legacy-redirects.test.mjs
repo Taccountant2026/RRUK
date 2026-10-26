@@ -8,6 +8,7 @@ import {journal} from '../lib/journal.mjs';
 
 const products=sourceOrderCatalogue(JSON.parse(fs.readFileSync(new URL('../lib/sourcing-catalogue.json',import.meta.url))));
 const aliases=[
+  [['pages','find-my-console'],'/console-finder'],
   [['pages','ps2-fat-vs-ps2-slim'],'/blog/ps2-fat-vs-slim'],
   [['collections','handheld-consoles'],'/collections/handhelds'],
   [['collections','n64'],'/shop?collection=nintendo&q=nintendo+64'],
@@ -41,7 +42,7 @@ test('filtered collection destinations contain relevant current source-catalogue
   assert.ok(collections.some(c=>c.slug==='handhelds'));
 });
 test('destinations correspond to current page/collection/sitemap sources',()=>{
-  for(const path of ['app/shop/page.tsx','app/blog/page.tsx','app/why-rruk/page.tsx','app/collections/[slug]/page.tsx','app/sitemap.ts'])assert.ok(fs.existsSync(new URL('../'+path,import.meta.url)),path);
+  for(const path of ['app/shop/page.tsx','app/blog/page.tsx','app/why-rruk/page.tsx','app/console-finder/page.tsx','app/collections/[slug]/page.tsx','app/sitemap.ts'])assert.ok(fs.existsSync(new URL('../'+path,import.meta.url)),path);
   const sitemap=fs.readFileSync(new URL('../app/sitemap.ts',import.meta.url),'utf8');
   assert.match(sitemap,/collections\.map/);assert.match(sitemap,/products\.filter/);
   const catchall=fs.readFileSync(new URL('../app/[...legacy]/page.tsx',import.meta.url),'utf8');
