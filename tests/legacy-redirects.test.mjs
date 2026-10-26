@@ -112,3 +112,34 @@ test('routing config has permanent redirects without loops or retired modded/rea
   assert.ok(!seen.has('/collections/custom-modded-packs'));
   assert.match(source,/permanent: true/);
 });
+
+const historicFlatAliases = [
+  [['about.html'], '/our-story'],
+  [['about.htm'], '/our-story'],
+  [['branding.html'], '/our-story'],
+  [['checkout.html'], '/basket'],
+  [['delivery.html'], '/delivery'],
+  [['faq.html'], '/support'],
+  [['privacy.html'], '/privacy'],
+  [['returns.html'], '/returns'],
+  [['terms.html'], '/terms'],
+  [['services.html'], '/how-it-works'],
+  [['shop.html'], '/shop'],
+  [['ps2.html'], '/collections/playstation'],
+  [['sourcing-request.html'], '/console-hunt'],
+  [['atari','index.html'], '/collections/sega-atari'],
+  [['sega','index.html'], '/collections/sega-atari'],
+  [['xbox','index.html'], '/collections/xbox'],
+  [['playstation','products','ps2-fat.html'], '/collections/playstation'],
+  [['fr','collections','under-100'], '/shop?max=100'],
+  [['fr','collections','source-to-order'], '/shop?orderable=1'],
+];
+test('old HTML site and Shopify CSV addresses resolve to matching current pages',()=>{
+  for (const [segments, destination] of historicFlatAliases)
+    assert.equal(legacyDestination(segments, products),destination,segments.join('/'));
+});
+test('specific policy page route includes redirect before 404',()=>{
+  const route=fs.readFileSync(new URL('../app/[page]/page.tsx',import.meta.url),'utf8');
+  assert.match(route,/legacyDestination\(\[page\]\)/);
+  assert.match(route,/permanentRedirect\(redirect\)/);
+});
