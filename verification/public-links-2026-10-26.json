@@ -1,0 +1,2863 @@
+{
+  "origin": "https://retroreplay.uk",
+  "checked_at": "2026-10-26T08:51:12.000750+00:00",
+  "failures": [],
+  "pages": [
+    {
+      "path": "/",
+      "links": 56
+    },
+    {
+      "path": "/shop?q=ps2",
+      "links": 68
+    },
+    {
+      "path": "/blog/gamecube-first-evening-checklist",
+      "links": 54
+    },
+    {
+      "path": "/blog",
+      "links": 59
+    },
+    {
+      "path": "/blog/choose-your-first-retro-console",
+      "links": 52
+    },
+    {
+      "path": "/blog/build-a-collection-you-play",
+      "links": 52
+    },
+    {
+      "path": "/accessibility",
+      "links": 44
+    },
+    {
+      "path": "/basket",
+      "links": 44
+    },
+    {
+      "path": "/blog/gifts-for-retro-gamers",
+      "links": 52
+    },
+    {
+      "path": "/blog/ps2-fat-vs-slim",
+      "links": 55
+    },
+    {
+      "path": "/blog/look-after-your-retro-setup",
+      "links": 54
+    },
+    {
+      "path": "/blog/understanding-pre-owned-condition",
+      "links": 52
+    },
+    {
+      "path": "/blog/retro-console-modern-tv-checklist",
+      "links": 54
+    },
+    {
+      "path": "/blog/replacement-retro-controller-checklist",
+      "links": 54
+    },
+    {
+      "path": "/collections/consoles",
+      "links": 65
+    },
+    {
+      "path": "/collections/cases",
+      "links": 50
+    },
+    {
+      "path": "/collections/controllers-cables",
+      "links": 73
+    },
+    {
+      "path": "/blog/welcome-to-the-replay-room",
+      "links": 52
+    },
+    {
+      "path": "/collections/gifts-essentials",
+      "links": 53
+    },
+    {
+      "path": "/collections",
+      "links": 44
+    },
+    {
+      "path": "/collections/handhelds",
+      "links": 52
+    },
+    {
+      "path": "/collections/sega-atari",
+      "links": 55
+    },
+    {
+      "path": "/community",
+      "links": 51
+    },
+    {
+      "path": "/collections/nintendo",
+      "links": 59
+    },
+    {
+      "path": "/collections/playstation",
+      "links": 73
+    },
+    {
+      "path": "/collections/xbox",
+      "links": 56
+    },
+    {
+      "path": "/console-finder",
+      "links": 45
+    },
+    {
+      "path": "/console-checker",
+      "links": 45
+    },
+    {
+      "path": "/console-hunt?route=collector",
+      "links": 44
+    },
+    {
+      "path": "/community/guidelines",
+      "links": 46
+    },
+    {
+      "path": "/condition-guide",
+      "links": 44
+    },
+    {
+      "path": "/console-hunt",
+      "links": 44
+    },
+    {
+      "path": "/contact",
+      "links": 44
+    },
+    {
+      "path": "/gifts",
+      "links": 52
+    },
+    {
+      "path": "/delivery",
+      "links": 44
+    },
+    {
+      "path": "/order-help",
+      "links": 44
+    },
+    {
+      "path": "/how-it-works",
+      "links": 44
+    },
+    {
+      "path": "/our-story",
+      "links": 44
+    },
+    {
+      "path": "/personal-shopper",
+      "links": 45
+    },
+    {
+      "path": "/product/af-smart-wipes-ten-cleaning-sachets",
+      "links": 49
+    },
+    {
+      "path": "/personal-shopper?route=general",
+      "links": 45
+    },
+    {
+      "path": "/privacy",
+      "links": 44
+    },
+    {
+      "path": "/portal",
+      "links": 47
+    },
+    {
+      "path": "/product/microsoft-xbox-360-arcade-black-hdmi-model",
+      "links": 49
+    },
+    {
+      "path": "/product/arrow-keycap-set-yellow-black-red",
+      "links": 49
+    },
+    {
+      "path": "/product/bitfunx-ossc-hw-v1-8-scan-converter",
+      "links": 49
+    },
+    {
+      "path": "/product/atari-2600-pal-console-bundle",
+      "links": 49
+    },
+    {
+      "path": "/product/atari-2600-official-joystick",
+      "links": 49
+    },
+    {
+      "path": "/product/high-speed-hdmi-cable-1-m-black",
+      "links": 49
+    },
+    {
+      "path": "/product/nintendo-ds-silver-handheld-bundle",
+      "links": 48
+    },
+    {
+      "path": "/product/nintendo-game-boy-advance-white-bundle",
+      "links": 48
+    },
+    {
+      "path": "/product/nintendo-64-pal-console-boxed",
+      "links": 49
+    },
+    {
+      "path": "/product/nintendo-game-boy-advance-sp-silver-tribal-edition",
+      "links": 49
+    },
+    {
+      "path": "/product/microsoft-xbox-360-console-with-power-cable",
+      "links": 49
+    },
+    {
+      "path": "/product/nintendo-game-boy-dmg-01-grey",
+      "links": 49
+    },
+    {
+      "path": "/product/nintendo-gamecube-official-controller",
+      "links": 49
+    },
+    {
+      "path": "/product/nintendo-wii-empty-replacement-game-cases",
+      "links": 48
+    },
+    {
+      "path": "/product/nintendo-gamecube-purple-console-with-leads",
+      "links": 49
+    },
+    {
+      "path": "/product/nintendo-wii-to-hdmi-adapter",
+      "links": 49
+    },
+    {
+      "path": "/product/nintendo-switch-joy-con-thumb-grips-four-piece-set",
+      "links": 49
+    },
+    {
+      "path": "/product/nintendo-wii-remote-nunchuck",
+      "links": 49
+    },
+    {
+      "path": "/product/playstation-2-to-hdmi-adapter",
+      "links": 49
+    },
+    {
+      "path": "/product/paladone-playstation-shaped-ceramic-mug",
+      "links": 49
+    },
+    {
+      "path": "/product/original-xbox-console-with-cables",
+      "links": 49
+    },
+    {
+      "path": "/product/playstation-2-empty-replacement-game-case",
+      "links": 48
+    },
+    {
+      "path": "/product/original-xbox-hdmi-adapter",
+      "links": 49
+    },
+    {
+      "path": "/product/original-xbox-official-controller",
+      "links": 49
+    },
+    {
+      "path": "/product/ps2-wireless-vibration-controller-clear-crystal",
+      "links": 55
+    },
+    {
+      "path": "/product/ps2-fat-sata-hard-drive-adapter",
+      "links": 49
+    },
+    {
+      "path": "/product/ps2-wireless-vibration-controller-black",
+      "links": 55
+    },
+    {
+      "path": "/product/playstation-composite-av-cable-1-8-m",
+      "links": 49
+    },
+    {
+      "path": "/product/playstation-light-up-gaming-desk-mat",
+      "links": 49
+    },
+    {
+      "path": "/product/ps2-wireless-vibration-controller-blue",
+      "links": 55
+    },
+    {
+      "path": "/product/sega-dreamcast-official-controller-boxed",
+      "links": 49
+    },
+    {
+      "path": "/product/ps2-wireless-vibration-controller-green",
+      "links": 55
+    },
+    {
+      "path": "/product/sega-dreamcast-controller-vmu",
+      "links": 49
+    },
+    {
+      "path": "/product/ps2-wireless-vibration-controller-red",
+      "links": 55
+    },
+    {
+      "path": "/product/retroscaler2x-av-to-hdmi-line-doubler",
+      "links": 49
+    },
+    {
+      "path": "/product/ps2-wireless-vibration-controller-purple",
+      "links": 55
+    },
+    {
+      "path": "/product/sega-master-system-official-controller-model-3020",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-aqua-blue-pal-edition",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-dualshock-2-controller",
+      "links": 49
+    },
+    {
+      "path": "/product/sega-master-system-ii-console-bundle",
+      "links": 48
+    },
+    {
+      "path": "/product/sega-saturn-official-controller",
+      "links": 49
+    },
+    {
+      "path": "/product/sega-dreamcast-pal-console-boxed-bundle",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-fat-console-bundle",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-eyetoy-usb-camera-silver",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-eyetoy-usb-camera-black",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-fat-silver-pal-console",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-frost-white-japanese-import",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-fat-scph-50003-console-bundle",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-pal-console-boxed",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-console-with-controller-memory-card",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-official-8-mb-memory-card",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-gundam-edition-japanese-import",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-2-toys-r-us-edition-japanese-import",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-dualshock-controller",
+      "links": 49
+    },
+    {
+      "path": "/product/soulwit-cable-holder-clips-pack-of-three",
+      "links": 49
+    },
+    {
+      "path": "/product/uk-figure-of-eight-c7-power-lead",
+      "links": 49
+    },
+    {
+      "path": "/product/three-way-rca-av-switch-with-cable",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-psp-3003-mystic-silver-boxed-bundle",
+      "links": 49
+    },
+    {
+      "path": "/product/super-nintendo-snes-official-controller",
+      "links": 49
+    },
+    {
+      "path": "/product/sony-playstation-pal-console-boxed",
+      "links": 49
+    },
+    {
+      "path": "/product/xbox-360-kinect-sensor",
+      "links": 49
+    },
+    {
+      "path": "/product/xbox-360-official-wireless-controller",
+      "links": 49
+    },
+    {
+      "path": "/product/xbox-xbox-360-empty-replacement-game-cases",
+      "links": 48
+    },
+    {
+      "path": "/returns",
+      "links": 44
+    },
+    {
+      "path": "/product/xbox-360-hdmi-optical-audio-adapter-cable",
+      "links": 49
+    },
+    {
+      "path": "/saved",
+      "links": 45
+    },
+    {
+      "path": "/shop",
+      "links": 73
+    },
+    {
+      "path": "/shop?max=50&orderable=1",
+      "links": 71
+    },
+    {
+      "path": "/shop?collection=nintendo&q=super+nintendo",
+      "links": 48
+    },
+    {
+      "path": "/shop?max=100",
+      "links": 73
+    },
+    {
+      "path": "/shop?collection=nintendo&q=nintendo+64",
+      "links": 48
+    },
+    {
+      "path": "/shop?max=25&orderable=1",
+      "links": 65
+    },
+    {
+      "path": "/shop?q=ps2&orderable=1",
+      "links": 67
+    },
+    {
+      "path": "/shop?orderable=1",
+      "links": 73
+    },
+    {
+      "path": "/terms",
+      "links": 44
+    },
+    {
+      "path": "/shop?q=japanese+import",
+      "links": 50
+    },
+    {
+      "path": "/support",
+      "links": 45
+    },
+    {
+      "path": "/start",
+      "links": 52
+    },
+    {
+      "path": "/why-rruk",
+      "links": 45
+    },
+    {
+      "path": "/warranty",
+      "links": 44
+    },
+    {
+      "path": "/personal-shopper?item=source-397830754792",
+      "links": 45
+    },
+    {
+      "path": "/blog?category=Replay+culture",
+      "links": 51
+    },
+    {
+      "path": "/blog?category=Inside+RRUK",
+      "links": 50
+    },
+    {
+      "path": "/blog?category=Buying+guides",
+      "links": 54
+    },
+    {
+      "path": "/blog?category=Setup+%26+care",
+      "links": 51
+    },
+    {
+      "path": "/personal-shopper?item=source-397830727026",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763276",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763378",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830756898",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830756798",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830756703",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830756996",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763741",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763677",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763639",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763607",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763713",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763783",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763819",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397832655606",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763856",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397832653902",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830763957",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397830764112",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397836279300",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397836282634",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397865874577",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397865876242",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397836279498",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397836282437",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397865940787",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397865896836",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397869668444",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880409889",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397865902591",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397865909573",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880470862",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880505209-clear-crystal",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880505209-blue",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880446596",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880431145",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880505209-black",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880505209-green",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397883641774",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880577019",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880553571",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880505209-red",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397880505209-purple",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885643130",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885675185",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397883680431",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885612218",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397883652845",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397883666967",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885707780",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885808647",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885734029",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885841575",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885691886",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397885783901",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397967770003",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397967754902",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?route=community",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?item=source-397967656808",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?route=gifts",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?route=gifts&budget=50&setup=extras",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?route=ready-buyer",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?route=shortlist",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?route=setup",
+      "links": 45
+    },
+    {
+      "path": "/personal-shopper?route=returning-player",
+      "links": 45
+    },
+    {
+      "path": "/portal/privacy",
+      "links": 45
+    },
+    {
+      "path": "/shop?category=consoles&orderable=1",
+      "links": 67
+    },
+    {
+      "path": "/shop?collection=gifts-essentials&orderable=1",
+      "links": 53
+    },
+    {
+      "path": "/shop?collection=cases&orderable=1",
+      "links": 47
+    },
+    {
+      "path": "/shop?collection=consoles&orderable=1",
+      "links": 64
+    },
+    {
+      "path": "/shop?collection=controllers-cables&orderable=1",
+      "links": 72
+    },
+    {
+      "path": "/shop?collection=controllers-cables",
+      "links": 73
+    },
+    {
+      "path": "/shop?collection=controllers-cables&page=2",
+      "links": 58
+    },
+    {
+      "path": "/shop?collection=playstation&page=2",
+      "links": 53
+    },
+    {
+      "path": "/shop?collection=playstation",
+      "links": 73
+    },
+    {
+      "path": "/shop?collection=nintendo&orderable=1",
+      "links": 56
+    },
+    {
+      "path": "/shop?collection=sega-atari&orderable=1",
+      "links": 54
+    },
+    {
+      "path": "/shop?collection=handhelds&orderable=1",
+      "links": 50
+    },
+    {
+      "path": "/shop?collection=playstation&orderable=1",
+      "links": 72
+    },
+    {
+      "path": "/shop?collection=xbox&orderable=1",
+      "links": 55
+    },
+    {
+      "path": "/shop?page=2",
+      "links": 73
+    },
+    {
+      "path": "/shop?max=100&page=2",
+      "links": 63
+    },
+    {
+      "path": "/shop?page=2&orderable=1",
+      "links": 73
+    },
+    {
+      "path": "/shop?max=50&page=2&orderable=1",
+      "links": 51
+    },
+    {
+      "path": "/shop?max=100&orderable=1",
+      "links": 72
+    },
+    {
+      "path": "/shop?q=japanese+import&orderable=1",
+      "links": 50
+    },
+    {
+      "path": "/shop?q=super+nintendo&collection=nintendo&orderable=1",
+      "links": 48
+    },
+    {
+      "path": "/shop?page=3",
+      "links": 66
+    },
+    {
+      "path": "/shop?page=3&orderable=1",
+      "links": 60
+    },
+    {
+      "path": "/shop?q=nintendo+64&collection=nintendo&orderable=1",
+      "links": 48
+    },
+    {
+      "path": "/shop?collection=controllers-cables&page=2&orderable=1",
+      "links": 57
+    },
+    {
+      "path": "/shop?max=100&page=2&orderable=1",
+      "links": 62
+    },
+    {
+      "path": "/shop?collection=playstation&page=2&orderable=1",
+      "links": 51
+    }
+  ],
+  "redirects": [
+    {
+      "path": "/about.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/about.htm",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/atari/index.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/b",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/",
+      "target": "/"
+    },
+    {
+      "path": "/atari/index",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/blogs/news/ps2-fat-vs-ps2-slim-which-should-you-buy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/blogs/news/best-pre-owned-ps2-to-buy-uk-2026",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/blogs/news/ps2-network-adapter-guide",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/news/sony-playstation-2-the-console-that-changed-everything-retroreplay-museum",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/news/grimdoomer-projects-guide",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/news/sega-game-gear-colour-backlit-battery-hungry-retroreplay-museum",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/retro-console-buying-advice/ps2-fat-vs-ps2-slim-which-should-you-buy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/blogs/retro-console-buying-advice/grimdoomer-projects-guide",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/retro-console-buying-advice/best-pre-owned-ps2-to-buy-uk-2026",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/blogs/retro-console-buying-advice/sega-game-gear-colour-backlit-battery-hungry-retroreplay-museum",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/retro-console-buying-advice/ps2-network-adapter-guide",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/retro-console-buying-advice/sony-playstation-2-the-console-that-changed-everything-retroreplay-museum",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/retro-software-homebrew/ps2-network-adapter-guide",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/retro-software-homebrew/ps2-fat-vs-ps2-slim-which-should-you-buy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/blogs/retro-software-homebrew/grimdoomer-projects-guide",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/retro-software-homebrew/best-pre-owned-ps2-to-buy-uk-2026",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/blogs/retro-software-homebrew/sega-game-gear-colour-backlit-battery-hungry-retroreplay-museum",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/blogs/retro-software-homebrew/sony-playstation-2-the-console-that-changed-everything-retroreplay-museum",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/checkout",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/basket",
+      "target": "/basket"
+    },
+    {
+      "path": "/branding.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/branding",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/checkout.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/basket",
+      "target": "/basket"
+    },
+    {
+      "path": "/cart",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/basket",
+      "target": "/basket"
+    },
+    {
+      "path": "/catalog",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/collections/accessories-peripherals",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collections/atari",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/collections/all",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/collections/atari-2600",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/collections/accessories",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collect",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections",
+      "target": "/collections"
+    },
+    {
+      "path": "/collections/collector-s-vault",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/consoles-handhelds",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/controller-collection",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collections/cables-adapters",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collections/collectors-vault",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/cables-and-adapters",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collections/game-boy-advance",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/handhelds",
+      "target": "/collections/handhelds"
+    },
+    {
+      "path": "/collections/dreamcast",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/collections/game-boy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/handhelds",
+      "target": "/collections/handhelds"
+    },
+    {
+      "path": "/collections/gameboy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/handhelds",
+      "target": "/collections/handhelds"
+    },
+    {
+      "path": "/collections/custom-modded-packs",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/controllers",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collections/hdmi-upgrades",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collections/handheld-consoles",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/handhelds",
+      "target": "/collections/handhelds"
+    },
+    {
+      "path": "/collections/gamecube",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/nintendo",
+      "target": "/collections/nintendo"
+    },
+    {
+      "path": "/collections/home-page",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/collections/japanese-imports",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop?q=japanese+import",
+      "target": "/shop?q=japanese+import"
+    },
+    {
+      "path": "/collections/gold-condition",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/mega-drive",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/collections/memory-cards-storage",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collections/limited-edition-rare-collector-consoles-retroreplay-uk",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/limited-edition-rare-collector-consoles",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/memory-cards-and-storage",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/collections/megadrive",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/collections/nintendo-64",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/nintendo",
+      "target": "/collections/nintendo"
+    },
+    {
+      "path": "/collections/original-xbox",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/xbox",
+      "target": "/collections/xbox"
+    },
+    {
+      "path": "/collections/nintendo-gamecube",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/nintendo",
+      "target": "/collections/nintendo"
+    },
+    {
+      "path": "/collections/nes",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/nintendo",
+      "target": "/collections/nintendo"
+    },
+    {
+      "path": "/collections/nintendo-ds",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/handhelds",
+      "target": "/collections/handhelds"
+    },
+    {
+      "path": "/collections/n64",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop?collection=nintendo&q=nintendo+64",
+      "target": "/shop?collection=nintendo&q=nintendo+64"
+    },
+    {
+      "path": "/collections/ps2",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/collections/playstation-2-consoles",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/collections/playstation-1",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/collections/playstation-2",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/collections/ps1",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/collections/playstation-consoles",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/collections/refurbished-consoles",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/psp",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/handhelds",
+      "target": "/collections/handhelds"
+    },
+    {
+      "path": "/collections/sega",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/collections/ready-to-ship",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/collections/ps2-consoles",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/collections/retro-consoles",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/collections/xbox-360",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/xbox",
+      "target": "/collections/xbox"
+    },
+    {
+      "path": "/collections/source-to-order",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop?orderable=1",
+      "target": "/shop?orderable=1"
+    },
+    {
+      "path": "/collections/snes",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop?collection=nintendo&q=super+nintendo",
+      "target": "/shop?collection=nintendo&q=super+nintendo"
+    },
+    {
+      "path": "/collections/under-100",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop?max=100",
+      "target": "/shop?max=100"
+    },
+    {
+      "path": "/collections/silver-condition",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/consoles",
+      "target": "/collections/consoles"
+    },
+    {
+      "path": "/contact.htm",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/contact",
+      "target": "/contact"
+    },
+    {
+      "path": "/delivery.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/delivery",
+      "target": "/delivery"
+    },
+    {
+      "path": "/de/pages/warranty-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/contact.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/contact",
+      "target": "/contact"
+    },
+    {
+      "path": "/de/pages/ps2-fat-vs-ps2-slim",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/de/collections/playstation-2",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/de/about.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/delivery.t",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/delivery",
+      "target": "/delivery"
+    },
+    {
+      "path": "/en-gb/collections/playstation-2",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/en-gb/pages/warranty-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/en/about.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/en-gb/pages/ps2-fat-vs-ps2-slim",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/en-gb/about.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/en/collections/playstation-2",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/en/pages/warranty-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/es/collections/playstation-2",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/es/about.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/es/pages/ps2-fat-vs-ps2-slim",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/en/pages/ps2-fat-vs-ps2-slim",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/faq.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/support",
+      "target": "/support"
+    },
+    {
+      "path": "/faq",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/support",
+      "target": "/support"
+    },
+    {
+      "path": "/es/pages/warranty-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/faqs",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/support",
+      "target": "/support"
+    },
+    {
+      "path": "/fr/about.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/fr/collections/source-to-order",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop?orderable=1",
+      "target": "/shop?orderable=1"
+    },
+    {
+      "path": "/fr/collections/under-100",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop?max=100",
+      "target": "/shop?max=100"
+    },
+    {
+      "path": "/fr/pages/ps2-fat-vs-ps2-slim",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/index",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/",
+      "target": "/"
+    },
+    {
+      "path": "/fr/collections/playstation-2",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/fr/pages/warranty-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/index.htm",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/",
+      "target": "/"
+    },
+    {
+      "path": "/it/about.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/it/pages/ps2-fat-vs-ps2-slim",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/it/pages/warranty-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/it/collections/playstation-2",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/index.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/",
+      "target": "/"
+    },
+    {
+      "path": "/pages/about",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/pages/about-us",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/pages/branding",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/pages/best-original-xbox-games",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/pages/community-setup-of-the-month",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/community",
+      "target": "/community"
+    },
+    {
+      "path": "/pages/best-ps2-games",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/pages/console-hunt",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/console-hunt",
+      "target": "/console-hunt"
+    },
+    {
+      "path": "/pages/contact-us",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/contact",
+      "target": "/contact"
+    },
+    {
+      "path": "/pages/console-checker",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/console-checker",
+      "target": "/console-checker"
+    },
+    {
+      "path": "/pages/contact",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/contact",
+      "target": "/contact"
+    },
+    {
+      "path": "/pages/delivery-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/delivery",
+      "target": "/delivery"
+    },
+    {
+      "path": "/pages/delivery",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/delivery",
+      "target": "/delivery"
+    },
+    {
+      "path": "/pages/faq",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/support",
+      "target": "/support"
+    },
+    {
+      "path": "/pages/find-my-console",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/console-finder",
+      "target": "/console-finder"
+    },
+    {
+      "path": "/pages/faqs",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/support",
+      "target": "/support"
+    },
+    {
+      "path": "/pages/help-centre",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/support",
+      "target": "/support"
+    },
+    {
+      "path": "/pages/gift-vouchers",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/gifts",
+      "target": "/gifts"
+    },
+    {
+      "path": "/pages/help",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/support",
+      "target": "/support"
+    },
+    {
+      "path": "/pages/refund-policy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/returns",
+      "target": "/returns"
+    },
+    {
+      "path": "/pages/privacy-policy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/privacy",
+      "target": "/privacy"
+    },
+    {
+      "path": "/pages/our-story",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/our-story",
+      "target": "/our-story"
+    },
+    {
+      "path": "/pages/process",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/how-it-works",
+      "target": "/how-it-works"
+    },
+    {
+      "path": "/pages/ps2-fat-vs-ps2-slim",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog/ps2-fat-vs-slim",
+      "target": "/blog/ps2-fat-vs-slim"
+    },
+    {
+      "path": "/pages/how-it-works",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/how-it-works",
+      "target": "/how-it-works"
+    },
+    {
+      "path": "/pages/returns",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/returns",
+      "target": "/returns"
+    },
+    {
+      "path": "/pages/shipping",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/delivery",
+      "target": "/delivery"
+    },
+    {
+      "path": "/pages/returns-policy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/returns",
+      "target": "/returns"
+    },
+    {
+      "path": "/pages/retro-gaming-setup-guides",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/blog",
+      "target": "/blog"
+    },
+    {
+      "path": "/pages/shipping-delivery",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/delivery",
+      "target": "/delivery"
+    },
+    {
+      "path": "/pages/services",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/how-it-works",
+      "target": "/how-it-works"
+    },
+    {
+      "path": "/pages/warranty",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/pages/terms-and-conditions",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/terms",
+      "target": "/terms"
+    },
+    {
+      "path": "/pages/shipping-policy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/delivery",
+      "target": "/delivery"
+    },
+    {
+      "path": "/pages/terms-of-service",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/terms",
+      "target": "/terms"
+    },
+    {
+      "path": "/pages/terms",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/terms",
+      "target": "/terms"
+    },
+    {
+      "path": "/pages/sourcing-request",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/console-hunt",
+      "target": "/console-hunt"
+    },
+    {
+      "path": "/pages/warranty-returns",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/pages/why-buy-from-retroreplay-uk",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/why-rruk",
+      "target": "/why-rruk"
+    },
+    {
+      "path": "/pages/warranty-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/warranty",
+      "target": "/warranty"
+    },
+    {
+      "path": "/playstation/products/ps2-fat.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/playstatic/products/playstation-2-fat-console-controller-cables-included-ready-to-play",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/policies/contact-information",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/contact",
+      "target": "/contact"
+    },
+    {
+      "path": "/policies/refund-policy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/returns",
+      "target": "/returns"
+    },
+    {
+      "path": "/privacy.h",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/privacy",
+      "target": "/privacy"
+    },
+    {
+      "path": "/privacy.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/privacy",
+      "target": "/privacy"
+    },
+    {
+      "path": "/policies/privacy-policy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/privacy",
+      "target": "/privacy"
+    },
+    {
+      "path": "/policies/shipping-policy",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/delivery",
+      "target": "/delivery"
+    },
+    {
+      "path": "/policies/terms-of-service",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/terms",
+      "target": "/terms"
+    },
+    {
+      "path": "/process.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/how-it-works",
+      "target": "/how-it-works"
+    },
+    {
+      "path": "/process.h",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/how-it-works",
+      "target": "/how-it-works"
+    },
+    {
+      "path": "/products/atari-2600-official-joystick",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/atari-2600-official-joystick",
+      "target": "/product/atari-2600-official-joystick"
+    },
+    {
+      "path": "/products/arrow-keycap-set-yellow-black-red",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/arrow-keycap-set-yellow-black-red",
+      "target": "/product/arrow-keycap-set-yellow-black-red"
+    },
+    {
+      "path": "/products/af-smart-wipes-ten-cleaning-sachets",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/af-smart-wipes-ten-cleaning-sachets",
+      "target": "/product/af-smart-wipes-ten-cleaning-sachets"
+    },
+    {
+      "path": "/products/atari-2600-pal-console-bundle",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/atari-2600-pal-console-bundle",
+      "target": "/product/atari-2600-pal-console-bundle"
+    },
+    {
+      "path": "/products/iphone-6-plus-case-brown-leather",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/products/bitfunx-ossc-hw-v1-8-scan-converter",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/bitfunx-ossc-hw-v1-8-scan-converter",
+      "target": "/product/bitfunx-ossc-hw-v1-8-scan-converter"
+    },
+    {
+      "path": "/products/generic-hdmi-cable-type_cable-hdmi-video-game-accessory",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/products/flying-squirrel-page-turning-pen-laser-pointer-teaching-business-office-presentation-pen-ppt-speech-mouse-page-turning-pen",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/products/hikvion-ds-2cd1047g0-l-4mp-colorful-imaging-bullet-survillance-camera-poe-h265",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/products/high-speed-hdmi-cable-1-m-black",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/high-speed-hdmi-cable-1-m-black",
+      "target": "/product/high-speed-hdmi-cable-1-m-black"
+    },
+    {
+      "path": "/products/nintendo-console-custom-build-configure-your-system-storage-accessories",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/nintendo",
+      "target": "/collections/nintendo"
+    },
+    {
+      "path": "/products/mega-drive-av-scart-cable-platform_megadrive-platform_sega-type_cable-region_pal-video-game-accessory",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/products/nintendo-64-console-collectors-boxed-retro-console",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop?collection=nintendo&q=nintendo+64",
+      "target": "/shop?collection=nintendo&q=nintendo+64"
+    },
+    {
+      "path": "/products/nintendo-64-pal-console-boxed",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-64-pal-console-boxed",
+      "target": "/product/nintendo-64-pal-console-boxed"
+    },
+    {
+      "path": "/products/microsoft-xbox-360-console-with-power-cable",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/microsoft-xbox-360-console-with-power-cable",
+      "target": "/product/microsoft-xbox-360-console-with-power-cable"
+    },
+    {
+      "path": "/products/microsoft-xbox-360-arcade-black-hdmi-model",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/microsoft-xbox-360-arcade-black-hdmi-model",
+      "target": "/product/microsoft-xbox-360-arcade-black-hdmi-model"
+    },
+    {
+      "path": "/products/nintendo-gamecube-official-controller",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-gamecube-official-controller",
+      "target": "/product/nintendo-gamecube-official-controller"
+    },
+    {
+      "path": "/products/nintendo-gamecube-purple-console-only-with-power-av-cable-pal-uk-tested-lot02",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/nintendo",
+      "target": "/collections/nintendo"
+    },
+    {
+      "path": "/products/nintendo-game-boy-dmg-01-grey",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-game-boy-dmg-01-grey",
+      "target": "/product/nintendo-game-boy-dmg-01-grey"
+    },
+    {
+      "path": "/products/nintendo-ds-silver-handheld-bundle",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-ds-silver-handheld-bundle",
+      "target": "/product/nintendo-ds-silver-handheld-bundle"
+    },
+    {
+      "path": "/products/nintendo-game-boy-advance-sp-silver-tribal-edition",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-game-boy-advance-sp-silver-tribal-edition",
+      "target": "/product/nintendo-game-boy-advance-sp-silver-tribal-edition"
+    },
+    {
+      "path": "/products/nintendo-game-boy-advance-white-bundle",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-game-boy-advance-white-bundle",
+      "target": "/product/nintendo-game-boy-advance-white-bundle"
+    },
+    {
+      "path": "/products/nintendo-wii-to-hdmi-adapter",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-wii-to-hdmi-adapter",
+      "target": "/product/nintendo-wii-to-hdmi-adapter"
+    },
+    {
+      "path": "/products/nintendo-wii-empty-replacement-game-cases",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-wii-empty-replacement-game-cases",
+      "target": "/product/nintendo-wii-empty-replacement-game-cases"
+    },
+    {
+      "path": "/products/nintendo-switch-joy-con-thumb-grips-four-piece-set",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-switch-joy-con-thumb-grips-four-piece-set",
+      "target": "/product/nintendo-switch-joy-con-thumb-grips-four-piece-set"
+    },
+    {
+      "path": "/products/nintendo-gamecube-purple-lot02-platform_gamecube-platform_nintendo-type_console-cond_excellent-stock_ready-region_pal-video-game-console",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/nintendo",
+      "target": "/collections/nintendo"
+    },
+    {
+      "path": "/products/nintendo-gamecube-purple-console-with-leads",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-gamecube-purple-console-with-leads",
+      "target": "/product/nintendo-gamecube-purple-console-with-leads"
+    },
+    {
+      "path": "/products/nintendo-wii-remote-nunchuck",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/nintendo-wii-remote-nunchuck",
+      "target": "/product/nintendo-wii-remote-nunchuck"
+    },
+    {
+      "path": "/products/original-xbox-official-controller",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/original-xbox-official-controller",
+      "target": "/product/original-xbox-official-controller"
+    },
+    {
+      "path": "/products/playstation-2-custom-build-platform_ps2-platform_playstation-type_console-type_custom-stock_custom-plug-and-play-video-game-console",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/products/original-xbox-hdmi-adapter",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/original-xbox-hdmi-adapter",
+      "target": "/product/original-xbox-hdmi-adapter"
+    },
+    {
+      "path": "/products/original-xbox-console-with-cables",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/original-xbox-console-with-cables",
+      "target": "/product/original-xbox-console-with-cables"
+    },
+    {
+      "path": "/products/original-xbox-hdmi-adapter-platform_xbox-platform_original-xbox-type_cable-hdmi-video-game-accessory",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/products/paladone-playstation-shaped-ceramic-mug",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/paladone-playstation-shaped-ceramic-mug",
+      "target": "/product/paladone-playstation-shaped-ceramic-mug"
+    },
+    {
+      "path": "/products/playstation-2-memory-card-8mb-official",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-official-8-mb-memory-card",
+      "target": "/product/sony-playstation-2-official-8-mb-memory-card"
+    },
+    {
+      "path": "/products/playstation-2-empty-replacement-game-case",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/playstation-2-empty-replacement-game-case",
+      "target": "/product/playstation-2-empty-replacement-game-case"
+    },
+    {
+      "path": "/products/playstation-2-fat-console-controller-cables-included-ready-to-play",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/products/playstation-2-to-hdmi-adapter",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/playstation-2-to-hdmi-adapter",
+      "target": "/product/playstation-2-to-hdmi-adapter"
+    },
+    {
+      "path": "/products/playstation-light-up-gaming-desk-mat",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/playstation-light-up-gaming-desk-mat",
+      "target": "/product/playstation-light-up-gaming-desk-mat"
+    },
+    {
+      "path": "/products/playstation-composite-av-cable-1-8-m",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/playstation-composite-av-cable-1-8-m",
+      "target": "/product/playstation-composite-av-cable-1-8-m"
+    },
+    {
+      "path": "/products/ps2-fat-sata-hard-drive-adapter",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/ps2-fat-sata-hard-drive-adapter",
+      "target": "/product/ps2-fat-sata-hard-drive-adapter"
+    },
+    {
+      "path": "/products/ps2-wireless-vibration-controller-clear-crystal",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/ps2-wireless-vibration-controller-clear-crystal",
+      "target": "/product/ps2-wireless-vibration-controller-clear-crystal"
+    },
+    {
+      "path": "/products/ps2-slim-grade-a-boxed-platform_ps2-platform_playstation-type_console-cond_excellent-cond_boxed-stock_ready-region_pal-video-game-console",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/products/ps2-wireless-vibration-controller-blue",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/ps2-wireless-vibration-controller-blue",
+      "target": "/product/ps2-wireless-vibration-controller-blue"
+    },
+    {
+      "path": "/products/ps2-wireless-vibration-controller-green",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/ps2-wireless-vibration-controller-green",
+      "target": "/product/ps2-wireless-vibration-controller-green"
+    },
+    {
+      "path": "/products/ps2-wireless-vibration-controller-black",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/ps2-wireless-vibration-controller-black",
+      "target": "/product/ps2-wireless-vibration-controller-black"
+    },
+    {
+      "path": "/products/ps2-wireless-vibration-controller-red",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/ps2-wireless-vibration-controller-red",
+      "target": "/product/ps2-wireless-vibration-controller-red"
+    },
+    {
+      "path": "/products/ps2-wireless-vibration-controller-purple",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/ps2-wireless-vibration-controller-purple",
+      "target": "/product/ps2-wireless-vibration-controller-purple"
+    },
+    {
+      "path": "/products/sega-dreamcast-controller-vmu",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sega-dreamcast-controller-vmu",
+      "target": "/product/sega-dreamcast-controller-vmu"
+    },
+    {
+      "path": "/products/retroscaler2x-av-to-hdmi-line-doubler",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/retroscaler2x-av-to-hdmi-line-doubler",
+      "target": "/product/retroscaler2x-av-to-hdmi-line-doubler"
+    },
+    {
+      "path": "/products/sega-dreamcast-official-controller-vmu-tested-ready-to-use",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/products/sega-dreamcast-official-controller-boxed",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sega-dreamcast-official-controller-boxed",
+      "target": "/product/sega-dreamcast-official-controller-boxed"
+    },
+    {
+      "path": "/products/sony-playstation-2-aqua-blue-pal-edition",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-aqua-blue-pal-edition",
+      "target": "/product/sony-playstation-2-aqua-blue-pal-edition"
+    },
+    {
+      "path": "/products/sega-master-system-official-controller-model-3020",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sega-master-system-official-controller-model-3020",
+      "target": "/product/sega-master-system-official-controller-model-3020"
+    },
+    {
+      "path": "/products/sega-saturn-official-controller",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sega-saturn-official-controller",
+      "target": "/product/sega-saturn-official-controller"
+    },
+    {
+      "path": "/products/sony-playstation-1-original-scph-1002-console-silver-condition",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/products/sega-master-system-ii-console-bundle",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sega-master-system-ii-console-bundle",
+      "target": "/product/sega-master-system-ii-console-bundle"
+    },
+    {
+      "path": "/products/sega-dreamcast-pal-console-boxed-bundle",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sega-dreamcast-pal-console-boxed-bundle",
+      "target": "/product/sega-dreamcast-pal-console-boxed-bundle"
+    },
+    {
+      "path": "/products/sony-playstation-2-fat-console-bundle",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-fat-console-bundle",
+      "target": "/product/sony-playstation-2-fat-console-bundle"
+    },
+    {
+      "path": "/products/sony-playstation-2-dualshock-2-controller",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-dualshock-2-controller",
+      "target": "/product/sony-playstation-2-dualshock-2-controller"
+    },
+    {
+      "path": "/products/sony-playstation-2-eyetoy-usb-camera-silver",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-eyetoy-usb-camera-silver",
+      "target": "/product/sony-playstation-2-eyetoy-usb-camera-silver"
+    },
+    {
+      "path": "/products/sony-playstation-2-eyetoy-usb-camera-black",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-eyetoy-usb-camera-black",
+      "target": "/product/sony-playstation-2-eyetoy-usb-camera-black"
+    },
+    {
+      "path": "/products/sony-playstation-2-fat-silver-pal-console",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-fat-silver-pal-console",
+      "target": "/product/sony-playstation-2-fat-silver-pal-console"
+    },
+    {
+      "path": "/products/sony-playstation-2-fat-scph-50003-console-bundle",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-fat-scph-50003-console-bundle",
+      "target": "/product/sony-playstation-2-fat-scph-50003-console-bundle"
+    },
+    {
+      "path": "/products/sony-playstation-2-gundam-edition-japanese-import",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-gundam-edition-japanese-import",
+      "target": "/product/sony-playstation-2-gundam-edition-japanese-import"
+    },
+    {
+      "path": "/products/sony-playstation-2-official-8-mb-memory-card",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-official-8-mb-memory-card",
+      "target": "/product/sony-playstation-2-official-8-mb-memory-card"
+    },
+    {
+      "path": "/products/sony-playstation-2-pal-console-boxed",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-pal-console-boxed",
+      "target": "/product/sony-playstation-2-pal-console-boxed"
+    },
+    {
+      "path": "/products/sony-playstation-2-frost-white-japanese-import",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-frost-white-japanese-import",
+      "target": "/product/sony-playstation-2-frost-white-japanese-import"
+    },
+    {
+      "path": "/products/sony-playstation-2-toys-r-us-edition-japanese-import",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-2-toys-r-us-edition-japanese-import",
+      "target": "/product/sony-playstation-2-toys-r-us-edition-japanese-import"
+    },
+    {
+      "path": "/products/sony-playstation-2-ps2-eyetoy-silver-usb-camera-tested-working",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/products/super-nintendo-snes-official-controller",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/super-nintendo-snes-official-controller",
+      "target": "/product/super-nintendo-snes-official-controller"
+    },
+    {
+      "path": "/products/soulwit-cable-holder-clips-pack-of-three",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/soulwit-cable-holder-clips-pack-of-three",
+      "target": "/product/soulwit-cable-holder-clips-pack-of-three"
+    },
+    {
+      "path": "/products/sony-playstation-pal-console-boxed",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-pal-console-boxed",
+      "target": "/product/sony-playstation-pal-console-boxed"
+    },
+    {
+      "path": "/products/sony-playstation-console-with-controller-memory-card",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-console-with-controller-memory-card",
+      "target": "/product/sony-playstation-console-with-controller-memory-card"
+    },
+    {
+      "path": "/products/sony-playstation-dualshock-controller",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-playstation-dualshock-controller",
+      "target": "/product/sony-playstation-dualshock-controller"
+    },
+    {
+      "path": "/products/sony-psp-3003-mystic-silver-boxed-bundle",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/sony-psp-3003-mystic-silver-boxed-bundle",
+      "target": "/product/sony-psp-3003-mystic-silver-boxed-bundle"
+    },
+    {
+      "path": "/products/xbox-360-kinect-sensor",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/xbox-360-kinect-sensor",
+      "target": "/product/xbox-360-kinect-sensor"
+    },
+    {
+      "path": "/products/xbox-360-hdmi-optical-audio-adapter-cable",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/xbox-360-hdmi-optical-audio-adapter-cable",
+      "target": "/product/xbox-360-hdmi-optical-audio-adapter-cable"
+    },
+    {
+      "path": "/products/super-nintendo-snes-official-controller-tested-ready-to-use",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/controllers-cables",
+      "target": "/collections/controllers-cables"
+    },
+    {
+      "path": "/products/uk-figure-of-eight-c7-power-lead",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/uk-figure-of-eight-c7-power-lead",
+      "target": "/product/uk-figure-of-eight-c7-power-lead"
+    },
+    {
+      "path": "/products/switch-lite-handheld",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/handhelds",
+      "target": "/collections/handhelds"
+    },
+    {
+      "path": "/products/three-way-rca-av-switch-with-cable",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/three-way-rca-av-switch-with-cable",
+      "target": "/product/three-way-rca-av-switch-with-cable"
+    },
+    {
+      "path": "/returns.h",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/returns",
+      "target": "/returns"
+    },
+    {
+      "path": "/returns.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/returns",
+      "target": "/returns"
+    },
+    {
+      "path": "/ps2.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/playstation",
+      "target": "/collections/playstation"
+    },
+    {
+      "path": "/products/xbox-xbox-360-empty-replacement-game-cases",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/xbox-xbox-360-empty-replacement-game-cases",
+      "target": "/product/xbox-xbox-360-empty-replacement-game-cases"
+    },
+    {
+      "path": "/products/xbox-360-official-wireless-controller",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/product/xbox-360-official-wireless-controller",
+      "target": "/product/xbox-360-official-wireless-controller"
+    },
+    {
+      "path": "/services.h",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/how-it-works",
+      "target": "/how-it-works"
+    },
+    {
+      "path": "/sega/index",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/search",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/shop.htm",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/sega/index.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/sega-atari",
+      "target": "/collections/sega-atari"
+    },
+    {
+      "path": "/services.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/how-it-works",
+      "target": "/how-it-works"
+    },
+    {
+      "path": "/sitemap_collections_1.xml",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/sitemap.xml",
+      "target": "/sitemap.xml"
+    },
+    {
+      "path": "/sitemap_pages_1.xml",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/sitemap.xml",
+      "target": "/sitemap.xml"
+    },
+    {
+      "path": "/shop.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/shop",
+      "target": "/shop"
+    },
+    {
+      "path": "/sitemap_blogs_1.xml",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/sitemap.xml",
+      "target": "/sitemap.xml"
+    },
+    {
+      "path": "/sitemap_products_1.xml",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/sitemap.xml",
+      "target": "/sitemap.xml"
+    },
+    {
+      "path": "/sourcing-request.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/console-hunt",
+      "target": "/console-hunt"
+    },
+    {
+      "path": "/sourcing-",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/console-hunt",
+      "target": "/console-hunt"
+    },
+    {
+      "path": "/terms.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/terms",
+      "target": "/terms"
+    },
+    {
+      "path": "/terms.htm",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/terms",
+      "target": "/terms"
+    },
+    {
+      "path": "/xbox/index",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/xbox",
+      "target": "/collections/xbox"
+    },
+    {
+      "path": "/xbox/index.html",
+      "status": 308,
+      "mime": "text/plain",
+      "location": "/collections/xbox",
+      "target": "/collections/xbox"
+    }
+  ],
+  "external_links": [
+    "https://bytova.co.uk/",
+    "https://stoneandsprig.co.uk/",
+    "https://www.nintendo.com/en-gb/Support/Nintendo-Switch/Tips-on-How-to-Keep-the-Nintendo-Switch-Console-in-Good-Working-Condition-1986856.html",
+    "https://www.playstation.com/content/dam/global_pdc/en/corporate/support/manuals/ps2-docs/scph-90004/SCPH-90002CB_90003CB_PS2_UG_EN.pdf",
+    "https://www.playstation.com/en-gb/support/hardware/manuals/"
+  ],
+  "authentication_boundaries": [
+    {
+      "path": "/manage",
+      "status": 307,
+      "mime": "text/plain",
+      "location": "https://retroreplay.uk/signin-with-chatgpt"
+    }
+  ],
+  "excluded": "Other origins, authentication, private APIs, order-token URLs, forms and checkout submission",
+  "assets_checked": 37,
+  "pages_and_redirects_checked": 497,
+  "legacy_redirects_checked": 272,
+  "result": "passed",
+  "validated_source_commit": "234d3a5bca3089bdcec7c99f1e9e7ff194a301a9",
+  "validated_site_version": 29,
+  "automated_tests": {
+    "passed": 139,
+    "skipped": 1,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "production_build": "passed",
+  "browser_checks": [
+    {
+      "from": "https://retroreplay.uk/about.html",
+      "to": "https://retroreplay.uk/our-story"
+    },
+    {
+      "from": "https://www.retroreplay.uk/about.html",
+      "to": "https://www.retroreplay.uk/our-story"
+    },
+    {
+      "from": "https://retroreplay.uk/pages/find-my-console",
+      "to": "https://retroreplay.uk/console-finder"
+    }
+  ],
+  "external_link_checks": [
+    {
+      "url": "https://bytova.co.uk/",
+      "result": "retrieved successfully"
+    },
+    {
+      "url": "https://stoneandsprig.co.uk/",
+      "result": "retrieved successfully"
+    },
+    {
+      "url": "https://www.nintendo.com/en-gb/Support/Nintendo-Switch/Tips-on-How-to-Keep-the-Nintendo-Switch-Console-in-Good-Working-Condition-1986856.html",
+      "result": "retrieved successfully"
+    },
+    {
+      "url": "https://www.playstation.com/content/dam/global_pdc/en/corporate/support/manuals/ps2-docs/scph-90004/SCPH-90002CB_90003CB_PS2_UG_EN.pdf",
+      "result": "retrieved successfully"
+    },
+    {
+      "url": "https://www.playstation.com/en-gb/support/hardware/manuals/",
+      "result": "retrieved successfully"
+    }
+  ],
+  "authentication_verification": "External sign-in observation was blocked by automatic approval review. The public-only checker records authentication boundaries without following them. No signed-in journey was verified."
+}
