@@ -82,16 +82,7 @@ for old,new in [('/products/playstation-2-memory-card-8mb-official','/product/so
 # Rules come directly from the committed Next configuration, not a separate stale checklist.
 import pathlib
 config=(pathlib.Path(__file__).resolve().parents[1]/'next.config.ts').read_text()
-redirect_rules=re.findall(r'^\\s*\\["(/[^"]+)", "(/[^"]+)"\\],?\\s*
-assert get('/missing-level/a-genuinely-missing-page')[1]==404
-assert get('/api/admin/community')[1]==403
-feed=get('/feed.xml');assert feed[1]==200;assert len(ET.fromstring(feed[3]).findall('.//item'))==8
-site=get('/sitemap.xml');assert site[1]==200
-urls={x.text for x in ET.fromstring(site[3]).findall('.//{*}loc')};assert {ORIGIN+p for p in expected}<=urls
-report['sitemapUrls']=len(urls);assert not report['failures'],report['failures']
-report['result']='passed';report['scope']='HTTP DOM, routes, assets, search, basket persistence, feed and sitemap. No interactive browser or real payment test.'
-print(json.dumps(report,ensure_ascii=False),flush=True)
-,config,re.M)
+redirect_rules=re.findall(r'^\s*\["(/[^"]+)", "(/[^"]+)"\],?\s*$',config,re.M)
 assert len(redirect_rules)>=90,('missing permanent migration rules',len(redirect_rules))
 class StopRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self,req,fp,code,msg,headers,newurl):return None
