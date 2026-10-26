@@ -78,6 +78,58 @@ basket=get('/basket',{'Cookie':'rruk_cart='+cart});assert basket[1]==200 and p['
 report['serverBasketPersisted']=True
 for old,new in [('/products/playstation-2-memory-card-8mb-official','/product/sony-playstation-2-official-8-mb-memory-card'),('/fr/pages/console-hunt','/console-hunt'),('/blogs/retro-console-buying-advice/ps2-fat-vs-ps2-slim-which-should-you-buy','/blog/ps2-fat-vs-slim')]:
     r=get(old);assert r[1]==200 and r[4]==ORIGIN+new,(old,r[1],r[4])
+# Migration audit: inspect HTTP redirect responses instead of following them blindly.
+# Rules come directly from the committed Next configuration, not a separate stale checklist.
+import pathlib
+config=(pathlib.Path(__file__).resolve().parents[1]/'next.config.ts').read_text()
+redirect_rules=re.findall(r'^\\s*\\["(/[^"]+)", "(/[^"]+)"\\],?\\s*
+assert get('/missing-level/a-genuinely-missing-page')[1]==404
+assert get('/api/admin/community')[1]==403
+feed=get('/feed.xml');assert feed[1]==200;assert len(ET.fromstring(feed[3]).findall('.//item'))==8
+site=get('/sitemap.xml');assert site[1]==200
+urls={x.text for x in ET.fromstring(site[3]).findall('.//{*}loc')};assert {ORIGIN+p for p in expected}<=urls
+report['sitemapUrls']=len(urls);assert not report['failures'],report['failures']
+report['result']='passed';report['scope']='HTTP DOM, routes, assets, search, basket persistence, feed and sitemap. No interactive browser or real payment test.'
+print(json.dumps(report,ensure_ascii=False),flush=True)
+,config,re.M)
+assert len(redirect_rules)>=90,('missing permanent migration rules',len(redirect_rules))
+class StopRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self,req,fp,code,msg,headers,newurl):return None
+no_redirect=urllib.request.build_opener(StopRedirect())
+def direct_redirect(rule):
+    old,destination=rule
+    req=urllib.request.Request(ORIGIN+old,headers=HEADERS)
+    try:
+        with no_redirect.open(req,timeout=25) as response:
+            status=response.status
+            location=response.headers.get('Location','')
+    except urllib.error.HTTPError as exc:
+        status=exc.code
+        location=exc.headers.get('Location','')
+    final=urllib.parse.urljoin(ORIGIN+old,location)
+    expected=ORIGIN+destination
+    return {'from':old,'status':status,'expected':expected,'actual':final,'passed':status in (301,308) and final==expected}
+with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+    checks=list(pool.map(direct_redirect,redirect_rules))
+broken_redirects=[r for r in checks if not r['passed']]
+report['legacyRedirectsChecked']=len(checks)
+report['legacyRedirectFailures']=broken_redirects
+assert not broken_redirects,broken_redirects
+
+# The routes below resolve via the legacy catch-all rather than the static rule table.
+archived=[
+    ('/fr/products/nintendo-64-console-collectors-boxed-retro-console','/shop?collection=nintendo&q=nintendo+64'),
+    ('/fr/products/nintendo-gamecube-purple-lot02-platform_gamecube-platform_nintendo-type_console-cond_excellent-stock_ready-region_pal-video-game-console','/collections/nintendo'),
+    ('/fr/products/playstation-2-fat-console-controller-cables-included-ready-to-play','/collections/playstation'),
+    ('/fr/products/mega-drive-av-scart-cable-platform_megadrive-platform_sega-type_cable-region_pal-video-game-accessory','/collections/controllers-cables'),
+    ('/fr/collections/gold-condition','/collections/consoles'),
+    ('/fr/collections/silver-condition','/collections/consoles'),
+]
+with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+    archival_checks=list(pool.map(direct_redirect,archived))
+report['archivedRedirectFailures']=[r for r in archival_checks if not r['passed']]
+assert not report['archivedRedirectFailures'],report['archivedRedirectFailures']
+
 assert get('/product/a-genuinely-missing-item')[1]==404
 assert get('/missing-level/a-genuinely-missing-page')[1]==404
 assert get('/api/admin/community')[1]==403
