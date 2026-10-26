@@ -74,3 +74,41 @@ test('unknown and unsafe input never creates an external redirect',()=>{
   for(const parts of [null,'/shop',['pages','constructor'],['pages','__proto__'],['pages','toString'],['..','shop'],['fr','..','shop'],['https:','evil.test'],['//evil.test'],['pages','contact?next=https://evil.test'],['pages','%2f%2fevil.test']])assert.equal(legacyDestination(parts,products),null);
   for(const [parts]of aliases){const destination=legacyDestination(parts,products);assert.equal(new URL(destination,'https://retroreplay.uk').origin,'https://retroreplay.uk');assert.notEqual(destination,'/');}
 });
+
+const newMigrations=[
+  [['pages','warranty-information'],'/warranty'],
+  [['pages','warranty'],'/warranty'],
+  [['pages','find-my-console'],'/console-finder'],
+  [['collections','playstation-2'],'/collections/playstation'],
+  [['collections','gamecube'],'/collections/nintendo'],
+  [['collections','xbox-360'],'/collections/xbox'],
+  [['collections','atari'],'/collections/sega-atari'],
+  [['collections','collector-s-vault'],'/collections/consoles'],
+  [['collections','memory-cards-storage'],'/collections/controllers-cables'],
+  [['policies','refund-policy'],'/returns'],
+  [['policies','shipping-policy'],'/delivery'],
+  [['search'],'/shop'],
+  [['cart'],'/basket'],
+];
+test('new Shopify migration routes and locale paths resolve to current relevant content',()=>{
+  for(const [segments,target] of newMigrations){
+    assert.equal(legacyDestination(segments,products),target,segments.join('/'));
+    assert.equal(legacyDestination(['fr',...segments],products),target,'fr/'+segments.join('/'));
+  }
+});
+test('routing config has permanent redirects without loops or retired modded/ready-to-ship routes',()=>{
+  const source=fs.readFileSync(new URL('../next.config.ts',import.meta.url),'utf8');
+  const routes=[...source.matchAll(/\["(\/[^"]+)", "(\/[^"]+)"\]/g)];
+  assert.ok(routes.length>=50,'expected an explicit legacy URL migration table');
+  const seen=new Set();
+  for(const [,from,to] of routes){
+    assert.ok(!seen.has(from),'duplicate legacy redirect: '+from);
+    assert.notEqual(from,to,'self redirect: '+from);
+    seen.add(from);
+  }
+  assert.ok(seen.has('/collections/playstation-2'));
+  assert.ok(seen.has('/pages/warranty-information'));
+  assert.ok(!seen.has('/collections/ready-to-ship'));
+  assert.ok(!seen.has('/collections/custom-modded-packs'));
+  assert.match(source,/permanent: true/);
+});
