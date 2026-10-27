@@ -71,3 +71,24 @@ for(const name of ['sitemap_products_1.xml','sitemap_collections_1.xml'])test('a
   assert.equal(response.headers.get('location'),'/sitemap.xml');
   assert.equal(response.body,null);
 });
+
+test('actual legacy article handler recovers the exact PS2 games list and supported locale forms',async()=>{
+  for(const prefix of [[],['fr'],['de'],['es'],['it'],['en'],['en-gb']]){
+    const legacy=[...prefix,'blogs','retro-software-homebrew','best-ps2-games-of-all-time-the-ultimate-playstation-2-game-list'];
+    await assert.rejects(legacyPage({params:Promise.resolve({legacy})}),error=>error.kind==='redirect'&&error.destination==='/blog/ps2-games-shortlist');
+  }
+});
+test('PS2 games recovery retains unrelated articles, photo gaps and unsafe paths as missing',async()=>{
+  for(const legacy of [
+    ['blogs','retro-software-homebrew','best-ps2-games-of-all-time-the-ultimate-playstation-2-game-list','extra'],
+    ['blogs','retro-software-homebrew','best-ps2-games-of-all-time-the-ultimate-playstation-2-game-list?next=https://unrelated.example'],
+    ['blogs','retro-software-homebrew','best-ps2-games-of-all-time-the-ultimate-playstation-2-game-list-extra'],
+    ['blogs','news','best-ps2-games-of-all-time-the-ultimate-playstation-2-game-list'],
+    ['blogs','retro-software-homebrew','swiss-gamecube-guide'],
+    ['blogs','retro-software-homebrew','ps2-hdd-size-comparison-500gb-vs-1tb-vs-2tb-which-is-right-for-you'],
+    ['cdn','shop','files','20260412_181701_1.jpg'],
+    ['pages','no-such-guide'],
+  ]){
+    await assert.rejects(legacyPage({params:Promise.resolve({legacy})}),error=>error.kind==='not-found');
+  }
+});

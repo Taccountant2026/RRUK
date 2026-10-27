@@ -59,6 +59,23 @@
         "Current runtime manifests, locks and hosting inputs unchanged"
       ],
       "timestamp": "2026-10-26T00:07:03.813791Z"
+    },
+    {
+      "id": "editorial-2026-10-27-ps2-games-shortlist",
+      "timestamp": "2026-10-27T02:12:19Z",
+      "londonDay": "2026-10-27",
+      "status": "publication-attempt",
+      "url": "https://retroreplay.uk/blog/ps2-games-shortlist",
+      "summary": "Original six-game PS2 starting shortlist plus recovery of one exact inherited article path and its six supported locale forms; retain genuine missing pages, current catalogue and product media",
+      "sourceDraftCommit": "b6dcdefe0711f1d4b12585f55b07e3e7fd690934",
+      "sourceBaseCommit": "db9b78722bd9b95fd3565caac51921a78bc4f9ed",
+      "validation": [
+        "141 tests passed; one existing skip, including actual route-handler locale and missing-page controls",
+        "Typecheck and standard Sites build passed under Node 24.22.1",
+        "Fresh source reconciliation retained 65-entry sourcing catalogue and all newer listing media",
+        "Official PlayStation game history references rechecked on 27 October; actual article date is 27 October",
+        "Package, lock, hosting identity, growth flag, commerce and security inputs preserved"
+      ]
     }
   ]
 }
