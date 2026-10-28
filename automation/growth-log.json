@@ -76,6 +76,21 @@
         "Official PlayStation game history references rechecked on 27 October; actual article date is 27 October",
         "Package, lock, hosting identity, growth flag, commerce and security inputs preserved"
       ]
+    },
+    {
+      "id": "editorial-2026-10-28-original-xbox",
+      "timestamp": "2026-10-28T03:01:13.941Z",
+      "londonDay": "2026-10-28",
+      "status": "publication-attempt",
+      "url": "https://retroreplay.uk/blog/original-xbox-first-evening-checklist",
+      "summary": "Original Xbox enquiry-first first-evening checklist; no stock, preloaded-games or delivery promise",
+      "sourceDraftCommit": "d9db90d6375588d11b3c4a29d61f61246dbca3ea",
+      "sourceBaseCommit": "72adfa0833a27806a407c201a59149f98af3e7c1",
+      "validation": [
+        "166 tests passed; one existing skip",
+        "Typecheck and standard Sites build passed under Node24.22.1",
+        "65-entry enquiry-first catalogue checked; runtime, media, assistant and commerce inputs preserved"
+      ]
     }
   ]
 }
