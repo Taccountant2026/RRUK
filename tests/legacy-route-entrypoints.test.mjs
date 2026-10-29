@@ -92,3 +92,23 @@ test('PS2 games recovery retains unrelated articles, photo gaps and unsafe paths
     await assert.rejects(legacyPage({params:Promise.resolve({legacy})}),error=>error.kind==='not-found');
   }
 });
+
+test('actual old PS2 games page and all supported locale forms reach the existing shortlist',async()=>{
+  for(const prefix of [[],['fr'],['de'],['es'],['it'],['en'],['en-gb']]){
+    const legacy=[...prefix,'pages','best-ps2-games'];
+    await assert.rejects(legacyPage({params:Promise.resolve({legacy})}),error=>error.kind==='redirect'&&error.destination==='/blog/ps2-games-shortlist');
+  }
+});
+test('PS2 page recovery leaves near matches, unsafe extensions and unsupported locales missing',async()=>{
+  for(const legacy of [
+    ['pages','best-ps2-games','extra'],
+    ['pages','best-ps2-games-extra'],
+    ['pages','best-ps2-games?next=https://unrelated.example'],
+    ['pages','best-ps2-games%2fextra'],
+    ['pt','pages','best-ps2-games'],
+    ['pages','constructor'],
+  ]){
+    await assert.rejects(legacyPage({params:Promise.resolve({legacy})}),error=>error.kind==='not-found');
+  }
+  await assert.rejects(legacyPage({params:Promise.resolve({legacy:['pages','best-original-xbox-games']})}),error=>error.kind==='redirect'&&error.destination==='/blog');
+});

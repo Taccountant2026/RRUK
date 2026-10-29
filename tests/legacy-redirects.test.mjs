@@ -22,7 +22,15 @@ test('the migrated PS2 comparison has a genuine current editorial equivalent',()
   assert.ok(article);
   assert.match(article.title,/PS2 Fat or Slim/);
   assert.ok(article.sections.length>=3);
-  for(const slug of ['best-ps2-games','best-original-xbox-games'])assert.equal(legacyDestination(['pages',slug],products),'/blog');
+  assert.equal(legacyDestination(['pages','best-original-xbox-games'],products),'/blog');
+});
+test('the exact old PS2 games page reaches its current physical-games shortlist',()=>{
+  assert.equal(legacyDestination(['pages','best-ps2-games'],products),'/blog/ps2-games-shortlist');
+  const article=journal.find(article=>article.slug==='ps2-games-shortlist');
+  assert.ok(article);
+  assert.match(article.title,/Six PS2 games/);
+  assert.ok(article.sections.some(section=>section.paragraphs.some(text=>text.includes('not a claim that RRUK has the games in stock'))));
+  assert.equal(legacyRedirectEntries(products).find(([from])=>from==='/pages/best-ps2-games')?.[1],'/blog/ps2-games-shortlist');
 });
 for(const [segments,target]of aliases){
   test(`exact legacy destination: /${segments.join('/')}`,()=>assert.equal(legacyDestination(segments,products),target));

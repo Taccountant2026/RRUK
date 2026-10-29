@@ -91,6 +91,22 @@
         "Typecheck and standard Sites build passed under Node24.22.1",
         "65-entry enquiry-first catalogue checked; runtime, media, assistant and commerce inputs preserved"
       ]
+    },
+    {
+      "id": "editorial-2026-10-29-sourced-order-ps2-alias",
+      "timestamp": "2026-10-29T00:06:25.827167Z",
+      "londonDay": "2026-10-29",
+      "status": "publication-attempt",
+      "url": "https://retroreplay.uk/blog/original-xbox-first-evening-checklist",
+      "summary": "Correct Xbox guide to current sourced-order offer and route exact old PS2 games page plus six supported locales to existing physical-games shortlist",
+      "sourceDraftCommit": "c3967b92e754583706a7555fcd6add8b0de3f727",
+      "sourceBaseCommit": "d80147c1ac722530068f8f3650394c50d0b6cbba",
+      "validation": [
+        "172 tests passed; one existing skip",
+        "Typecheck and standard Sites build passed under Node24.22.1",
+        "Live original Xbox listing rechecked29October; current price/contents/delivery journey retained",
+        "Only four intended draft files plus attempt log; newer native security/runtime/assistant/media/commerce preserved"
+      ]
     }
   ]
 }
